@@ -27,5 +27,11 @@ namespace ActivosFijos
         {
             Application.Exit();
         }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEmpleados frm = new frmEmpleados();
+            frm.ShowDialog();
+        }
     }
 }
