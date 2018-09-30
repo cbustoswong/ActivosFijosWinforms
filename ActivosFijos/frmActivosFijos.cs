@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace ActivosFijos
 {
-    public partial class Form1 : Form
+    public partial class frmActivosFijos : Form
     {
-        public Form1()
+        public frmActivosFijos()
         {
             InitializeComponent();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GetActivos()
+        {
+            
         }
     }
 }
