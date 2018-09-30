@@ -31,9 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.activosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroDeActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tiposDeActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.calculoDeDepreciacionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.utilidadesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -42,7 +39,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.activosToolStripMenuItem,
-            this.utilidadesToolStripMenuItem});
+            this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(641, 24);
@@ -52,46 +49,24 @@
             // activosToolStripMenuItem
             // 
             this.activosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registroDeActivosToolStripMenuItem,
-            this.tiposDeActivosToolStripMenuItem,
-            this.calculoDeDepreciacionToolStripMenuItem});
+            this.registroDeActivosToolStripMenuItem});
             this.activosToolStripMenuItem.Name = "activosToolStripMenuItem";
-            this.activosToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.activosToolStripMenuItem.Text = "Activos";
+            this.activosToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
+            this.activosToolStripMenuItem.Text = "Mantenimiento";
             // 
             // registroDeActivosToolStripMenuItem
             // 
             this.registroDeActivosToolStripMenuItem.Name = "registroDeActivosToolStripMenuItem";
-            this.registroDeActivosToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.registroDeActivosToolStripMenuItem.Text = "Registro de Activos";
+            this.registroDeActivosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registroDeActivosToolStripMenuItem.Text = "Activos Fijos";
             this.registroDeActivosToolStripMenuItem.Click += new System.EventHandler(this.registroDeActivosToolStripMenuItem_Click);
-            // 
-            // tiposDeActivosToolStripMenuItem
-            // 
-            this.tiposDeActivosToolStripMenuItem.Name = "tiposDeActivosToolStripMenuItem";
-            this.tiposDeActivosToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.tiposDeActivosToolStripMenuItem.Text = "Tipos de Activos";
-            // 
-            // calculoDeDepreciacionToolStripMenuItem
-            // 
-            this.calculoDeDepreciacionToolStripMenuItem.Name = "calculoDeDepreciacionToolStripMenuItem";
-            this.calculoDeDepreciacionToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-            this.calculoDeDepreciacionToolStripMenuItem.Text = "Calculo de Depreciacion";
-            // 
-            // utilidadesToolStripMenuItem
-            // 
-            this.utilidadesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.salirToolStripMenuItem});
-            this.utilidadesToolStripMenuItem.Name = "utilidadesToolStripMenuItem";
-            this.utilidadesToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.utilidadesToolStripMenuItem.Text = "Utilidades";
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
+            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click_1);
             // 
             // Menu
             // 
@@ -114,9 +89,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem activosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registroDeActivosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tiposDeActivosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem calculoDeDepreciacionToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem utilidadesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
     }
 }

@@ -17,15 +17,15 @@ namespace ActivosFijos
             InitializeComponent();
         }
 
-        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void registroDeActivosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmActivosFijos frm = new frmActivosFijos();
             frm.ShowDialog();
+        }
+
+        private void salirToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
