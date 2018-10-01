@@ -25,30 +25,30 @@ namespace ActivosFijos
 
         private void GetActivos(string search)
         {
-            using (DBContext db = new DBContext())
+            using (ActivosEntities db = new ActivosEntities())
             {
                 if (!(search.Trim().Length > 0))
                 {
                     if (cbxCriterio.Text.Equals("Tipo"))
-                        dgvActivos.DataSource = db.ActivosFijos.OrderBy(a => a.Tipo).ToList();
+                        dgvActivos.DataSource = db.Activos_Fijos.OrderBy(a => a.Tipo_Activo).ToList();
                     else if (cbxCriterio.Text.Equals("Departamento"))
-                        dgvActivos.DataSource = db.ActivosFijos.OrderBy(a => a.Departamento).ToList();
+                        dgvActivos.DataSource = db.Activos_Fijos.OrderBy(a => a.Departamento).ToList();
                     else if (cbxCriterio.Text.Equals("Valor"))
-                        dgvActivos.DataSource = db.ActivosFijos.OrderBy(a => a.Valor).ToList();
+                        dgvActivos.DataSource = db.Activos_Fijos.OrderBy(a => a.Valor_Compra).ToList();
                     else
-                        dgvActivos.DataSource = db.ActivosFijos.ToList();
+                        dgvActivos.DataSource = db.Activos_Fijos.ToList();
 
                     return;
                 }
 
-                var activos = db.ActivosFijos.Where(a => a.Descripcion.Contains(search) || a.Tipo.Contains(search));
+                var activos = db.Activos_Fijos.Where(a => a.Descripcion.Contains(search) || a.Tipo_Activo.Contains(search));
 
                 if (cbxCriterio.Text.Equals("Tipo"))
-                    dgvActivos.DataSource = activos.OrderBy(a => a.Tipo).ToList();
+                    dgvActivos.DataSource = activos.OrderBy(a => a.Tipo_Activo).ToList();
                 else if (cbxCriterio.Text.Equals("Departamento"))
                     dgvActivos.DataSource = activos.OrderBy(a => a.Departamento).ToList();
                 else if (cbxCriterio.Text.Equals("Valor"))
-                    dgvActivos.DataSource = activos.OrderBy(a => a.Valor).ToList();
+                    dgvActivos.DataSource = activos.OrderBy(a => a.Valor_Compra).ToList();
                 else
                     dgvActivos.DataSource = activos.ToList();
             }

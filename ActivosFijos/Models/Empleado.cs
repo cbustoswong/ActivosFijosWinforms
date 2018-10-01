@@ -12,15 +12,17 @@ namespace ActivosFijos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class ActivosFijos
+    public partial class Empleado
     {
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public string Departamento { get; set; }
-        public string Ubicacion { get; set; }
-        public string Tipo { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public decimal Valor { get; set; }
-        public decimal DepreciacionAcum { get; set; }
+        public int Codigo_Empleado { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Cedula { get; set; }
+        public int Codigo_Departamento { get; set; }
+        public string Tipo_Persona { get; set; }
+        public System.DateTime Fecha_Ingreso { get; set; }
+        public string Estado { get; set; }
+    
+        public virtual Departamento Departamento { get; set; }
     }
 }

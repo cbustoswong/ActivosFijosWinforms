@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbxCriterio = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.cbxCriterio = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,52 +62,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(775, 50);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.dgvEmpleados);
-            this.panel2.Location = new System.Drawing.Point(13, 70);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(775, 368);
-            this.panel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Criterio";
-            // 
-            // cbxCriterio
-            // 
-            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxCriterio.FormattingEnabled = true;
-            this.cbxCriterio.Items.AddRange(new object[] {
-            "Departamento",
-            "Tipo",
-            "Estado"});
-            this.cbxCriterio.Location = new System.Drawing.Point(48, 16);
-            this.cbxCriterio.Name = "cbxCriterio";
-            this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
-            this.cbxCriterio.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(404, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Buscar";
-            // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(450, 16);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(161, 20);
-            this.txtBuscar.TabIndex = 2;
             // 
             // btnAgregar
             // 
@@ -131,6 +86,54 @@
             this.btnBuscar.Size = new System.Drawing.Size(48, 48);
             this.btnBuscar.TabIndex = 5;
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(450, 16);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(161, 20);
+            this.txtBuscar.TabIndex = 2;
+            // 
+            // cbxCriterio
+            // 
+            this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxCriterio.FormattingEnabled = true;
+            this.cbxCriterio.Items.AddRange(new object[] {
+            "Departamento",
+            "Tipo",
+            "Estado"});
+            this.cbxCriterio.Location = new System.Drawing.Point(48, 16);
+            this.cbxCriterio.Name = "cbxCriterio";
+            this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
+            this.cbxCriterio.TabIndex = 1;
+            this.cbxCriterio.SelectedValueChanged += new System.EventHandler(this.cbxCriterio_SelectedValueChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(404, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Buscar";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Criterio";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.dgvEmpleados);
+            this.panel2.Location = new System.Drawing.Point(13, 70);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(775, 368);
+            this.panel2.TabIndex = 1;
             // 
             // dgvEmpleados
             // 
@@ -142,6 +145,7 @@
             this.Nombre,
             this.Cedula,
             this.Departamento,
+            this.Id_Dept,
             this.Tipo,
             this.Fecha,
             this.Estado});
@@ -153,6 +157,7 @@
             // 
             // Id
             // 
+            this.Id.DataPropertyName = "Codigo_Empleado";
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
@@ -161,36 +166,50 @@
             // Nombre
             // 
             this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre.DataPropertyName = "Nombre";
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
             // 
             // Cedula
             // 
+            this.Cedula.DataPropertyName = "Cedula";
             this.Cedula.HeaderText = "Cedula";
             this.Cedula.Name = "Cedula";
             this.Cedula.ReadOnly = true;
             // 
             // Departamento
             // 
+            this.Departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Departamento.HeaderText = "Departamento";
             this.Departamento.Name = "Departamento";
             this.Departamento.ReadOnly = true;
             // 
+            // Id_Dept
+            // 
+            this.Id_Dept.DataPropertyName = "Codigo_Departamento";
+            this.Id_Dept.HeaderText = "Id_Dept";
+            this.Id_Dept.Name = "Id_Dept";
+            this.Id_Dept.ReadOnly = true;
+            this.Id_Dept.Visible = false;
+            // 
             // Tipo
             // 
+            this.Tipo.DataPropertyName = "Tipo_Persona";
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
             this.Tipo.ReadOnly = true;
             // 
             // Fecha
             // 
+            this.Fecha.DataPropertyName = "Fecha_Ingreso";
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
             // 
             // Estado
             // 
+            this.Estado.DataPropertyName = "Estado";
             this.Estado.HeaderText = "Estado";
             this.Estado.Name = "Estado";
             this.Estado.ReadOnly = true;
@@ -229,6 +248,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Dept;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;

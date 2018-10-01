@@ -4,61 +4,310 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="ActivosFijos">
+      <Schema Namespace="ActivosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Activos_Fijos">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Codigo_Activo" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Departamento" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Ubicacion" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Tipo" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Fecha" Type="datetime" Nullable="false" />
-          <Property Name="Valor" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="DepreciacionAcum" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Codigo_Activo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="int" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Tipo_Activo" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="Valor_Compra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Depreciacion_Acumulada" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="DBModelStoreContainer">
-          <EntitySet Name="ActivosFijos" EntityType="Self.ActivosFijos" Schema="dbo" store:Type="Tables" />
+        <EntityType Name="Calculo_Depreciacion">
+          <Key>
+            <PropertyRef Name="Codigo_Registro" />
+          </Key>
+          <Property Name="Codigo_Registro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Año_Proceso" Type="smallint" Nullable="false" />
+          <Property Name="Mes_Proceso" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="Codigo_Activo" Type="int" Nullable="false" />
+          <Property Name="Fecha_Proceso" Type="date" Nullable="false" />
+          <Property Name="Monto_Depreciado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Depreciacion_Acumulada" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cuenta_Compra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cuenta_Depreciacion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Codigo_Departamento" />
+          </Key>
+          <Property Name="Codigo_Departamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Codigo_Empleado" />
+          </Key>
+          <Property Name="Codigo_Empleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Cedula" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="int" Nullable="false" />
+          <Property Name="Tipo_Persona" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Codigo_Proveedor" />
+          </Key>
+          <Property Name="Codigo_Proveedor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Cedula_RNC" Type="char" MaxLength="11" Nullable="false" />
+          <Property Name="Tipo_Proveedor" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="date" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Activos_Fijos_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Depreciacion_Activos_Fijos">
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1" />
+          <End Role="Calculo_Depreciacion" Type="Self.Calculo_Depreciacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Activo" />
+            </Principal>
+            <Dependent Role="Calculo_Depreciacion">
+              <PropertyRef Name="Codigo_Activo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ActivosModelStoreContainer">
+          <EntitySet Name="Activos_Fijos" EntityType="Self.Activos_Fijos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Activos_Fijos_Departamento" Association="Self.FK_Activos_Fijos_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Depreciacion_Activos_Fijos" Association="Self.FK_Depreciacion_Activos_Fijos">
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+            <End Role="Calculo_Depreciacion" EntitySet="Calculo_Depreciacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Departamento" Association="Self.FK_Empleado_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="ActivosFijos">
+      <Schema Namespace="ActivosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Activos_Fijos">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Codigo_Activo" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Departamento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Valor" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="DepreciacionAcum" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Codigo_Activo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Activo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Valor_Compra" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Depreciacion_Acumulada" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Activos_Fijos_Departamento" FromRole="Activos_Fijos" ToRole="Departamento" />
+          <NavigationProperty Name="Calculo_Depreciacion" Relationship="Self.FK_Depreciacion_Activos_Fijos" FromRole="Activos_Fijos" ToRole="Calculo_Depreciacion" />
         </EntityType>
-        <EntityContainer Name="DBContext" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ActivosFijos" EntityType="Self.ActivosFijos" />
+        <EntityType Name="Calculo_Depreciacion">
+          <Key>
+            <PropertyRef Name="Codigo_Registro" />
+          </Key>
+          <Property Name="Codigo_Registro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Año_Proceso" Type="Int16" Nullable="false" />
+          <Property Name="Mes_Proceso" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo_Activo" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Proceso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto_Depreciado" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Depreciacion_Acumulada" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cuenta_Compra" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cuenta_Depreciacion" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Depreciacion_Activos_Fijos" FromRole="Calculo_Depreciacion" ToRole="Activos_Fijos" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="Codigo_Departamento" />
+          </Key>
+          <Property Name="Codigo_Departamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Departamento" FromRole="Departamento" ToRole="Activos_Fijos" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Departamento" FromRole="Departamento" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Codigo_Empleado" />
+          </Key>
+          <Property Name="Codigo_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_Persona" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Empleado_Departamento" FromRole="Empleado" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Codigo_Proveedor" />
+          </Key>
+          <Property Name="Codigo_Proveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula_RNC" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Tipo_Proveedor" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Activos_Fijos_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Depreciacion_Activos_Fijos">
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1" />
+          <End Role="Calculo_Depreciacion" Type="Self.Calculo_Depreciacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Activo" />
+            </Principal>
+            <Dependent Role="Calculo_Depreciacion">
+              <PropertyRef Name="Codigo_Activo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Empleado_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ActivosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Activos_Fijos" EntityType="Self.Activos_Fijos" />
+          <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <AssociationSet Name="FK_Activos_Fijos_Departamento" Association="Self.FK_Activos_Fijos_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Depreciacion_Activos_Fijos" Association="Self.FK_Depreciacion_Activos_Fijos">
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+            <End Role="Calculo_Depreciacion" EntitySet="Calculo_Depreciacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Empleado_Departamento" Association="Self.FK_Empleado_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBContext">
-          <EntitySetMapping Name="ActivosFijos">
-            <EntityTypeMapping TypeName="DBModel.ActivosFijos">
-              <MappingFragment StoreEntitySet="ActivosFijos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
+        <EntityContainerMapping StorageEntityContainer="ActivosModelStoreContainer" CdmEntityContainer="ActivosEntities">
+          <EntitySetMapping Name="Activos_Fijos">
+            <EntityTypeMapping TypeName="ActivosModel.Activos_Fijos">
+              <MappingFragment StoreEntitySet="Activos_Fijos">
+                <ScalarProperty Name="Codigo_Activo" ColumnName="Codigo_Activo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
                 <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="DepreciacionAcum" ColumnName="DepreciacionAcum" />
+                <ScalarProperty Name="Tipo_Activo" ColumnName="Tipo_Activo" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Valor_Compra" ColumnName="Valor_Compra" />
+                <ScalarProperty Name="Depreciacion_Acumulada" ColumnName="Depreciacion_Acumulada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calculo_Depreciacion">
+            <EntityTypeMapping TypeName="ActivosModel.Calculo_Depreciacion">
+              <MappingFragment StoreEntitySet="Calculo_Depreciacion">
+                <ScalarProperty Name="Codigo_Registro" ColumnName="Codigo_Registro" />
+                <ScalarProperty Name="Año_Proceso" ColumnName="Año_Proceso" />
+                <ScalarProperty Name="Mes_Proceso" ColumnName="Mes_Proceso" />
+                <ScalarProperty Name="Codigo_Activo" ColumnName="Codigo_Activo" />
+                <ScalarProperty Name="Fecha_Proceso" ColumnName="Fecha_Proceso" />
+                <ScalarProperty Name="Monto_Depreciado" ColumnName="Monto_Depreciado" />
+                <ScalarProperty Name="Depreciacion_Acumulada" ColumnName="Depreciacion_Acumulada" />
+                <ScalarProperty Name="Cuenta_Compra" ColumnName="Cuenta_Compra" />
+                <ScalarProperty Name="Cuenta_Depreciacion" ColumnName="Cuenta_Depreciacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="ActivosModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="ActivosModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="Codigo_Empleado" ColumnName="Codigo_Empleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
+                <ScalarProperty Name="Tipo_Persona" ColumnName="Tipo_Persona" />
+                <ScalarProperty Name="Fecha_Ingreso" ColumnName="Fecha_Ingreso" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="ActivosModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="Codigo_Proveedor" ColumnName="Codigo_Proveedor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula_RNC" ColumnName="Cedula_RNC" />
+                <ScalarProperty Name="Tipo_Proveedor" ColumnName="Tipo_Proveedor" />
+                <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

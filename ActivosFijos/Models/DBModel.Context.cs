@@ -13,10 +13,10 @@ namespace ActivosFijos.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBContext : DbContext
+    public partial class ActivosEntities : DbContext
     {
-        public DBContext()
-            : base("name=DBContext")
+        public ActivosEntities()
+            : base("name=ActivosEntities")
         {
         }
     
@@ -25,6 +25,10 @@ namespace ActivosFijos.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ActivosFijos> ActivosFijos { get; set; }
+        public virtual DbSet<Activos_Fijos> Activos_Fijos { get; set; }
+        public virtual DbSet<Calculo_Depreciacion> Calculo_Depreciacion { get; set; }
+        public virtual DbSet<Departamento> Departamento { get; set; }
+        public virtual DbSet<Empleado> Empleado { get; set; }
+        public virtual DbSet<Proveedor> Proveedor { get; set; }
     }
 }
