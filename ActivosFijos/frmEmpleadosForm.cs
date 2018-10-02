@@ -37,13 +37,14 @@ namespace ActivosFijos
 
             if (isEditing)
             {
+                lblTitle.Text = "Editar empleado";
                 txtNombre.Text = Nombre;
                 txtApellido.Text = Apellido;
                 txtCedula.Text = Cedula;
                 cbxDept.SelectedItem = Departamento;
                 cbxTipo.SelectedItem = Tipo_Persona;
                 txtFecha.Text = Fecha_Ingreso.ToShortDateString();
-                txtEstado.Text = Estado;
+                cbxEstado.SelectedItem = Estado;
             }
             else
             {
@@ -65,7 +66,7 @@ namespace ActivosFijos
                         .FirstOrDefault(d => d.Nombre == cbxDept.SelectedValue.ToString()).Codigo_Departamento,
                     Tipo_Persona = cbxTipo.SelectedItem.ToString(),
                     Fecha_Ingreso = DateTime.Parse(txtFecha.Text),
-                    Estado = txtEstado.Text
+                    Estado = cbxEstado.SelectedItem.ToString()
                 };
 
                 if (Id != 0)

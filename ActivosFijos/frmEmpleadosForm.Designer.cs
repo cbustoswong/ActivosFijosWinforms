@@ -41,9 +41,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -159,13 +160,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Estado";
             // 
-            // txtEstado
-            // 
-            this.txtEstado.Location = new System.Drawing.Point(117, 208);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(96, 20);
-            this.txtEstado.TabIndex = 1;
-            // 
             // btnGuardar
             // 
             this.btnGuardar.BackgroundImage = global::ActivosFijos.Properties.Resources.save;
@@ -192,18 +186,41 @@
             this.btnEliminar.UseVisualStyleBackColor = true;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
+            // cbxEstado
+            // 
+            this.cbxEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Items.AddRange(new object[] {
+            "Activo",
+            "Inactivo"});
+            this.cbxEstado.Location = new System.Drawing.Point(117, 208);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(96, 21);
+            this.cbxEstado.TabIndex = 4;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(13, 18);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(164, 17);
+            this.lblTitle.TabIndex = 5;
+            this.lblTitle.Text = "Agregar un empleado";
+            // 
             // frmEmpleadosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 314);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.cbxEstado);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.cbxTipo);
             this.Controls.Add(this.cbxDept);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.label6);
@@ -238,8 +255,9 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtEstado;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.ComboBox cbxEstado;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
