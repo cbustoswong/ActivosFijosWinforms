@@ -39,6 +39,7 @@
             this.dgvEmpleados = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,6 +75,7 @@
             this.btnAgregar.Size = new System.Drawing.Size(48, 48);
             this.btnAgregar.TabIndex = 4;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnBuscar
             // 
@@ -143,6 +145,7 @@
             this.dgvEmpleados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Nombre,
+            this.Apellido,
             this.Cedula,
             this.Departamento,
             this.Id_Dept,
@@ -154,6 +157,7 @@
             this.dgvEmpleados.ReadOnly = true;
             this.dgvEmpleados.Size = new System.Drawing.Size(775, 368);
             this.dgvEmpleados.TabIndex = 0;
+            this.dgvEmpleados.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvEmpleados_CellDoubleClick);
             // 
             // Id
             // 
@@ -170,6 +174,13 @@
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // Cedula
             // 
@@ -223,7 +234,9 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmEmpleados";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleados";
+            this.Activated += new System.EventHandler(this.frmEmpleados_Activated);
             this.Load += new System.EventHandler(this.frmEmpleados_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -246,6 +259,7 @@
         private System.Windows.Forms.DataGridView dgvEmpleados;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Dept;

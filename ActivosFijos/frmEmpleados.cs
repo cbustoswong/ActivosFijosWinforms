@@ -83,11 +83,43 @@ namespace ActivosFijos
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             GetEmpleados(txtBuscar.Text);
+            DeptName();
         }
 
         private void cbxCriterio_SelectedValueChanged(object sender, EventArgs e)
         {
             GetEmpleados(txtBuscar.Text);
+            DeptName();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmEmpleadosForm frm = new frmEmpleadosForm();
+            frm.ShowDialog();
+        }
+
+        private void dgvEmpleados_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmEmpleadosForm frm = new frmEmpleadosForm();
+            var row = dgvEmpleados.CurrentRow;
+
+            frm.isEditing = true;
+            frm.Id = (int) row.Cells["Id"].Value;
+            frm.Nombre = row.Cells["Nombre"].Value.ToString();
+            frm.Apellido = row.Cells["Apellido"].Value.ToString();
+            frm.Cedula = row.Cells["Cedula"].Value.ToString();
+            frm.Departamento = row.Cells["Departamento"].Value.ToString();
+            frm.Tipo_Persona = row.Cells["Tipo"].Value.ToString();
+            frm.Fecha_Ingreso = DateTime.Parse(row.Cells["Fecha"].Value.ToString());
+            frm.Estado = row.Cells["Estado"].Value.ToString();
+
+            frm.ShowDialog();
+        }
+
+        private void frmEmpleados_Activated(object sender, EventArgs e)
+        {
+            GetEmpleados(txtBuscar.Text);
+            DeptName();
         }
     }
 }
