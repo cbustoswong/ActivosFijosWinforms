@@ -102,6 +102,7 @@
     </Compile>
     <Compile Include="frmProveedoresForm.Designer.cs">
       <DependentUpon>frmProveedoresForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUbicacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +182,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedoresForm.resx">
       <DependentUpon>frmProveedoresForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmUbicacion.resx">
       <DependentUpon>frmUbicacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,7 +229,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -239,6 +240,9 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\format-list-bulleted.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\truck.png" />
     <None Include="Resources\location-marker.png" />
     <None Include="Resources\account-group.png" />

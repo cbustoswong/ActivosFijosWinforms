@@ -25,6 +25,7 @@ namespace ActivosFijos.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Activos_Fijos> Activos_Fijos { get; set; }
         public virtual DbSet<Calculo_Depreciacion> Calculo_Depreciacion { get; set; }
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
@@ -32,7 +33,6 @@ namespace ActivosFijos.Models
         public virtual DbSet<Tipo_Activo> Tipo_Activo { get; set; }
         public virtual DbSet<Tipo_Pago> Tipo_Pago { get; set; }
         public virtual DbSet<Ubicacion> Ubicacion { get; set; }
-        public virtual DbSet<Activos_Fijos> Activos_Fijos { get; set; }
         public virtual DbSet<Parametro> Parametro { get; set; }
     }
 }

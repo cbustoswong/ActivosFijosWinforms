@@ -93,6 +93,16 @@ namespace ActivosFijos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap format_list_bulleted {
+            get {
+                object obj = ResourceManager.GetObject("format-list-bulleted", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap location_marker {
             get {
                 object obj = ResourceManager.GetObject("location-marker", resourceCulture);

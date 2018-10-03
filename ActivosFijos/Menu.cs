@@ -57,5 +57,17 @@ namespace ActivosFijos
             frmProveedores frm = new frmProveedores();
             frm.ShowDialog();
         }
+
+        private void btnUbicacion_Click(object sender, EventArgs e)
+        {
+            frmUbicacion frm = new frmUbicacion();
+            frm.ShowDialog();
+        }
+
+        private void btnParametros_Click(object sender, EventArgs e)
+        {
+            frmParametros frm = new frmParametros();
+            frm.ShowDialog();
+        }
     }
 }

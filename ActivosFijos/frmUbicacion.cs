@@ -28,9 +28,9 @@ namespace ActivosFijos
                     if (!(search.Trim().Length > 0))
                     {
                         if (cbxCriterio.Text.Equals("Estado"))
-                            dgvUbicacion.DataSource = db.Ubicacion.Include("Estado").OrderBy(a => a.Estado).ToList();
+                            dgvUbicacion.DataSource = db.Ubicacion.OrderBy(a => a.Estado).ToList();
                         else
-                            dgvUbicacion.DataSource = db.Ubicacion.Include("Estado").ToList();
+                            dgvUbicacion.DataSource = db.Ubicacion.ToList();
                         return;
                     }
                 }
@@ -46,23 +46,9 @@ namespace ActivosFijos
             GetUbicacion(txtBuscar.Text);
         }
 
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvEmpleados_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgvUbicacion_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
         private void cbxCriterio_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            GetUbicacion(txtBuscar.Text);
         }
 
         private void cbxCriterio_SelectedValueChanged(object sender, EventArgs e)
@@ -76,5 +62,15 @@ namespace ActivosFijos
 
         }
 
+        private void frmUbicacion_Load(object sender, EventArgs e)
+        {
+            GetUbicacion("");
+            cbxCriterio.SelectedIndex = 0;
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
