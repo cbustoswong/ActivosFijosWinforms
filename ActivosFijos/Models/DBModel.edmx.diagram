@@ -13,6 +13,12 @@
         <AssociationConnector Association="ActivosModel.FK_Activos_Fijos_Departamento" ManuallyRouted="false" />
         <AssociationConnector Association="ActivosModel.FK_Depreciacion_Activos_Fijos" ManuallyRouted="false" />
         <AssociationConnector Association="ActivosModel.FK_Empleado_Departamento" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ActivosModel.Tipo_Activo" Width="1.5" PointX="1.125" PointY="0.75" />
+        <EntityTypeShape EntityType="ActivosModel.Tipo_Pago" Width="1.5" PointX="0.75" PointY="9.625" />
+        <EntityTypeShape EntityType="ActivosModel.Ubicacion" Width="1.5" PointX="7.75" PointY="1.75" />
+        <EntityTypeShape EntityType="ActivosModel.Parametro" Width="1.5" PointX="2.75" PointY="9.625" />
+        <AssociationConnector Association="ActivosModel.FK_Activos_Fijos_Tipo_Activo" />
+        <AssociationConnector Association="ActivosModel.FK_Activos_Fijos_Ubicacion" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

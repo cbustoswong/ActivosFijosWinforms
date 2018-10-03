@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ActivosFijos.Models;
 
 namespace ActivosFijos
 {
@@ -15,11 +16,34 @@ namespace ActivosFijos
         public frmUbicacion()
         {
             InitializeComponent();
+            dgvUbicacion.AutoGenerateColumns = false;
+        }
+
+        private void GetUbicacion(string search)
+        {
+            using (var db = new ActivosEntities())
+            {
+                try
+                {
+                    if (!(search.Trim().Length > 0))
+                    {
+                        if (cbxCriterio.Text.Equals("Estado"))
+                            dgvUbicacion.DataSource = db.Ubicacion.Include("Estado").OrderBy(a => a.Estado).ToList();
+                        else
+                            dgvUbicacion.DataSource = db.Ubicacion.Include("Estado").ToList();
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-
+            GetUbicacion(txtBuscar.Text);
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -31,5 +55,26 @@ namespace ActivosFijos
         {
 
         }
+
+        private void dgvUbicacion_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void cbxCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbxCriterio_SelectedValueChanged(object sender, EventArgs e)
+        {
+            GetUbicacion(txtBuscar.Text);
+        }
+
+        private void frmUbicacion_Activated(object sender, EventArgs e)
+        {
+            GetUbicacion(txtBuscar.Text);
+
+        }
+
     }
 }

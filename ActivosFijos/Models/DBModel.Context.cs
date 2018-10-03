@@ -30,5 +30,9 @@ namespace ActivosFijos.Models
         public virtual DbSet<Departamento> Departamento { get; set; }
         public virtual DbSet<Empleado> Empleado { get; set; }
         public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Tipo_Activo> Tipo_Activo { get; set; }
+        public virtual DbSet<Tipo_Pago> Tipo_Pago { get; set; }
+        public virtual DbSet<Ubicacion> Ubicacion { get; set; }
+        public virtual DbSet<Parametro> Parametro { get; set; }
     }
 }

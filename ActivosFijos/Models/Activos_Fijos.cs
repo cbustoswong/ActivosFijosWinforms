@@ -28,9 +28,13 @@ namespace ActivosFijos.Models
         public System.DateTime Fecha_Registro { get; set; }
         public decimal Valor_Compra { get; set; }
         public decimal Depreciacion_Acumulada { get; set; }
+        public int Codigo_Ubicacion { get; set; }
+        public int Codigo_TipoActivo { get; set; }
     
         public virtual Departamento Departamento { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calculo_Depreciacion> Calculo_Depreciacion { get; set; }
+        public virtual Tipo_Activo Tipo_Activo1 { get; set; }
+        public virtual Ubicacion Ubicacion1 { get; set; }
     }
 }
