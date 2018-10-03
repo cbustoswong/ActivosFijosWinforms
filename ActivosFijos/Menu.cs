@@ -33,5 +33,11 @@ namespace ActivosFijos
             frmEmpleados frm = new frmEmpleados();
             frm.ShowDialog();
         }
+
+        private void proveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProveedores frm = new frmProveedores();
+            frm.ShowDialog();
+        }
     }
 }

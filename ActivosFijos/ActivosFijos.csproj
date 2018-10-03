@@ -73,6 +73,18 @@
     <Compile Include="frmEmpleadosForm.Designer.cs">
       <DependentUpon>frmEmpleadosForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProveedores.Designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProveedoresForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProveedoresForm.Designer.cs">
+      <DependentUpon>frmProveedoresForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleadosForm.resx">
       <DependentUpon>frmEmpleadosForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProveedoresForm.resx">
+      <DependentUpon>frmProveedoresForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
