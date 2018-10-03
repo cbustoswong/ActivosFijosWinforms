@@ -223,6 +223,10 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\truck.png" />
+    <None Include="Resources\location-marker.png" />
+    <None Include="Resources\account-group.png" />
+    <None Include="Resources\account.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\delete.png" />
   </ItemGroup>

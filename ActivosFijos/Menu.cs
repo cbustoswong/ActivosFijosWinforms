@@ -45,5 +45,17 @@ namespace ActivosFijos
             frmParametros frm = new frmParametros();
             frm.ShowDialog();
         }
+
+        private void btnEmpleados_Click(object sender, EventArgs e)
+        {
+            frmEmpleados frm = new frmEmpleados();
+            frm.ShowDialog();
+        }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            frmProveedores frm = new frmProveedores();
+            frm.ShowDialog();
+        }
     }
 }
