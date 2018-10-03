@@ -41,7 +41,7 @@ namespace ActivosFijos
                     return;
                 }
 
-                var activos = db.Activos_Fijos.Where(a => a.Descripcion.Contains(search) /*|| a.Codigo_TipoActivo.Contains(search)*/);
+                var activos = db.Activos_Fijos.Where(a => a.Descripcion.Contains(search) || a.Tipo_Activo.Descripcion.Contains(search));
 
                 if (cbxCriterio.Text.Equals("Tipo"))
                     dgvActivos.DataSource = activos.OrderBy(a => a.Tipo_Activo).ToList();

@@ -23,18 +23,22 @@ namespace ActivosFijos
         {
             cbxCriterio.SelectedIndex = 0;
             GetParametros("");
+            MonthYear();
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             GetParametros(txtBuscar.Text);
+            MonthYear();
         }
         private void cbxCriterio_SelectedValueChanged(object sender, EventArgs e)
         {
             GetParametros(txtBuscar.Text);
+            MonthYear();
         }
         private void frmParametros_Activated(object sender, EventArgs e)
         {
             GetParametros(txtBuscar.Text);
+            MonthYear();
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -92,6 +96,14 @@ namespace ActivosFijos
                 {
                     MessageBox.Show(ex.Message + ex.InnerException);
                 }
+            }
+        }
+
+        private void MonthYear() {
+            foreach (DataGridViewRow row in dgvParametros.Rows)
+            {
+                DateTime date = DateTime.Parse(row.Cells["Ano_Mes_Proceso"].Value.ToString());
+                row.Cells["Mes_Ano"].Value = $"{date.Month}/{date.Year}";
             }
         }
 

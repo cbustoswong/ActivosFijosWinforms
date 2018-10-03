@@ -31,14 +31,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvParametros = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ano_Mes_Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mes_Ano = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Deprec_Calculada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RNC_Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Met_Drepeciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,6 +64,7 @@
             this.dgvParametros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Ano_Mes_Proceso,
+            this.Mes_Ano,
             this.Deprec_Calculada,
             this.RNC_Empresa,
             this.Met_Drepeciacion});
@@ -85,6 +87,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(775, 50);
             this.panel1.TabIndex = 4;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(724, 0);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(661, 0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(48, 48);
+            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
@@ -124,32 +152,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Criterio";
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(724, 0);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
-            this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(661, 0);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(48, 48);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Codigo_Parametro";
@@ -164,6 +166,13 @@
             this.Ano_Mes_Proceso.HeaderText = "Año/Mes";
             this.Ano_Mes_Proceso.Name = "Ano_Mes_Proceso";
             this.Ano_Mes_Proceso.ReadOnly = true;
+            this.Ano_Mes_Proceso.Visible = false;
+            // 
+            // Mes_Ano
+            // 
+            this.Mes_Ano.HeaderText = "Mes / Año";
+            this.Mes_Ano.Name = "Mes_Ano";
+            this.Mes_Ano.ReadOnly = true;
             // 
             // Deprec_Calculada
             // 
@@ -174,6 +183,7 @@
             // 
             // RNC_Empresa
             // 
+            this.RNC_Empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.RNC_Empresa.DataPropertyName = "RNC_Empresa";
             this.RNC_Empresa.HeaderText = "RNC";
             this.RNC_Empresa.Name = "RNC_Empresa";
@@ -181,6 +191,7 @@
             // 
             // Met_Drepeciacion
             // 
+            this.Met_Drepeciacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Met_Drepeciacion.DataPropertyName = "Met_Drepeciacion";
             this.Met_Drepeciacion.HeaderText = "Metodo Depreciacion";
             this.Met_Drepeciacion.Name = "Met_Drepeciacion";
@@ -218,6 +229,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ano_Mes_Proceso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mes_Ano;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deprec_Calculada;
         private System.Windows.Forms.DataGridViewTextBoxColumn RNC_Empresa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Met_Drepeciacion;
