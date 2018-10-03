@@ -69,7 +69,7 @@ namespace ActivosFijos
                     if (proinDb != null)
                     {
                         db.Entry(proinDb).State = System.Data.Entity.EntityState.Detached;
-                        db.Entry(proinDb).State = System.Data.Entity.EntityState.Modified;
+                        db.Entry(proveedor).State = System.Data.Entity.EntityState.Modified;
                     }
 
                     MessageBox.Show("El proveedor ha sido modificado exitosamente.");
