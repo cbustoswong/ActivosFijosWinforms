@@ -39,5 +39,11 @@ namespace ActivosFijos
             frmProveedores frm = new frmProveedores();
             frm.ShowDialog();
         }
+
+        private void parametrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmParametros frm = new frmParametros();
+            frm.ShowDialog();
+        }
     }
 }

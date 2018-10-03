@@ -14,10 +14,19 @@ namespace ActivosFijos.Models
     
     public partial class Ubicacion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Ubicacion()
+        {
+            this.Activos_Fijos = new HashSet<Activos_Fijos>();
+        }
+    
         public int Codigo_Ubicacion { get; set; }
         public string Descripcion { get; set; }
         public string Direccion { get; set; }
         public string Edificio { get; set; }
         public string Estado { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Activos_Fijos> Activos_Fijos { get; set; }
     }
 }

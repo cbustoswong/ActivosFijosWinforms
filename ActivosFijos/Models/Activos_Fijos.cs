@@ -23,13 +23,15 @@ namespace ActivosFijos.Models
         public int Codigo_Activo { get; set; }
         public string Descripcion { get; set; }
         public int Codigo_Departamento { get; set; }
-        public string Ubicacion { get; set; }
-        public string Tipo_Activo { get; set; }
+        public int Codigo_Ubicacion { get; set; }
+        public int Codigo_TipoActivo { get; set; }
         public System.DateTime Fecha_Registro { get; set; }
         public decimal Valor_Compra { get; set; }
         public decimal Depreciacion_Acumulada { get; set; }
     
         public virtual Departamento Departamento { get; set; }
+        public virtual Tipo_Activo Tipo_Activo { get; set; }
+        public virtual Ubicacion Ubicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calculo_Depreciacion> Calculo_Depreciacion { get; set; }
     }

@@ -79,6 +79,12 @@
     <Compile Include="frmParametros.Designer.cs">
       <DependentUpon>frmParametros.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmParametrosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParametrosForm.Designer.cs">
+      <DependentUpon>frmParametrosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     <Compile Include="Models\Empleado.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Parametro.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Proveedor.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -149,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParametros.resx">
       <DependentUpon>frmParametros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParametrosForm.resx">
+      <DependentUpon>frmParametrosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmProveedores.resx">
       <DependentUpon>frmProveedores.cs</DependentUpon>

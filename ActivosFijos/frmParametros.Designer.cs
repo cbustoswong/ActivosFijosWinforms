@@ -30,18 +30,18 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvParametros = new System.Windows.Forms.DataGridView();
-            this.Ano_Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mes_Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deprec_Calculada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNC_Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Met_Depreciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ano_Mes_Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deprec_Calculada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNC_Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Met_Drepeciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParametros)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,53 +61,17 @@
             this.dgvParametros.AllowUserToDeleteRows = false;
             this.dgvParametros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvParametros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Ano_Proceso,
-            this.Mes_Proceso,
+            this.Id,
+            this.Ano_Mes_Proceso,
             this.Deprec_Calculada,
             this.RNC_Empresa,
-            this.Met_Depreciacion});
+            this.Met_Drepeciacion});
             this.dgvParametros.Location = new System.Drawing.Point(0, 0);
             this.dgvParametros.Name = "dgvParametros";
             this.dgvParametros.ReadOnly = true;
             this.dgvParametros.Size = new System.Drawing.Size(775, 368);
             this.dgvParametros.TabIndex = 0;
-            // 
-            // Ano_Proceso
-            // 
-            this.Ano_Proceso.DataPropertyName = "Ano_Proceso";
-            this.Ano_Proceso.HeaderText = "Año Proceso";
-            this.Ano_Proceso.Name = "Ano_Proceso";
-            this.Ano_Proceso.ReadOnly = true;
-            this.Ano_Proceso.Visible = false;
-            // 
-            // Mes_Proceso
-            // 
-            this.Mes_Proceso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Mes_Proceso.DataPropertyName = "Mes_Proceso";
-            this.Mes_Proceso.HeaderText = "Mes Proceso";
-            this.Mes_Proceso.Name = "Mes_Proceso";
-            this.Mes_Proceso.ReadOnly = true;
-            // 
-            // Deprec_Calculada
-            // 
-            this.Deprec_Calculada.DataPropertyName = "Deprec_Calculada";
-            this.Deprec_Calculada.HeaderText = "Depreciacion calculada";
-            this.Deprec_Calculada.Name = "Deprec_Calculada";
-            this.Deprec_Calculada.ReadOnly = true;
-            // 
-            // RNC_Empresa
-            // 
-            this.RNC_Empresa.DataPropertyName = "RNC_Empresa";
-            this.RNC_Empresa.HeaderText = "RNC";
-            this.RNC_Empresa.Name = "RNC_Empresa";
-            this.RNC_Empresa.ReadOnly = true;
-            // 
-            // Met_Depreciacion
-            // 
-            this.Met_Depreciacion.DataPropertyName = "Met_Depreciacion";
-            this.Met_Depreciacion.HeaderText = "Metodo Depreciacion";
-            this.Met_Depreciacion.Name = "Met_Depreciacion";
-            this.Met_Depreciacion.ReadOnly = true;
+            this.dgvParametros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParametros_CellDoubleClick);
             // 
             // panel1
             // 
@@ -122,30 +86,6 @@
             this.panel1.Size = new System.Drawing.Size(775, 50);
             this.panel1.TabIndex = 4;
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(724, 0);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
-            this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(661, 0);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(48, 48);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            // 
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(450, 16);
@@ -158,12 +98,13 @@
             this.cbxCriterio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCriterio.FormattingEnabled = true;
             this.cbxCriterio.Items.AddRange(new object[] {
-            "Año",
-            "Depreciacion calculada"});
+            "Año/Mes",
+            "RNC"});
             this.cbxCriterio.Location = new System.Drawing.Point(48, 16);
             this.cbxCriterio.Name = "cbxCriterio";
             this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
             this.cbxCriterio.TabIndex = 1;
+            this.cbxCriterio.SelectedValueChanged += new System.EventHandler(this.cbxCriterio_SelectedValueChanged);
             // 
             // label2
             // 
@@ -183,6 +124,68 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Criterio";
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(724, 0);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(661, 0);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(48, 48);
+            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Codigo_Parametro";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Ano_Mes_Proceso
+            // 
+            this.Ano_Mes_Proceso.DataPropertyName = "Ano_Mes_Proceso";
+            this.Ano_Mes_Proceso.HeaderText = "Año/Mes";
+            this.Ano_Mes_Proceso.Name = "Ano_Mes_Proceso";
+            this.Ano_Mes_Proceso.ReadOnly = true;
+            // 
+            // Deprec_Calculada
+            // 
+            this.Deprec_Calculada.DataPropertyName = "Deprec_Calculada";
+            this.Deprec_Calculada.HeaderText = "Depreciacion calculada";
+            this.Deprec_Calculada.Name = "Deprec_Calculada";
+            this.Deprec_Calculada.ReadOnly = true;
+            // 
+            // RNC_Empresa
+            // 
+            this.RNC_Empresa.DataPropertyName = "RNC_Empresa";
+            this.RNC_Empresa.HeaderText = "RNC";
+            this.RNC_Empresa.Name = "RNC_Empresa";
+            this.RNC_Empresa.ReadOnly = true;
+            // 
+            // Met_Drepeciacion
+            // 
+            this.Met_Drepeciacion.DataPropertyName = "Met_Drepeciacion";
+            this.Met_Drepeciacion.HeaderText = "Metodo Depreciacion";
+            this.Met_Drepeciacion.Name = "Met_Drepeciacion";
+            this.Met_Drepeciacion.ReadOnly = true;
+            // 
             // frmParametros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,6 +195,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmParametros";
             this.Text = "frmParametros";
+            this.Activated += new System.EventHandler(this.frmParametros_Activated);
             this.Load += new System.EventHandler(this.frmParametros_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParametros)).EndInit();
@@ -212,10 +216,10 @@
         private System.Windows.Forms.ComboBox cbxCriterio;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ano_Proceso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mes_Proceso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ano_Mes_Proceso;
         private System.Windows.Forms.DataGridViewTextBoxColumn Deprec_Calculada;
         private System.Windows.Forms.DataGridViewTextBoxColumn RNC_Empresa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Met_Depreciacion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Met_Drepeciacion;
     }
 }
