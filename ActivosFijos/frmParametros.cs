@@ -13,38 +13,51 @@ namespace ActivosFijos
 {
     public partial class frmParametros : Form
     {
+        public Menu menu = null;
+
         public frmParametros()
         {
             InitializeComponent();
         }
 
         #region Eventos
+
         private void frmParametros_Load(object sender, EventArgs e)
         {
             cbxCriterio.SelectedIndex = 0;
             GetParametros("");
             MonthYear();
         }
+
+        private void frmParametros_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            menu.Show();
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             GetParametros(txtBuscar.Text);
             MonthYear();
         }
+
         private void cbxCriterio_SelectedValueChanged(object sender, EventArgs e)
         {
             GetParametros(txtBuscar.Text);
             MonthYear();
         }
+
         private void frmParametros_Activated(object sender, EventArgs e)
         {
             GetParametros(txtBuscar.Text);
             MonthYear();
         }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmParametrosForm frm = new frmParametrosForm();
             frm.ShowDialog();
         }
+
         private void dgvParametros_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmParametrosForm frm = new frmParametrosForm();
@@ -59,6 +72,7 @@ namespace ActivosFijos
 
             frm.ShowDialog();
         }
+
         #endregion
 
         #region Metodos

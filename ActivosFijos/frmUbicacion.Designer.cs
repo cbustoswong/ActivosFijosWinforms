@@ -36,12 +36,12 @@
             this.Edificio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUbicacion)).BeginInit();
             this.panel1.SuspendLayout();
@@ -71,6 +71,7 @@
             this.dgvUbicacion.ReadOnly = true;
             this.dgvUbicacion.Size = new System.Drawing.Size(775, 368);
             this.dgvUbicacion.TabIndex = 0;
+            this.dgvUbicacion.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUbicacion_CellDoubleClick_1);
             // 
             // Id
             // 
@@ -122,6 +123,19 @@
             this.panel1.Size = new System.Drawing.Size(775, 50);
             this.panel1.TabIndex = 2;
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(724, 1);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
+            this.btnAgregar.TabIndex = 6;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
             // btnBuscar
             // 
             this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
@@ -148,11 +162,10 @@
             this.cbxCriterio.FormattingEnabled = true;
             this.cbxCriterio.Items.AddRange(new object[] {
             "Estado"});
-            this.cbxCriterio.Location = new System.Drawing.Point(48, 16);
+            this.cbxCriterio.Location = new System.Drawing.Point(72, 16);
             this.cbxCriterio.Name = "cbxCriterio";
             this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
             this.cbxCriterio.TabIndex = 1;
-            this.cbxCriterio.SelectedIndexChanged += new System.EventHandler(this.cbxCriterio_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -168,22 +181,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Criterio";
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(724, 1);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
-            this.btnAgregar.TabIndex = 6;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            this.label1.Text = "Ordenar por";
             // 
             // frmUbicacion
             // 
@@ -192,9 +192,13 @@
             this.ClientSize = new System.Drawing.Size(791, 448);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmUbicacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ubicacion";
+            this.Activated += new System.EventHandler(this.frmUbicacion_Activated_1);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmUbicacion_FormClosing);
             this.Load += new System.EventHandler(this.frmUbicacion_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUbicacion)).EndInit();

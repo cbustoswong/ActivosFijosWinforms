@@ -28,138 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.activosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registroDeActivosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.proveedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnProveedores = new System.Windows.Forms.Button();
             this.btnParametros = new System.Windows.Forms.Button();
             this.btnDepartamentos = new System.Windows.Forms.Button();
             this.btnUbicacion = new System.Windows.Forms.Button();
             this.btnEmpleados = new System.Windows.Forms.Button();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // label1
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.activosToolStripMenuItem,
-            this.salirToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(448, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // activosToolStripMenuItem
-            // 
-            this.activosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.empleadosToolStripMenuItem,
-            this.registroDeActivosToolStripMenuItem,
-            this.proveedoresToolStripMenuItem,
-            this.parametrosToolStripMenuItem});
-            this.activosToolStripMenuItem.Name = "activosToolStripMenuItem";
-            this.activosToolStripMenuItem.Size = new System.Drawing.Size(101, 20);
-            this.activosToolStripMenuItem.Text = "Mantenimiento";
-            // 
-            // empleadosToolStripMenuItem
-            // 
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
-            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
-            // 
-            // registroDeActivosToolStripMenuItem
-            // 
-            this.registroDeActivosToolStripMenuItem.Name = "registroDeActivosToolStripMenuItem";
-            this.registroDeActivosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.registroDeActivosToolStripMenuItem.Text = "Activos Fijos";
-            this.registroDeActivosToolStripMenuItem.Visible = false;
-            this.registroDeActivosToolStripMenuItem.Click += new System.EventHandler(this.registroDeActivosToolStripMenuItem_Click);
-            // 
-            // proveedoresToolStripMenuItem
-            // 
-            this.proveedoresToolStripMenuItem.Name = "proveedoresToolStripMenuItem";
-            this.proveedoresToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.proveedoresToolStripMenuItem.Text = "Proveedores";
-            this.proveedoresToolStripMenuItem.Click += new System.EventHandler(this.proveedoresToolStripMenuItem_Click);
-            // 
-            // parametrosToolStripMenuItem
-            // 
-            this.parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
-            this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
-            this.parametrosToolStripMenuItem.Text = "Parametros";
-            this.parametrosToolStripMenuItem.Click += new System.EventHandler(this.parametrosToolStripMenuItem_Click);
-            // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.salirToolStripMenuItem.Text = "Salir";
-            this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click_1);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(182, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Menu";
             // 
             // btnProveedores
             // 
             this.btnProveedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnProveedores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnProveedores.FlatAppearance.BorderSize = 0;
+            this.btnProveedores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Image = global::ActivosFijos.Properties.Resources.truck;
             this.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnProveedores.Location = new System.Drawing.Point(286, 26);
+            this.btnProveedores.Location = new System.Drawing.Point(287, 62);
             this.btnProveedores.Margin = new System.Windows.Forms.Padding(2);
             this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Size = new System.Drawing.Size(132, 114);
+            this.btnProveedores.Size = new System.Drawing.Size(141, 114);
             this.btnProveedores.TabIndex = 1;
             this.btnProveedores.Text = "Proveedores";
             this.btnProveedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProveedores.UseVisualStyleBackColor = true;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
+            this.btnProveedores.MouseEnter += new System.EventHandler(this.btnProveedores_MouseEnter);
+            this.btnProveedores.MouseLeave += new System.EventHandler(this.btnProveedores_MouseLeave);
             // 
             // btnParametros
             // 
             this.btnParametros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnParametros.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnParametros.FlatAppearance.BorderSize = 0;
+            this.btnParametros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnParametros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnParametros.Image = global::ActivosFijos.Properties.Resources.format_list_bulleted;
             this.btnParametros.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnParametros.Location = new System.Drawing.Point(144, 163);
+            this.btnParametros.Location = new System.Drawing.Point(141, 199);
             this.btnParametros.Margin = new System.Windows.Forms.Padding(2);
             this.btnParametros.Name = "btnParametros";
-            this.btnParametros.Size = new System.Drawing.Size(115, 114);
+            this.btnParametros.Size = new System.Drawing.Size(130, 114);
             this.btnParametros.TabIndex = 1;
             this.btnParametros.Text = "Parametros";
             this.btnParametros.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnParametros.UseVisualStyleBackColor = true;
             this.btnParametros.Click += new System.EventHandler(this.btnParametros_Click);
+            this.btnParametros.MouseEnter += new System.EventHandler(this.btnParametros_MouseEnter);
+            this.btnParametros.MouseLeave += new System.EventHandler(this.btnParametros_MouseLeave);
             // 
             // btnDepartamentos
             // 
             this.btnDepartamentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDepartamentos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDepartamentos.FlatAppearance.BorderSize = 0;
+            this.btnDepartamentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnDepartamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDepartamentos.Image = global::ActivosFijos.Properties.Resources.account_group;
             this.btnDepartamentos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDepartamentos.Location = new System.Drawing.Point(144, 26);
+            this.btnDepartamentos.Location = new System.Drawing.Point(141, 62);
             this.btnDepartamentos.Margin = new System.Windows.Forms.Padding(2);
             this.btnDepartamentos.Name = "btnDepartamentos";
-            this.btnDepartamentos.Size = new System.Drawing.Size(115, 114);
+            this.btnDepartamentos.Size = new System.Drawing.Size(130, 114);
             this.btnDepartamentos.TabIndex = 1;
             this.btnDepartamentos.Text = "Departamentos";
             this.btnDepartamentos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDepartamentos.UseVisualStyleBackColor = true;
+            this.btnDepartamentos.Click += new System.EventHandler(this.btnDepartamentos_Click);
+            this.btnDepartamentos.MouseEnter += new System.EventHandler(this.btnDepartamentos_MouseEnter);
+            this.btnDepartamentos.MouseLeave += new System.EventHandler(this.btnDepartamentos_MouseLeave);
             // 
             // btnUbicacion
             // 
             this.btnUbicacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUbicacion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUbicacion.FlatAppearance.BorderSize = 0;
+            this.btnUbicacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUbicacion.Image = global::ActivosFijos.Properties.Resources.location_marker;
             this.btnUbicacion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnUbicacion.Location = new System.Drawing.Point(11, 163);
+            this.btnUbicacion.Location = new System.Drawing.Point(21, 199);
             this.btnUbicacion.Margin = new System.Windows.Forms.Padding(2);
             this.btnUbicacion.Name = "btnUbicacion";
             this.btnUbicacion.Size = new System.Drawing.Size(104, 126);
@@ -168,15 +127,19 @@
             this.btnUbicacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUbicacion.UseVisualStyleBackColor = true;
             this.btnUbicacion.Click += new System.EventHandler(this.btnUbicacion_Click);
+            this.btnUbicacion.MouseEnter += new System.EventHandler(this.btnUbicacion_MouseEnter);
+            this.btnUbicacion.MouseLeave += new System.EventHandler(this.btnUbicacion_MouseLeave);
             // 
             // btnEmpleados
             // 
             this.btnEmpleados.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnEmpleados.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEmpleados.FlatAppearance.BorderSize = 0;
+            this.btnEmpleados.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmpleados.Image = global::ActivosFijos.Properties.Resources.account;
             this.btnEmpleados.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEmpleados.Location = new System.Drawing.Point(11, 26);
+            this.btnEmpleados.Location = new System.Drawing.Point(21, 62);
             this.btnEmpleados.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(104, 114);
@@ -185,43 +148,36 @@
             this.btnEmpleados.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEmpleados.UseVisualStyleBackColor = true;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
+            this.btnEmpleados.MouseEnter += new System.EventHandler(this.btnEmpleados_MouseEnter);
+            this.btnEmpleados.MouseLeave += new System.EventHandler(this.btnEmpleados_MouseLeave);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 300);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(448, 334);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProveedores);
             this.Controls.Add(this.btnParametros);
             this.Controls.Add(this.btnDepartamentos);
             this.Controls.Add(this.btnUbicacion);
             this.Controls.Add(this.btnEmpleados);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Activos Fijos";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem activosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registroDeActivosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem proveedoresToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem parametrosToolStripMenuItem;
         private System.Windows.Forms.Button btnEmpleados;
         private System.Windows.Forms.Button btnDepartamentos;
         private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnUbicacion;
         private System.Windows.Forms.Button btnParametros;
+        private System.Windows.Forms.Label label1;
     }
 }
 
