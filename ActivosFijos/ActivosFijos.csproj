@@ -258,6 +258,11 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\account-group_selected.png" />
+    <Content Include="Resources\account_selected.png" />
+    <Content Include="Resources\format-list-bulleted_selected.png" />
+    <Content Include="Resources\location-marker_selected.png" />
+    <Content Include="Resources\truck_selected.png" />
     <None Include="Resources\format-list-bulleted.png" />
   </ItemGroup>
   <ItemGroup>

@@ -120,6 +120,8 @@
             this.btnProveedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnProveedores.UseVisualStyleBackColor = true;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
+            this.btnProveedores.MouseEnter += new System.EventHandler(this.btnProveedores_MouseEnter);
+            this.btnProveedores.MouseLeave += new System.EventHandler(this.btnProveedores_MouseLeave);
             // 
             // btnParametros
             // 
@@ -138,6 +140,8 @@
             this.btnParametros.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnParametros.UseVisualStyleBackColor = true;
             this.btnParametros.Click += new System.EventHandler(this.btnParametros_Click);
+            this.btnParametros.MouseEnter += new System.EventHandler(this.btnParametros_MouseEnter);
+            this.btnParametros.MouseLeave += new System.EventHandler(this.btnParametros_MouseLeave);
             // 
             // btnDepartamentos
             // 
@@ -155,6 +159,8 @@
             this.btnDepartamentos.Text = "Departamentos";
             this.btnDepartamentos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnDepartamentos.UseVisualStyleBackColor = true;
+            this.btnDepartamentos.MouseEnter += new System.EventHandler(this.btnDepartamentos_MouseEnter);
+            this.btnDepartamentos.MouseLeave += new System.EventHandler(this.btnDepartamentos_MouseLeave);
             // 
             // btnUbicacion
             // 
@@ -173,6 +179,8 @@
             this.btnUbicacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnUbicacion.UseVisualStyleBackColor = true;
             this.btnUbicacion.Click += new System.EventHandler(this.btnUbicacion_Click);
+            this.btnUbicacion.MouseEnter += new System.EventHandler(this.btnUbicacion_MouseEnter);
+            this.btnUbicacion.MouseLeave += new System.EventHandler(this.btnUbicacion_MouseLeave);
             // 
             // btnEmpleados
             // 
@@ -191,6 +199,8 @@
             this.btnEmpleados.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEmpleados.UseVisualStyleBackColor = true;
             this.btnEmpleados.Click += new System.EventHandler(this.btnEmpleados_Click);
+            this.btnEmpleados.MouseEnter += new System.EventHandler(this.btnEmpleados_MouseEnter);
+            this.btnEmpleados.MouseLeave += new System.EventHandler(this.btnEmpleados_MouseLeave);
             // 
             // Menu
             // 

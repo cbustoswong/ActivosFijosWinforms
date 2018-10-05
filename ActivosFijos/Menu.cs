@@ -12,6 +12,7 @@ namespace ActivosFijos
 {
     public partial class Menu : Form
     {
+        string sourcePath = System.Reflection.Assembly.GetExecutingAssembly().Location;
         public Menu()
         {
             InitializeComponent();
@@ -68,6 +69,56 @@ namespace ActivosFijos
         {
             frmParametros frm = new frmParametros();
             frm.ShowDialog();
+        }
+
+        private void btnEmpleados_MouseEnter(object sender, EventArgs e)
+        {
+            btnEmpleados.Image = ((System.Drawing.Image)(Properties.Resources.account_selected));
+        }
+
+        private void btnEmpleados_MouseLeave(object sender, EventArgs e)
+        {
+            btnEmpleados.Image = ((System.Drawing.Image)(Properties.Resources.account));
+        }
+
+        private void btnDepartamentos_MouseEnter(object sender, EventArgs e)
+        {
+            btnDepartamentos.Image = ((System.Drawing.Image)(Properties.Resources.account_group_selected));
+        }
+
+        private void btnDepartamentos_MouseLeave(object sender, EventArgs e)
+        {
+            btnDepartamentos.Image = ((System.Drawing.Image)(Properties.Resources.account_group));
+        }
+
+        private void btnProveedores_MouseEnter(object sender, EventArgs e)
+        {
+            btnProveedores.Image = ((System.Drawing.Image)(Properties.Resources.truck_selected));
+        }
+
+        private void btnProveedores_MouseLeave(object sender, EventArgs e)
+        {
+            btnProveedores.Image = ((System.Drawing.Image)(Properties.Resources.truck));
+        }
+
+        private void btnUbicacion_MouseEnter(object sender, EventArgs e)
+        {
+            btnUbicacion.Image = ((System.Drawing.Image)(Properties.Resources.location_marker_selected));
+        }
+
+        private void btnUbicacion_MouseLeave(object sender, EventArgs e)
+        {
+            btnUbicacion.Image = ((System.Drawing.Image)(Properties.Resources.location_marker));
+        }
+
+        private void btnParametros_MouseEnter(object sender, EventArgs e)
+        {
+            btnParametros.Image = ((System.Drawing.Image)(Properties.Resources.format_list_bulleted_selected));
+        }
+
+        private void btnParametros_MouseLeave(object sender, EventArgs e)
+        {
+            btnParametros.Image = ((System.Drawing.Image)(Properties.Resources.format_list_bulleted));
         }
     }
 }
