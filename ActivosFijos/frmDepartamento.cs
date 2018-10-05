@@ -13,6 +13,8 @@ namespace ActivosFijos
 {
     public partial class frmDepartamento : Form
     {
+        public Menu menu = null;
+
         public frmDepartamento()
         {
             InitializeComponent();
@@ -78,6 +80,11 @@ namespace ActivosFijos
         private void frmDepartamento_Activated(object sender, EventArgs e)
         {
             GetDepartamento(txtBuscar.Text);
+        }
+
+        private void frmDepartamento_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            menu.Show();
         }
     }
 }

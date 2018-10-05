@@ -13,6 +13,8 @@ namespace ActivosFijos
 {
     public partial class frmUbicacion : Form
     {
+        public Menu menu = null;
+
         public frmUbicacion()
         {
             InitializeComponent();
@@ -105,6 +107,11 @@ namespace ActivosFijos
         private void frmUbicacion_Activated_1(object sender, EventArgs e)
         {
             GetUbicacion(txtBuscar.Text);
+        }
+
+        private void frmUbicacion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            menu.Show();
         }
     }
 }

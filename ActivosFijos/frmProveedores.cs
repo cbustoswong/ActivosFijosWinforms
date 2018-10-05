@@ -13,11 +13,14 @@ namespace ActivosFijos
 {
     public partial class frmProveedores : Form
     {
+        public Menu menu = null;
+
         public frmProveedores()
         {
             InitializeComponent();
             dgvProveedores.AutoGenerateColumns = false;
         }
+
         #region Eventos
 
         private void frmProveedores_Load(object sender, EventArgs e)
@@ -25,23 +28,33 @@ namespace ActivosFijos
             cbxCriterio.SelectedIndex = 0;
             GetProveedores("");
         }
+
+        private void frmProveedores_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            menu.Show();
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             GetProveedores(txtBuscar.Text);
         }
+
         private void cbxCriterio_SelectedValueChanged(object sender, EventArgs e)
         {
             GetProveedores(txtBuscar.Text);
         }
+
         private void frmProveedores_Activated(object sender, EventArgs e)
         {
             GetProveedores(txtBuscar.Text);
         }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmProveedoresForm frm = new frmProveedoresForm();
             frm.ShowDialog();
         }
+
         private void dgvProveedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             frmProveedoresForm frm = new frmProveedoresForm();
@@ -57,8 +70,8 @@ namespace ActivosFijos
 
             frm.ShowDialog();
         }
-        #endregion
 
+        #endregion
 
         #region Metodos
         private void GetProveedores(string search)
@@ -98,8 +111,7 @@ namespace ActivosFijos
         }
 
 
-        #endregion
 
-       
+        #endregion
     }
 }

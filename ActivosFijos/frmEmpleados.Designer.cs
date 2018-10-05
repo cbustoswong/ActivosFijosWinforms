@@ -105,7 +105,7 @@
             "Departamento",
             "Tipo",
             "Estado"});
-            this.cbxCriterio.Location = new System.Drawing.Point(48, 16);
+            this.cbxCriterio.Location = new System.Drawing.Point(75, 16);
             this.cbxCriterio.Name = "cbxCriterio";
             this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
             this.cbxCriterio.TabIndex = 1;
@@ -125,9 +125,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Criterio";
+            this.label1.Text = "Ordenar por";
             // 
             // panel2
             // 
@@ -232,11 +232,12 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmEmpleados";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Empleados";
             this.Activated += new System.EventHandler(this.frmEmpleados_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmEmpleados_FormClosing);
             this.Load += new System.EventHandler(this.frmEmpleados_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

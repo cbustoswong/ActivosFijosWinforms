@@ -30,6 +30,12 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvParametros = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ano_Mes_Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mes_Ano = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deprec_Calculada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RNC_Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Met_Drepeciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -37,12 +43,6 @@
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ano_Mes_Proceso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mes_Ano = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Deprec_Calculada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RNC_Empresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Met_Drepeciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParametros)).BeginInit();
             this.panel1.SuspendLayout();
@@ -74,6 +74,51 @@
             this.dgvParametros.Size = new System.Drawing.Size(775, 368);
             this.dgvParametros.TabIndex = 0;
             this.dgvParametros.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvParametros_CellDoubleClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Codigo_Parametro";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Ano_Mes_Proceso
+            // 
+            this.Ano_Mes_Proceso.DataPropertyName = "Ano_Mes_Proceso";
+            this.Ano_Mes_Proceso.HeaderText = "Año/Mes";
+            this.Ano_Mes_Proceso.Name = "Ano_Mes_Proceso";
+            this.Ano_Mes_Proceso.ReadOnly = true;
+            this.Ano_Mes_Proceso.Visible = false;
+            // 
+            // Mes_Ano
+            // 
+            this.Mes_Ano.HeaderText = "Mes / Año";
+            this.Mes_Ano.Name = "Mes_Ano";
+            this.Mes_Ano.ReadOnly = true;
+            // 
+            // Deprec_Calculada
+            // 
+            this.Deprec_Calculada.DataPropertyName = "Deprec_Calculada";
+            this.Deprec_Calculada.HeaderText = "Depreciacion calculada";
+            this.Deprec_Calculada.Name = "Deprec_Calculada";
+            this.Deprec_Calculada.ReadOnly = true;
+            // 
+            // RNC_Empresa
+            // 
+            this.RNC_Empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RNC_Empresa.DataPropertyName = "RNC_Empresa";
+            this.RNC_Empresa.HeaderText = "RNC";
+            this.RNC_Empresa.Name = "RNC_Empresa";
+            this.RNC_Empresa.ReadOnly = true;
+            // 
+            // Met_Drepeciacion
+            // 
+            this.Met_Drepeciacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Met_Drepeciacion.DataPropertyName = "Met_Drepeciacion";
+            this.Met_Drepeciacion.HeaderText = "Metodo Depreciacion";
+            this.Met_Drepeciacion.Name = "Met_Drepeciacion";
+            this.Met_Drepeciacion.ReadOnly = true;
             // 
             // panel1
             // 
@@ -128,7 +173,7 @@
             this.cbxCriterio.Items.AddRange(new object[] {
             "Año/Mes",
             "RNC"});
-            this.cbxCriterio.Location = new System.Drawing.Point(48, 16);
+            this.cbxCriterio.Location = new System.Drawing.Point(72, 15);
             this.cbxCriterio.Name = "cbxCriterio";
             this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
             this.cbxCriterio.TabIndex = 1;
@@ -148,54 +193,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(63, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Criterio";
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Codigo_Parametro";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Ano_Mes_Proceso
-            // 
-            this.Ano_Mes_Proceso.DataPropertyName = "Ano_Mes_Proceso";
-            this.Ano_Mes_Proceso.HeaderText = "Año/Mes";
-            this.Ano_Mes_Proceso.Name = "Ano_Mes_Proceso";
-            this.Ano_Mes_Proceso.ReadOnly = true;
-            this.Ano_Mes_Proceso.Visible = false;
-            // 
-            // Mes_Ano
-            // 
-            this.Mes_Ano.HeaderText = "Mes / Año";
-            this.Mes_Ano.Name = "Mes_Ano";
-            this.Mes_Ano.ReadOnly = true;
-            // 
-            // Deprec_Calculada
-            // 
-            this.Deprec_Calculada.DataPropertyName = "Deprec_Calculada";
-            this.Deprec_Calculada.HeaderText = "Depreciacion calculada";
-            this.Deprec_Calculada.Name = "Deprec_Calculada";
-            this.Deprec_Calculada.ReadOnly = true;
-            // 
-            // RNC_Empresa
-            // 
-            this.RNC_Empresa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.RNC_Empresa.DataPropertyName = "RNC_Empresa";
-            this.RNC_Empresa.HeaderText = "RNC";
-            this.RNC_Empresa.Name = "RNC_Empresa";
-            this.RNC_Empresa.ReadOnly = true;
-            // 
-            // Met_Drepeciacion
-            // 
-            this.Met_Drepeciacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Met_Drepeciacion.DataPropertyName = "Met_Drepeciacion";
-            this.Met_Drepeciacion.HeaderText = "Metodo Depreciacion";
-            this.Met_Drepeciacion.Name = "Met_Drepeciacion";
-            this.Met_Drepeciacion.ReadOnly = true;
+            this.label1.Text = "Ordenar por";
             // 
             // frmParametros
             // 
@@ -204,9 +204,12 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmParametros";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmParametros";
             this.Activated += new System.EventHandler(this.frmParametros_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmParametros_FormClosing);
             this.Load += new System.EventHandler(this.frmParametros_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvParametros)).EndInit();

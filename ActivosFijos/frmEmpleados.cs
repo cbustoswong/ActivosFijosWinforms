@@ -13,6 +13,8 @@ namespace ActivosFijos
 {
     public partial class frmEmpleados : Form
     {
+        public Menu menu = null;
+
         public frmEmpleados()
         {
             InitializeComponent();
@@ -120,6 +122,11 @@ namespace ActivosFijos
         {
             GetEmpleados(txtBuscar.Text);
             DeptName();
+        }
+
+        private void frmEmpleados_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            menu.Show();
         }
     }
 }
