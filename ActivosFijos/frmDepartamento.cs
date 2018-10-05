@@ -27,9 +27,15 @@ namespace ActivosFijos
                 {
                     if (!(search.Trim().Length > 0))
                     {
-                            dgvDepartamento.DataSource = db.Departamento.Include("Nombre").OrderBy(a => a.Nombre).ToList();
+ 
+                            dgvDepartamento.DataSource = db.Departamento.ToList();
+
                         return;
                     }
+
+                    var departamentos = db.Departamento.Where(a => a.Nombre.Contains(search));
+
+                        dgvDepartamento.DataSource = departamentos.ToList();
                 }
                 catch (Exception ex)
                 {
@@ -40,10 +46,36 @@ namespace ActivosFijos
 
         private void frmDepartamento_Load(object sender, EventArgs e)
         {
+            GetDepartamento("");
 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            GetDepartamento(txtBuscar.Text);
+        }
+
+
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmDepartamentoForm frm = new frmDepartamentoForm();
+            frm.ShowDialog();
+        }
+
+        private void dgvDepartamento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            frmDepartamentoForm frm = new frmDepartamentoForm();
+            var row = dgvDepartamento.CurrentRow;
+
+            frm.isEditing = true;
+            frm.Id = (int)row.Cells["Id"].Value;
+            frm.Departamento = row.Cells["Nombre"].Value.ToString();
+
+            frm.ShowDialog();
+        }
+
+        private void frmDepartamento_Activated(object sender, EventArgs e)
         {
             GetDepartamento(txtBuscar.Text);
         }

@@ -30,11 +30,12 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDepartamento = new System.Windows.Forms.DataGridView();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartamento)).BeginInit();
             this.panel1.SuspendLayout();
@@ -60,11 +61,20 @@
             this.dgvDepartamento.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDepartamento.Name = "dgvDepartamento";
             this.dgvDepartamento.ReadOnly = true;
-            this.dgvDepartamento.Size = new System.Drawing.Size(412, 453);
+            this.dgvDepartamento.Size = new System.Drawing.Size(435, 453);
             this.dgvDepartamento.TabIndex = 0;
+            this.dgvDepartamento.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartamento_CellDoubleClick);
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.txtBuscar);
             this.panel1.Controls.Add(this.label2);
@@ -74,12 +84,40 @@
             this.panel1.Size = new System.Drawing.Size(427, 62);
             this.panel1.TabIndex = 4;
             // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(357, 4);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(64, 59);
+            this.btnAgregar.TabIndex = 6;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(278, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(64, 59);
+            this.btnBuscar.TabIndex = 5;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(74, 23);
             this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(213, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(173, 22);
             this.txtBuscar.TabIndex = 2;
             // 
             // label2
@@ -92,36 +130,16 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Buscar";
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(355, 3);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(64, 59);
-            this.btnBuscar.TabIndex = 5;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
             // frmDepartamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 566);
+            this.ClientSize = new System.Drawing.Size(456, 566);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmDepartamento";
             this.Text = "frmDepartamento";
+            this.Activated += new System.EventHandler(this.frmDepartamento_Activated);
             this.Load += new System.EventHandler(this.frmDepartamento_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepartamento)).EndInit();
@@ -140,5 +158,6 @@
         private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.Button btnAgregar;
     }
 }
