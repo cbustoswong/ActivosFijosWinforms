@@ -31,6 +31,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDepartamento = new System.Windows.Forms.DataGridView();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -55,7 +56,8 @@
             this.dgvDepartamento.AllowUserToDeleteRows = false;
             this.dgvDepartamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDepartamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre});
+            this.Nombre,
+            this.Id});
             this.dgvDepartamento.Location = new System.Drawing.Point(5, 6);
             this.dgvDepartamento.Name = "dgvDepartamento";
             this.dgvDepartamento.ReadOnly = true;
@@ -70,6 +72,14 @@
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
             this.Nombre.ReadOnly = true;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Codigo_Departamento";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
             // 
             // panel1
             // 
@@ -135,7 +145,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmDepartamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmDepartamento";
+            this.Text = "Departamentos";
             this.Activated += new System.EventHandler(this.frmDepartamento_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmDepartamento_FormClosing);
             this.Load += new System.EventHandler(this.frmDepartamento_Load);
@@ -157,5 +167,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
     }
 }

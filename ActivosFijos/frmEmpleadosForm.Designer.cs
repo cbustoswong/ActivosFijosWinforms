@@ -39,12 +39,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cbxTipo = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtFecha = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -77,7 +77,7 @@
             this.txtApellido.Location = new System.Drawing.Point(117, 76);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(158, 20);
-            this.txtApellido.TabIndex = 1;
+            this.txtApellido.TabIndex = 2;
             // 
             // label3
             // 
@@ -91,9 +91,10 @@
             // txtCedula
             // 
             this.txtCedula.Location = new System.Drawing.Point(117, 102);
+            this.txtCedula.MaxLength = 11;
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(121, 20);
-            this.txtCedula.TabIndex = 1;
+            this.txtCedula.TabIndex = 3;
             // 
             // label4
             // 
@@ -111,7 +112,7 @@
             this.cbxDept.Location = new System.Drawing.Point(117, 128);
             this.cbxDept.Name = "cbxDept";
             this.cbxDept.Size = new System.Drawing.Size(121, 21);
-            this.cbxDept.TabIndex = 2;
+            this.cbxDept.TabIndex = 4;
             this.cbxDept.SelectedValueChanged += new System.EventHandler(this.cbxDept_SelectedValueChanged);
             // 
             // label5
@@ -133,7 +134,7 @@
             this.cbxTipo.Location = new System.Drawing.Point(117, 155);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(121, 21);
-            this.cbxTipo.TabIndex = 2;
+            this.cbxTipo.TabIndex = 5;
             // 
             // label6
             // 
@@ -143,13 +144,6 @@
             this.label6.Size = new System.Drawing.Size(90, 13);
             this.label6.TabIndex = 0;
             this.label6.Text = "Fecha de Ingreso";
-            // 
-            // txtFecha
-            // 
-            this.txtFecha.Location = new System.Drawing.Point(117, 182);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(96, 20);
-            this.txtFecha.TabIndex = 1;
             // 
             // label7
             // 
@@ -196,7 +190,7 @@
             this.cbxEstado.Location = new System.Drawing.Point(117, 208);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(96, 21);
-            this.cbxEstado.TabIndex = 4;
+            this.cbxEstado.TabIndex = 7;
             // 
             // lblTitle
             // 
@@ -208,11 +202,21 @@
             this.lblTitle.TabIndex = 5;
             this.lblTitle.Text = "Agregar un empleado";
             // 
+            // dtpFecha
+            // 
+            this.dtpFecha.CustomFormat = "MMMMdd, yyyy";
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFecha.Location = new System.Drawing.Point(117, 182);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(158, 20);
+            this.dtpFecha.TabIndex = 6;
+            // 
             // frmEmpleadosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(287, 314);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.cbxEstado);
             this.Controls.Add(this.btnGuardar);
@@ -222,7 +226,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtCedula);
             this.Controls.Add(this.label3);
@@ -253,11 +256,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbxTipo;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtFecha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ComboBox cbxEstado;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
     }
 }

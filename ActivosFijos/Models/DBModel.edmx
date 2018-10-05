@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ActivosFijosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ActivosFijosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activos_Fijos">
           <Key>
             <PropertyRef Name="Codigo_Activo" />
@@ -52,8 +52,6 @@
           <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ActivosFijos.dbo.Parametro' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Parametro">
           <Key>
             <PropertyRef Name="Codigo_Parametro" />
@@ -168,19 +166,11 @@ warning 6002: The table/view 'ActivosFijos.dbo.Parametro' does not have a primar
           <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parametro" EntityType="Self.Parametro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Activo" EntityType="Self.Tipo_Activo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tipo_Pago" EntityType="Self.Tipo_Pago" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Parametro" EntityType="Self.Parametro" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Parametro].[Codigo_Parametro] AS [Codigo_Parametro], 
-    [Parametro].[Ano_Mes_Proceso] AS [Ano_Mes_Proceso], 
-    [Parametro].[Deprec_Calculada] AS [Deprec_Calculada], 
-    [Parametro].[RNC_Empresa] AS [RNC_Empresa], 
-    [Parametro].[Met_Drepeciacion] AS [Met_Drepeciacion]
-    FROM [dbo].[Parametro] AS [Parametro]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Activos_Fijos_Departamento" Association="Self.FK_Activos_Fijos_Departamento">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
@@ -202,8 +192,7 @@ warning 6002: The table/view 'ActivosFijos.dbo.Parametro' does not have a primar
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ActivosFijosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">

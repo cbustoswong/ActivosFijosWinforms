@@ -19,6 +19,7 @@ namespace ActivosFijos
         public string RNC_Empresa = "";
         public string Met_Depreciacion = "";
         public bool isEditing = false;
+
         public frmParametrosForm()
         {
             InitializeComponent();
@@ -30,10 +31,15 @@ namespace ActivosFijos
         {
             if (isEditing)
             {
+                lblTitle.Text = "Editar parametro";
                 dtpAnoMes.Value = AnoMesProceso;
                 chkDeprecCalculada.Checked = Deprec_Calculada;
                 txtRNC.Text = RNC_Empresa;
-                txtMetDeprec.Text = Met_Depreciacion;
+                cbxMetDeprec.SelectedItem = Met_Depreciacion;
+            }
+            else
+            {
+                cbxMetDeprec.SelectedIndex = 0;
             }
             
         }
@@ -46,14 +52,14 @@ namespace ActivosFijos
                 {
                     Codigo_Parametro = Id,
                     Ano_Mes_Proceso = dtpAnoMes.Value,
-                    Deprec_Calculada  =chkDeprecCalculada.Checked,
+                    Deprec_Calculada = chkDeprecCalculada.Checked,
                     RNC_Empresa = txtRNC.Text,
-                    Met_Drepeciacion = txtMetDeprec.Text,
+                    Met_Drepeciacion = cbxMetDeprec.SelectedItem.ToString(),
                 };
 
                 if (Id != 0)
                 {
-                    var paraDb = db.Parametro.FirstOrDefault(para => para.Codigo_Parametro == parametro.Codigo_Parametro);
+                    var paraDb = db.Parametro.FirstOrDefault(para => para.Codigo_Parametro == Id);
 
                     if (paraDb != null)
                     {

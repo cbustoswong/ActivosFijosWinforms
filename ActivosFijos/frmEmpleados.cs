@@ -36,7 +36,9 @@ namespace ActivosFijos
                 {
                     if (!(search.Trim().Length > 0))
                     {
-                        if (cbxCriterio.Text.Equals("Tipo"))
+                        if (cbxCriterio.Text.Equals("Apellido"))
+                            dgvEmpleados.DataSource = db.Empleado.Include("Departamento").OrderBy(a => a.Apellido).ToList();
+                        else if (cbxCriterio.Text.Equals("Tipo"))
                             dgvEmpleados.DataSource = db.Empleado.Include("Departamento").OrderBy(a => a.Tipo_Persona).ToList();
                         else if (cbxCriterio.Text.Equals("Departamento"))
                             dgvEmpleados.DataSource = db.Empleado.Include("Departamento").OrderBy(a => a.Codigo_Departamento).ToList();
@@ -48,9 +50,13 @@ namespace ActivosFijos
                         return;
                     }
 
-                    var empleados = db.Empleado.Include("Departamento").Where(a => a.Nombre.Contains(search) || a.Apellido.Contains(search));
+                    var empleados = db.Empleado.Include("Departamento")
+                        .Where(a => a.Nombre.Contains(search) || a.Apellido.Contains(search) ||
+                        a.Departamento.Nombre.Contains(search));
 
-                    if (cbxCriterio.Text.Equals("Tipo"))
+                    if (cbxCriterio.Text.Equals("Apellido"))
+                        dgvEmpleados.DataSource = empleados.OrderBy(a => a.Apellido).ToList();
+                    else if (cbxCriterio.Text.Equals("Tipo"))
                         dgvEmpleados.DataSource = empleados.OrderBy(a => a.Tipo_Persona).ToList();
                     else if (cbxCriterio.Text.Equals("Departamento"))
                         dgvEmpleados.DataSource = empleados.OrderBy(a => a.Codigo_Departamento).ToList();

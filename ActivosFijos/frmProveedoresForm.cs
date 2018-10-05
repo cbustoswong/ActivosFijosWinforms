@@ -20,31 +20,32 @@ namespace ActivosFijos
         public DateTime FechaRegistro;
         public string Estado = "";
         public bool isEditing = false;
+
         public frmProveedoresForm()
         {
             InitializeComponent();
         }
+
         #region Eventos
+
         private void frmProveedoresForm_Load(object sender, EventArgs e)
         {
-            //using (ActivosEntities db = new ActivosEntities())
-            //{
-            //    cbxDept.DataSource = db.Departamento.Select(d => d.Nombre).ToList();
-            //}
-
             if (isEditing)
             {
+                lblTitle.Text = "Editar proveedor";
                 txtNombre.Text = Nombre;
                 txtCedula.Text = Cedula_RNC;
                 cbxTipo.SelectedItem = Tipo_Persona;
-                txtFecha.Text = FechaRegistro.ToShortDateString();
-                txtEstado.Text = Estado;
+                dtpFecha.Value = FechaRegistro;
+                cbxEstado.SelectedItem = Estado;
             }
             else
             {
                 cbxTipo.SelectedIndex = 0;
+                cbxEstado.SelectedIndex = 0;
             }
         }
+
         #endregion
 
         #region Metodos
@@ -58,8 +59,8 @@ namespace ActivosFijos
                     Nombre = txtNombre.Text,
                     Cedula_RNC = txtCedula.Text,
                     Tipo_Proveedor = cbxTipo.SelectedItem.ToString(),
-                    Fecha_Registro = DateTime.Parse(txtFecha.Text),
-                    Estado = txtEstado.Text
+                    Fecha_Registro = dtpFecha.Value,
+                    Estado = cbxEstado.SelectedItem.ToString()
                 };
 
                 if (Id != 0)
@@ -103,7 +104,4 @@ namespace ActivosFijos
 
 
     }
-    }
-
-
-
+}

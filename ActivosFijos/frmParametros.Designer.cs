@@ -207,7 +207,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmParametros";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmParametros";
+            this.Text = "Parametros";
             this.Activated += new System.EventHandler(this.frmParametros_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmParametros_FormClosing);
             this.Load += new System.EventHandler(this.frmParametros_Load);

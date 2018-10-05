@@ -43,7 +43,7 @@ namespace ActivosFijos
                 txtCedula.Text = Cedula;
                 cbxDept.SelectedItem = Departamento;
                 cbxTipo.SelectedItem = Tipo_Persona;
-                txtFecha.Text = Fecha_Ingreso.ToShortDateString();
+                dtpFecha.Value = DateTime.Parse(Fecha_Ingreso.ToShortDateString());
                 cbxEstado.SelectedItem = Estado;
             }
             else
@@ -65,7 +65,7 @@ namespace ActivosFijos
                     Codigo_Departamento = db.Departamento
                         .FirstOrDefault(d => d.Nombre == cbxDept.SelectedValue.ToString()).Codigo_Departamento,
                     Tipo_Persona = cbxTipo.SelectedItem.ToString(),
-                    Fecha_Ingreso = DateTime.Parse(txtFecha.Text),
+                    Fecha_Ingreso = dtpFecha.Value,
                     Estado = cbxEstado.SelectedItem.ToString()
                 };
 
