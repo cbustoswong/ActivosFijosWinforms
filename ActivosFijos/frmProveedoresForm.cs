@@ -43,6 +43,7 @@ namespace ActivosFijos
             {
                 cbxTipo.SelectedIndex = 0;
                 cbxEstado.SelectedIndex = 0;
+                btnEliminar.Visible = false;
             }
         }
 

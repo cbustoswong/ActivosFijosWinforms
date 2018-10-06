@@ -40,6 +40,7 @@ namespace ActivosFijos
             else
             {
                 cbxMetDeprec.SelectedIndex = 0;
+                btnEliminar.Visible = false;
             }
             
         }

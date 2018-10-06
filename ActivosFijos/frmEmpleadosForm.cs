@@ -49,6 +49,7 @@ namespace ActivosFijos
             else
             {
                 cbxTipo.SelectedIndex = 0;
+                btnEliminar.Visible = false;
             }
         }
 

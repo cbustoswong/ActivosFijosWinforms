@@ -28,7 +28,10 @@ namespace ActivosFijos
             {
                 lblTitle.Text = "Editar Departamento";
                 tbxDepartamento.Text = Departamento;
-
+            }
+            else
+            {
+                btnEliminar.Visible = false;
             }
         }
 
