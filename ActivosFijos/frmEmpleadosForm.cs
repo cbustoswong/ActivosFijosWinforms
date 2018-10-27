@@ -9,8 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace ActivosFijos
 {
+
     public partial class frmEmpleadosForm : Form
     {
         public int Id = 0;
@@ -22,6 +24,36 @@ namespace ActivosFijos
         public DateTime Fecha_Ingreso;
         public string Estado = "";
         public bool isEditing = false;
+
+        public static bool CheckCedula(string Cedula)
+        {
+ 
+            int vnTotal = 0;
+            string chkCedula = Cedula.Replace("-", "");
+            int pLongCed = chkCedula.Trim().Length;
+            int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+
+            if (pLongCed < 11 || pLongCed > 11)
+                return false;
+
+            for (int vDig = 1; vDig <= pLongCed; vDig++)
+            {
+                int vCalculo = Int32.Parse(chkCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                if (vCalculo < 10)
+                    vnTotal += vCalculo;
+                else
+                    vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
+            }
+
+            if (vnTotal % 10 == 0)
+               
+                return true;
+            else
+
+                return false;
+            
+        }
+
 
         public frmEmpleadosForm()
         {
@@ -55,6 +87,9 @@ namespace ActivosFijos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (CheckCedula(txtCedula.Text)==true)
+            { 
+
             using (ActivosEntities db = new ActivosEntities())
             {
                 Empleado empleado = new Empleado
@@ -92,6 +127,12 @@ namespace ActivosFijos
 
                 Close();
             }
+            }
+            else
+            {
+                MessageBox.Show("Introduzca la cedula correcta");
+                
+            }
         }
 
         private void cbxDept_SelectedValueChanged(object sender, EventArgs e)
@@ -112,5 +153,11 @@ namespace ActivosFijos
             MessageBox.Show("El empleado ha sido eliminado exitosamente");
             Close();
         }
+
+        private void txtCedula_Validated(object sender, EventArgs e)
+        {
+            CheckCedula(txtCedula.Text);
+        }
+
     }
 }
