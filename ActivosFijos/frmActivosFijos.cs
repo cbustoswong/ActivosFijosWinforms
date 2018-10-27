@@ -64,5 +64,10 @@ namespace ActivosFijos
             cbxCriterio.SelectedIndex = 0;
             GetActivos("");
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

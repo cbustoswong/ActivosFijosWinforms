@@ -12,6 +12,14 @@ namespace ActivosFijos
 {
     public partial class Menu : Form
     {
+        //Estas variables son las que permitirian definir los privilegios de cada rol. Depende del rol, estas cambiaran su
+        //valor de true a false.
+        bool accessEmpleado = true;
+        bool accessDepartamento = false;
+        bool accessProveedores = true;
+        bool accessUbicacion = true;
+        bool accessParametros = true;
+
         public Menu()
         {
             InitializeComponent();
@@ -19,42 +27,77 @@ namespace ActivosFijos
 
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
+            //Se evalua si el bool es true
+            if (accessEmpleado)
+            {
             frmEmpleados frm = new frmEmpleados();
             frm.menu = this;
             frm.Show();
             Hide();
+            }
+            else //En caso de que no lo sea
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            frmProveedores frm = new frmProveedores();
-            frm.menu = this;
-            frm.Show();
-            Hide();
+            if (accessProveedores)
+            {
+                frmProveedores frm = new frmProveedores();
+                frm.menu = this;
+                frm.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
         }
 
         private void btnUbicacion_Click(object sender, EventArgs e)
         {
-            frmUbicacion frm = new frmUbicacion();
-            frm.menu = this;
-            frm.Show();
-            Hide();
+            if (accessUbicacion)
+            {
+                frmUbicacion frm = new frmUbicacion();
+                frm.menu = this;
+                frm.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
         }
 
         private void btnParametros_Click(object sender, EventArgs e)
         {
-            frmParametros frm = new frmParametros();
-            frm.menu = this;
-            frm.Show();
-            Hide();
+            if (accessParametros)
+            {
+                frmParametros frm = new frmParametros();
+                frm.menu = this;
+                frm.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
         }
 
         private void btnDepartamentos_Click(object sender, EventArgs e)
         {
-            frmDepartamento frm = new frmDepartamento();
-            frm.menu = this;
-            frm.Show();
-            Hide();
+            if (accessDepartamento)
+            {
+                frmDepartamento frm = new frmDepartamento();
+                frm.menu = this;
+                frm.Show();
+                Hide();
+            }
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
         }
 
         private void btnEmpleados_MouseEnter(object sender, EventArgs e)

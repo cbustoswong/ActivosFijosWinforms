@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -89,6 +90,7 @@ namespace ActivosFijos
         {
             if (CheckCedula(txtCedula.Text)==true)
             { 
+            
 
             using (ActivosEntities db = new ActivosEntities())
             {
@@ -154,10 +156,37 @@ namespace ActivosFijos
             Close();
         }
 
-        private void txtCedula_Validated(object sender, EventArgs e)
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
         {
-            CheckCedula(txtCedula.Text);
+            Regex regex = new Regex("^[a-zA-Z]+$");
+            bool hasOnlyAlpha = regex.IsMatch(txtNombre.Text);
+            if (!hasOnlyAlpha)
+            {
+                MessageBox.Show("Introduzca el nombre correctamente");
+                txtNombre.Focus();
+            }
         }
 
+        private void txtCedula_Validating(object sender, CancelEventArgs e)
+        {
+
+            CheckCedula(txtCedula.Text);
+            if (CheckCedula(txtCedula.Text) == false)
+            {
+                MessageBox.Show("Introduzca la cedula correctamente");
+                txtCedula.Focus();
+            }
+        }
+
+        private void txtApellido_Validating(object sender, CancelEventArgs e)
+        {
+            Regex regex = new Regex("^[a-zA-Z]+$");
+            bool hasOnlyAlpha = regex.IsMatch(txtApellido.Text);
+            if (!hasOnlyAlpha)
+            {
+                MessageBox.Show("Introduzca el apellido correctamente");
+                txtApellido.Focus();
+            }
+        }
     }
 }

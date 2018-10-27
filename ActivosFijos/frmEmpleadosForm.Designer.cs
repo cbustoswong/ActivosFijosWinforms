@@ -61,9 +61,11 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(156, 62);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.MaxLength = 40;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(209, 22);
             this.txtNombre.TabIndex = 1;
+            this.txtNombre.Validating += new System.ComponentModel.CancelEventHandler(this.txtNombre_Validating);
             // 
             // label2
             // 
@@ -79,9 +81,11 @@
             // 
             this.txtApellido.Location = new System.Drawing.Point(156, 94);
             this.txtApellido.Margin = new System.Windows.Forms.Padding(4);
+            this.txtApellido.MaxLength = 40;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(209, 22);
             this.txtApellido.TabIndex = 2;
+            this.txtApellido.Validating += new System.ComponentModel.CancelEventHandler(this.txtApellido_Validating);
             // 
             // label3
             // 
@@ -101,7 +105,7 @@
             this.txtCedula.Name = "txtCedula";
             this.txtCedula.Size = new System.Drawing.Size(160, 22);
             this.txtCedula.TabIndex = 3;
-            this.txtCedula.Validated += new System.EventHandler(this.txtCedula_Validated);
+            this.txtCedula.Validating += new System.ComponentModel.CancelEventHandler(this.txtCedula_Validating);
             // 
             // label4
             // 

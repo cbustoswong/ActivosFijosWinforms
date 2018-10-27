@@ -58,9 +58,10 @@
             this.panel1.Controls.Add(this.cbxCriterio);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 3);
+            this.panel1.Location = new System.Drawing.Point(16, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 50);
+            this.panel1.Size = new System.Drawing.Size(1035, 62);
             this.panel1.TabIndex = 2;
             // 
             // btnAgregar
@@ -69,11 +70,13 @@
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(725, 2);
+            this.btnAgregar.Location = new System.Drawing.Point(967, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
+            this.btnAgregar.Size = new System.Drawing.Size(64, 59);
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnBuscar
             // 
@@ -81,18 +84,20 @@
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(662, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(883, 2);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(48, 48);
+            this.btnBuscar.Size = new System.Drawing.Size(64, 59);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(454, 15);
+            this.txtBuscar.Location = new System.Drawing.Point(605, 18);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(176, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(233, 22);
             this.txtBuscar.TabIndex = 2;
             // 
             // cbxCriterio
@@ -103,9 +108,10 @@
             "Tipo",
             "Departamento",
             "Valor"});
-            this.cbxCriterio.Location = new System.Drawing.Point(60, 16);
+            this.cbxCriterio.Location = new System.Drawing.Point(80, 20);
+            this.cbxCriterio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbxCriterio.Name = "cbxCriterio";
-            this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
+            this.cbxCriterio.Size = new System.Drawing.Size(160, 24);
             this.cbxCriterio.TabIndex = 1;
             this.cbxCriterio.SelectedValueChanged += new System.EventHandler(this.cbxCriterio_SelectedValueChanged);
             // 
@@ -113,9 +119,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(398, 19);
+            this.label2.Location = new System.Drawing.Point(531, 23);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Buscar";
             // 
@@ -123,18 +130,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 20);
+            this.label1.Location = new System.Drawing.Point(4, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Criterio";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvActivos);
-            this.panel2.Location = new System.Drawing.Point(13, 60);
+            this.panel2.Location = new System.Drawing.Point(17, 74);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(775, 378);
+            this.panel2.Size = new System.Drawing.Size(1033, 465);
             this.panel2.TabIndex = 3;
             // 
             // dgvActivos
@@ -152,9 +161,10 @@
             this.Valor,
             this.Depreciacion});
             this.dgvActivos.Location = new System.Drawing.Point(-1, -1);
+            this.dgvActivos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvActivos.Name = "dgvActivos";
             this.dgvActivos.ReadOnly = true;
-            this.dgvActivos.Size = new System.Drawing.Size(776, 379);
+            this.dgvActivos.Size = new System.Drawing.Size(1035, 466);
             this.dgvActivos.TabIndex = 0;
             // 
             // Id
@@ -217,12 +227,13 @@
             // 
             // frmActivosFijos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmActivosFijos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Activos Fijos";
