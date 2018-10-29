@@ -28,7 +28,6 @@ namespace ActivosFijos
 
         public static bool CheckCedula(string Cedula)
         {
- 
             int vnTotal = 0;
             string chkCedula = Cedula.Replace("-", "");
             int pLongCed = chkCedula.Trim().Length;
@@ -47,14 +46,11 @@ namespace ActivosFijos
             }
 
             if (vnTotal % 10 == 0)
-               
                 return true;
             else
-
                 return false;
             
         }
-
 
         public frmEmpleadosForm()
         {
@@ -82,58 +78,56 @@ namespace ActivosFijos
             else
             {
                 cbxTipo.SelectedIndex = 0;
+                cbxEstado.SelectedIndex = 0;
                 btnEliminar.Visible = false;
             }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (CheckCedula(txtCedula.Text)==true)
+            if (CheckCedula(txtCedula.Text))
             { 
-            
-
-            using (ActivosEntities db = new ActivosEntities())
-            {
-                Empleado empleado = new Empleado
+                using (ActivosEntities db = new ActivosEntities())
                 {
-                    Codigo_Empleado = Id,
-                    Nombre = txtNombre.Text,
-                    Apellido = txtApellido.Text,
-                    Cedula = txtCedula.Text,
-                    Codigo_Departamento = db.Departamento
-                        .FirstOrDefault(d => d.Nombre == cbxDept.SelectedValue.ToString()).Codigo_Departamento,
-                    Tipo_Persona = cbxTipo.SelectedItem.ToString(),
-                    Fecha_Ingreso = dtpFecha.Value,
-                    Estado = cbxEstado.SelectedItem.ToString()
-                };
-
-                if (Id != 0)
-                {
-                    var empInDb = db.Empleado.FirstOrDefault(emp => emp.Codigo_Empleado == empleado.Codigo_Empleado);
-
-                    if (empInDb != null)
+                    Empleado empleado = new Empleado
                     {
-                        db.Entry(empInDb).State = System.Data.Entity.EntityState.Detached;
-                        db.Entry(empleado).State = System.Data.Entity.EntityState.Modified;
+                        Codigo_Empleado = Id,
+                        Nombre = txtNombre.Text,
+                        Apellido = txtApellido.Text,
+                        Cedula = txtCedula.Text,
+                        Codigo_Departamento = db.Departamento
+                            .FirstOrDefault(d => d.Nombre == cbxDept.SelectedValue.ToString()).Codigo_Departamento,
+                        Tipo_Persona = cbxTipo.SelectedItem.ToString(),
+                        Fecha_Ingreso = dtpFecha.Value,
+                        Estado = cbxEstado.SelectedItem.ToString()
+                    };
+
+                    if (Id != 0)
+                    {
+                        var empInDb = db.Empleado.FirstOrDefault(emp => emp.Codigo_Empleado == empleado.Codigo_Empleado);
+
+                        if (empInDb != null)
+                        {
+                            db.Entry(empInDb).State = System.Data.Entity.EntityState.Detached;
+                            db.Entry(empleado).State = System.Data.Entity.EntityState.Modified;
+                        }
+
+                        MessageBox.Show("El empleado ha sido modificado exitosamente.");
+                    }
+                    else
+                    {
+                        db.Empleado.Add(empleado);
+                        MessageBox.Show("El empleado ha sido creado exitosamente.");
                     }
 
-                    MessageBox.Show("El empleado ha sido modificado exitosamente.");
-                }
-                else
-                {
-                    db.Empleado.Add(empleado);
-                    MessageBox.Show("El empleado ha sido creado exitosamente.");
-                }
+                    db.SaveChanges();
 
-                db.SaveChanges();
-
-                Close();
-            }
+                    Close();
+                }
             }
             else
             {
-                MessageBox.Show("Introduzca la cedula correcta");
-                
+                MessageBox.Show("Introduzca una cedula valida");
             }
         }
 
@@ -162,18 +156,16 @@ namespace ActivosFijos
             bool hasOnlyAlpha = regex.IsMatch(txtNombre.Text);
             if (!hasOnlyAlpha)
             {
-                MessageBox.Show("Introduzca el nombre correctamente");
+                MessageBox.Show("Introduzca un nombre valido");
                 txtNombre.Focus();
             }
         }
 
         private void txtCedula_Validating(object sender, CancelEventArgs e)
         {
-
-            CheckCedula(txtCedula.Text);
-            if (CheckCedula(txtCedula.Text) == false)
+            if (!CheckCedula(txtCedula.Text))
             {
-                MessageBox.Show("Introduzca la cedula correctamente");
+                MessageBox.Show("Introduzca una cedula valida");
                 txtCedula.Focus();
             }
         }
@@ -184,7 +176,7 @@ namespace ActivosFijos
             bool hasOnlyAlpha = regex.IsMatch(txtApellido.Text);
             if (!hasOnlyAlpha)
             {
-                MessageBox.Show("Introduzca el apellido correctamente");
+                MessageBox.Show("Introduzca un apellido valido");
                 txtApellido.Focus();
             }
         }

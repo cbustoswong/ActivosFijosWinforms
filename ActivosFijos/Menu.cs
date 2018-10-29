@@ -30,10 +30,10 @@ namespace ActivosFijos
             //Se evalua si el bool es true
             if (accessEmpleado)
             {
-            frmEmpleados frm = new frmEmpleados();
-            frm.menu = this;
-            frm.Show();
-            Hide();
+                frmEmpleados frm = new frmEmpleados();
+                frm.menu = this;
+                frm.Show();
+                Hide();
             }
             else //En caso de que no lo sea
             {
