@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ActivosFijos.Models;
@@ -81,6 +82,17 @@ namespace ActivosFijos
 
             MessageBox.Show("El departamento ha sido eliminado exitosamente");
             Close();
+        }
+
+        private void tbxDepartamento_Validating(object sender, CancelEventArgs e)
+        {
+            Regex regex = new Regex("^[a-zA-Z]+$");
+            bool hasOnlyAlpha = regex.IsMatch(tbxDepartamento.Text);
+            if (!hasOnlyAlpha)
+            {
+                MessageBox.Show("Introduzca el nombre correctamente");
+                tbxDepartamento.Focus();
+            }
         }
     }
 }

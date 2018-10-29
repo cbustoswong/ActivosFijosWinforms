@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -101,8 +102,18 @@ namespace ActivosFijos
             MessageBox.Show("El proveedor ha sido eliminado exitosamente");
             Close();
         }
+
         #endregion
 
-
+        private void txtNombre_Validating(object sender, CancelEventArgs e)
+        {
+            Regex regex = new Regex("^[a-zA-Z]+$");
+            bool hasOnlyAlpha = regex.IsMatch(txtNombre.Text);
+            if (!hasOnlyAlpha)
+            {
+                MessageBox.Show("Introduzca el nombre correctamente");
+                txtNombre.Focus();
+            }
+        }
     }
 }
