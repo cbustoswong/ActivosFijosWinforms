@@ -92,7 +92,6 @@
             // 
             this.btnDepartamentos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDepartamentos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDepartamentos.Enabled = false;
             this.btnDepartamentos.FlatAppearance.BorderSize = 0;
             this.btnDepartamentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.btnDepartamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

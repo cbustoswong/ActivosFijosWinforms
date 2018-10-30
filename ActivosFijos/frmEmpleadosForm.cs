@@ -38,11 +38,11 @@ namespace ActivosFijos
 
             for (int vDig = 1; vDig <= pLongCed; vDig++)
             {
-                int vCalculo = Int32.Parse(chkCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                int vCalculo = int.Parse(chkCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
                 if (vCalculo < 10)
                     vnTotal += vCalculo;
                 else
-                    vnTotal += Int32.Parse(vCalculo.ToString().Substring(0, 1)) + Int32.Parse(vCalculo.ToString().Substring(1, 1));
+                    vnTotal += int.Parse(vCalculo.ToString().Substring(0, 1)) + int.Parse(vCalculo.ToString().Substring(1, 1));
             }
 
             if (vnTotal % 10 == 0)

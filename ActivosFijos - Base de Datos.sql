@@ -109,7 +109,7 @@ CREATE TABLE Tipo_Pago (
 CREATE TABLE Usuarios (
     Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Usuario varchar(24) NOT NULL UNIQUE,
-    Contrasena varchar(60) NOT NULL,
+    Contrasena varchar(255) NOT NULL,
     Nombre varchar(30) NOT NULL,
     Apellido varchar(30) NOT NULL
 );

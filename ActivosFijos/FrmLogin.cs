@@ -1,4 +1,5 @@
 ﻿using ActivosFijos.Models;
+using ActivosFijos.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,17 +22,11 @@ namespace ActivosFijos
             InitializeComponent();
         }
 
-        private void FrmLogin_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var usuario = db.Usuarios.FirstOrDefault(u => u.Usuario == txtUsuario.Text
-                && u.Contrasena == txtContrasena.Text);
+            var usuario = db.Usuarios.FirstOrDefault(u => u.Usuario == txtUsuario.Text);
 
-            if (usuario != null)
+            if (usuario != null && SecurePasswordHasher.Verify(txtContrasena.Text, usuario.Contrasena))
             {
                 Hide();
                 frmMenu frm = new frmMenu();

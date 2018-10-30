@@ -22,6 +22,22 @@ namespace ActivosFijos
             InitializeComponent();
         }
 
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            roles = usuario.Roles.Select(r => r.Nombre).ToList();
+
+            if (!roles.Contains("RRHH"))
+            {
+                btnEmpleados.Enabled = false;
+                btnDepartamentos.Enabled = false;
+            }
+            else if (!roles.Contains("Logistica"))
+            {
+                btnProveedores.Enabled = false;
+                btnUbicacion.Enabled = false;
+            }
+        }
+
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             //Se evalua si el bool es true
@@ -145,11 +161,6 @@ namespace ActivosFijos
         private void btnParametros_MouseLeave(object sender, EventArgs e)
         {
             btnParametros.Image = Properties.Resources.format_list_bulleted;
-        }
-
-        private void frmMenu_Load(object sender, EventArgs e)
-        {
-            roles = usuario.Roles.Select(r => r.Nombre).ToList();
         }
 
         private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
