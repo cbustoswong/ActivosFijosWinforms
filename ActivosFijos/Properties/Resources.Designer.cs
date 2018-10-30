@@ -163,6 +163,16 @@ namespace ActivosFijos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap proxy_duckduckgo {
+            get {
+                object obj = ResourceManager.GetObject("proxy.duckduckgo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
@@ -196,6 +206,16 @@ namespace ActivosFijos.Properties {
         internal static System.Drawing.Bitmap truck_selected {
             get {
                 object obj = ResourceManager.GetObject("truck_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_login_icon {
+            get {
+                object obj = ResourceManager.GetObject("user-login-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,6 +1,6 @@
 ﻿namespace ActivosFijos
 {
-    partial class Menu
+    partial class frmMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -152,7 +152,7 @@
             this.btnEmpleados.MouseEnter += new System.EventHandler(this.btnEmpleados_MouseEnter);
             this.btnEmpleados.MouseLeave += new System.EventHandler(this.btnEmpleados_MouseLeave);
             // 
-            // Menu
+            // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -164,9 +164,11 @@
             this.Controls.Add(this.btnDepartamentos);
             this.Controls.Add(this.btnUbicacion);
             this.Controls.Add(this.btnEmpleados);
-            this.Name = "Menu";
+            this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion de Activos Fijos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMenu_FormClosed);
+            this.Load += new System.EventHandler(this.frmMenu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

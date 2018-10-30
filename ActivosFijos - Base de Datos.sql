@@ -104,6 +104,29 @@ CREATE TABLE Tipo_Pago (
     Codigo_TipoPago int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Descripcion varchar(50),
     Estado Varchar(15)
+);
+
+CREATE TABLE Usuarios (
+    Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    Usuario varchar(24) NOT NULL UNIQUE,
+    Contrasena varchar(60) NOT NULL,
+    Nombre varchar(30) NOT NULL,
+    Apellido varchar(30) NOT NULL
+);
+
+CREATE TABLE Roles (
+    Id int IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    Nombre varchar(24) NOT NULL
+);
+
+CREATE TABLE Usuarios_Roles (
+    Id_Usuario int NOT NULL,
+    Id_Rol int NOT NULL,
+    CONSTRAINT PK_Usuarios_Roles PRIMARY KEY (Id_Usuario, Id_Rol),
+    CONSTRAINT FK_Usuarios_Roles_Usuarios FOREIGN KEY (Id_Usuario)
+    REFERENCES Usuarios(Id),
+    CONSTRAINT FK_Usuarios_Roles_Roles FOREIGN KEY (Id_Rol)
+    REFERENCES Roles(Id)
 )
 GO
 

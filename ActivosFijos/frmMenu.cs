@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ActivosFijos.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,17 +11,13 @@ using System.Windows.Forms;
 
 namespace ActivosFijos
 {
-    public partial class Menu : Form
+    public partial class frmMenu : Form
     {
-        //Estas variables son las que permitirian definir los privilegios de cada rol. Depende del rol, estas cambiaran su
-        //valor de true a false.
-        bool accessEmpleado = true;
-        bool accessDepartamento = false;
-        bool accessProveedores = true;
-        bool accessUbicacion = true;
-        bool accessParametros = true;
+        public FrmLogin frmLogin;
+        public Usuarios usuario;
+        public List<string> roles;
 
-        public Menu()
+        public frmMenu()
         {
             InitializeComponent();
         }
@@ -28,7 +25,7 @@ namespace ActivosFijos
         private void btnEmpleados_Click(object sender, EventArgs e)
         {
             //Se evalua si el bool es true
-            if (accessEmpleado)
+            if (roles.Contains("Admin") || roles.Contains("RRHH"))
             {
                 frmEmpleados frm = new frmEmpleados();
                 frm.menu = this;
@@ -43,7 +40,7 @@ namespace ActivosFijos
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            if (accessProveedores)
+            if (roles.Contains("Admin") || roles.Contains("Logistica"))
             {
                 frmProveedores frm = new frmProveedores();
                 frm.menu = this;
@@ -58,7 +55,7 @@ namespace ActivosFijos
 
         private void btnUbicacion_Click(object sender, EventArgs e)
         {
-            if (accessUbicacion)
+            if (roles.Contains("Admin") || roles.Contains("Logistica"))
             {
                 frmUbicacion frm = new frmUbicacion();
                 frm.menu = this;
@@ -73,7 +70,7 @@ namespace ActivosFijos
 
         private void btnParametros_Click(object sender, EventArgs e)
         {
-            if (accessParametros)
+            if (roles.Contains("Admin") || roles.Contains("Logistica"))
             {
                 frmParametros frm = new frmParametros();
                 frm.menu = this;
@@ -88,7 +85,7 @@ namespace ActivosFijos
 
         private void btnDepartamentos_Click(object sender, EventArgs e)
         {
-            if (accessDepartamento)
+            if (roles.Contains("Admin") || roles.Contains("RRHH"))
             {
                 frmDepartamento frm = new frmDepartamento();
                 frm.menu = this;
@@ -148,6 +145,16 @@ namespace ActivosFijos
         private void btnParametros_MouseLeave(object sender, EventArgs e)
         {
             btnParametros.Image = Properties.Resources.format_list_bulleted;
+        }
+
+        private void frmMenu_Load(object sender, EventArgs e)
+        {
+            roles = usuario.Roles.Select(r => r.Nombre).ToList();
+        }
+
+        private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmLogin.Close();
         }
     }
 }

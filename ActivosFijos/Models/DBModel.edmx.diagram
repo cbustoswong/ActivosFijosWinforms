@@ -19,6 +19,9 @@
         <AssociationConnector Association="ActivosFijosModel.FK_Activos_Fijos_Ubicacion" ManuallyRouted="false" />
         <AssociationConnector Association="ActivosFijosModel.FK_Depreciacion_Activos_Fijos" ManuallyRouted="false" />
         <AssociationConnector Association="ActivosFijosModel.FK_Empleado_Departamento" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ActivosFijosModel.Roles" Width="1.5" PointX="8.375" PointY="8.25" />
+        <EntityTypeShape EntityType="ActivosFijosModel.Usuarios" Width="1.5" PointX="10.625" PointY="7.875" />
+        <AssociationConnector Association="ActivosFijosModel.Usuarios_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

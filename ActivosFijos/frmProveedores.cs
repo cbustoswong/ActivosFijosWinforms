@@ -13,7 +13,7 @@ namespace ActivosFijos
 {
     public partial class frmProveedores : Form
     {
-        public Menu menu = null;
+        public frmMenu menu = null;
 
         public frmProveedores()
         {
