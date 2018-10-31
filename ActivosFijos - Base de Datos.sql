@@ -124,9 +124,9 @@ CREATE TABLE Usuarios_Roles (
     Id_Rol int NOT NULL,
     CONSTRAINT PK_Usuarios_Roles PRIMARY KEY (Id_Usuario, Id_Rol),
     CONSTRAINT FK_Usuarios_Roles_Usuarios FOREIGN KEY (Id_Usuario)
-    REFERENCES Usuarios(Id),
+    REFERENCES Usuarios(Id) ON DELETE CASCADE,
     CONSTRAINT FK_Usuarios_Roles_Roles FOREIGN KEY (Id_Rol)
-    REFERENCES Roles(Id)
+    REFERENCES Roles(Id)  ON DELETE CASCADE
 )
 GO
 
