@@ -133,6 +133,18 @@
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuarios.Designer.cs">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsuariosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsuariosForm.Designer.cs">
+      <DependentUpon>frmUsuariosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\Activos_Fijos.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -223,6 +235,12 @@
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsuariosForm.resx">
+      <DependentUpon>frmUsuariosForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -277,8 +295,13 @@
     <Content Include="Resources\account-group_selected.png" />
     <Content Include="Resources\account_selected.png" />
     <Content Include="Resources\format-list-bulleted_selected.png" />
+    <None Include="Resources\icon.png" />
     <Content Include="Resources\location-marker_selected.png" />
+    <None Include="Resources\user_male2-128.png" />
+    <None Include="Resources\user-male-circle-filled.png" />
     <None Include="Resources\proxy.duckduckgo.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\login1.png" />
     <Content Include="Resources\truck_selected.png" />
     <None Include="Resources\user-login-icon.png" />
     <None Include="Resources\format-list-bulleted.png" />

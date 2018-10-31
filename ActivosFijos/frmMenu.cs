@@ -30,12 +30,21 @@ namespace ActivosFijos
             {
                 btnEmpleados.Enabled = false;
                 btnDepartamentos.Enabled = false;
+
             }
             else if (!roles.Contains("Logistica"))
             {
                 btnProveedores.Enabled = false;
                 btnUbicacion.Enabled = false;
             }
+
+            if (!roles.Contains("Admin"))
+            {
+                btnUsuarios.Enabled = false;
+
+            }
+
+
         }
 
         private void btnEmpleados_Click(object sender, EventArgs e)
@@ -113,6 +122,22 @@ namespace ActivosFijos
             }
         }
 
+        private void btnUsuarios_Click(object sender,EventArgs e)
+        {
+            //Se evalua si el bool es true
+            if (roles.Contains("Admin"))
+            {
+                frmUsuarios frm = new frmUsuarios();
+                frm.menu = this;
+                frm.Show();
+                Hide();
+            }
+            else //En caso de que no lo sea
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
+        }
+
         private void btnEmpleados_MouseEnter(object sender, EventArgs e)
         {
             btnEmpleados.Image = Properties.Resources.account_selected;
@@ -157,10 +182,18 @@ namespace ActivosFijos
         {
             btnParametros.Image = Properties.Resources.format_list_bulleted_selected;
         }
+        private void btnUsuarios_MouseEnter(object sender, EventArgs e)
+        {
+            //btnUsuarios.Image = Properties.Resources.format_list_bulleted_selected;
+        }
 
         private void btnParametros_MouseLeave(object sender, EventArgs e)
         {
             btnParametros.Image = Properties.Resources.format_list_bulleted;
+        }
+        private void btnUsuarios_MouseLeave(object sender, EventArgs e)
+        {
+            //btnUsuarios.Image = Properties.Resources.format_list_bulleted;
         }
 
         private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
