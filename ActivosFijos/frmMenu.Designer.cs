@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.btnProveedores = new System.Windows.Forms.Button();
+            this.btnUsuarios = new System.Windows.Forms.Button();
             this.btnParametros = new System.Windows.Forms.Button();
             this.btnDepartamentos = new System.Windows.Forms.Button();
             this.btnUbicacion = new System.Windows.Forms.Button();
@@ -40,7 +41,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(182, 21);
+            this.label1.Location = new System.Drawing.Point(182, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 24);
             this.label1.TabIndex = 2;
@@ -55,7 +56,7 @@
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Image = global::ActivosFijos.Properties.Resources.truck;
             this.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnProveedores.Location = new System.Drawing.Point(287, 62);
+            this.btnProveedores.Location = new System.Drawing.Point(287, 51);
             this.btnProveedores.Margin = new System.Windows.Forms.Padding(2);
             this.btnProveedores.Name = "btnProveedores";
             this.btnProveedores.Size = new System.Drawing.Size(141, 114);
@@ -66,6 +67,26 @@
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             this.btnProveedores.MouseEnter += new System.EventHandler(this.btnProveedores_MouseEnter);
             this.btnProveedores.MouseLeave += new System.EventHandler(this.btnProveedores_MouseLeave);
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Image = global::ActivosFijos.Properties.Resources.icon;
+            this.btnUsuarios.Location = new System.Drawing.Point(287, 143);
+            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(125, 182);
+            this.btnUsuarios.TabIndex = 1;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            this.btnUsuarios.MouseEnter += new System.EventHandler(this.btnUsuarios_MouseEnter);
+            this.btnUsuarios.MouseLeave += new System.EventHandler(this.btnUsuarios_MouseLeave);
             // 
             // btnParametros
             // 
@@ -97,7 +118,7 @@
             this.btnDepartamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDepartamentos.Image = global::ActivosFijos.Properties.Resources.account_group;
             this.btnDepartamentos.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDepartamentos.Location = new System.Drawing.Point(141, 62);
+            this.btnDepartamentos.Location = new System.Drawing.Point(141, 51);
             this.btnDepartamentos.Margin = new System.Windows.Forms.Padding(2);
             this.btnDepartamentos.Name = "btnDepartamentos";
             this.btnDepartamentos.Size = new System.Drawing.Size(130, 114);
@@ -139,7 +160,7 @@
             this.btnEmpleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmpleados.Image = global::ActivosFijos.Properties.Resources.account;
             this.btnEmpleados.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEmpleados.Location = new System.Drawing.Point(21, 62);
+            this.btnEmpleados.Location = new System.Drawing.Point(21, 51);
             this.btnEmpleados.Margin = new System.Windows.Forms.Padding(2);
             this.btnEmpleados.Name = "btnEmpleados";
             this.btnEmpleados.Size = new System.Drawing.Size(104, 114);
@@ -156,9 +177,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(448, 334);
+            this.ClientSize = new System.Drawing.Size(451, 352);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProveedores);
+            this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnParametros);
             this.Controls.Add(this.btnDepartamentos);
             this.Controls.Add(this.btnUbicacion);
@@ -180,6 +202,7 @@
         private System.Windows.Forms.Button btnUbicacion;
         private System.Windows.Forms.Button btnParametros;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnUsuarios;
     }
 }
 

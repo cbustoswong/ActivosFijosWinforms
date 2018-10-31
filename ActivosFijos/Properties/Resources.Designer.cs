@@ -133,6 +133,16 @@ namespace ActivosFijos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap location_marker {
             get {
                 object obj = ResourceManager.GetObject("location-marker", resourceCulture);
@@ -146,6 +156,26 @@ namespace ActivosFijos.Properties {
         internal static System.Drawing.Bitmap location_marker_selected {
             get {
                 object obj = ResourceManager.GetObject("location-marker_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap login {
+            get {
+                object obj = ResourceManager.GetObject("login", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap login1 {
+            get {
+                object obj = ResourceManager.GetObject("login1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -216,6 +246,26 @@ namespace ActivosFijos.Properties {
         internal static System.Drawing.Bitmap user_login_icon {
             get {
                 object obj = ResourceManager.GetObject("user-login-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_male_circle_filled {
+            get {
+                object obj = ResourceManager.GetObject("user-male-circle-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_male2_128 {
+            get {
+                object obj = ResourceManager.GetObject("user_male2-128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
