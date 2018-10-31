@@ -85,6 +85,12 @@ namespace ActivosFijos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (txtApellido.Text.Length == 0)
+            {
+                MessageBox.Show("Introduzca un apellido");
+                return;
+            }
+
             if (CheckCedula(txtCedula.Text))
             { 
                 using (ActivosEntities db = new ActivosEntities())

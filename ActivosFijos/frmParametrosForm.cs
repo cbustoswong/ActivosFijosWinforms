@@ -47,6 +47,12 @@ namespace ActivosFijos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (txtRNC.Text.Length == 0)
+            {
+                MessageBox.Show("Por favor introduzca un RNC");
+                return;
+            }
+
             using (ActivosEntities db = new ActivosEntities())
             {
                 Parametro parametro = new Parametro

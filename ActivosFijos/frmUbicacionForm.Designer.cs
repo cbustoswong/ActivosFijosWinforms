@@ -60,7 +60,7 @@
             "Activo",
             "Inactivo"});
             this.cbxEstado.Location = new System.Drawing.Point(153, 191);
-            this.cbxEstado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxEstado.Margin = new System.Windows.Forms.Padding(4);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(127, 24);
             this.cbxEstado.TabIndex = 4;
@@ -113,6 +113,7 @@
             this.tbxEdificio.Name = "tbxEdificio";
             this.tbxEdificio.Size = new System.Drawing.Size(180, 22);
             this.tbxEdificio.TabIndex = 3;
+            this.tbxEdificio.Validating += new System.ComponentModel.CancelEventHandler(this.tbxEdificio_Validating);
             // 
             // tbxDireccion
             // 
@@ -122,6 +123,7 @@
             this.tbxDireccion.Name = "tbxDireccion";
             this.tbxDireccion.Size = new System.Drawing.Size(316, 22);
             this.tbxDireccion.TabIndex = 2;
+            this.tbxDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.tbxDireccion_Validating);
             // 
             // tbxDescripcion
             // 
@@ -131,6 +133,7 @@
             this.tbxDescripcion.Name = "tbxDescripcion";
             this.tbxDescripcion.Size = new System.Drawing.Size(316, 22);
             this.tbxDescripcion.TabIndex = 1;
+            this.tbxDescripcion.Validating += new System.ComponentModel.CancelEventHandler(this.tbxDescripcion_Validating);
             // 
             // btnGuardar
             // 
@@ -140,7 +143,7 @@
             this.btnGuardar.FlatAppearance.BorderSize = 0;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Location = new System.Drawing.Point(407, 239);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(64, 59);
             this.btnGuardar.TabIndex = 5;
@@ -155,7 +158,7 @@
             this.btnEliminar.FlatAppearance.BorderSize = 0;
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Location = new System.Drawing.Point(16, 238);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(64, 59);
             this.btnEliminar.TabIndex = 6;

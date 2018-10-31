@@ -36,6 +36,7 @@ namespace ActivosFijos
             {
                 btnProveedores.Enabled = false;
                 btnUbicacion.Enabled = false;
+                btnParametros.Enabled = false;
             }
 
             if (!roles.Contains("Admin"))
@@ -117,6 +118,7 @@ namespace ActivosFijos
                 frm.Show();
                 Hide();
             }
+            else
             {
                 MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
             }

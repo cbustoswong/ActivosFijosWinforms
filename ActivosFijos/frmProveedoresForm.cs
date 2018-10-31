@@ -53,39 +53,46 @@ namespace ActivosFijos
         #region Metodos
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            using (ActivosEntities db = new ActivosEntities())
+            if (CheckCedula(txtCedula.Text))
             {
-                Proveedor proveedor = new Proveedor
+                using (ActivosEntities db = new ActivosEntities())
                 {
-                    Codigo_Proveedor = Id,
-                    Nombre = txtNombre.Text,
-                    Cedula_RNC = txtCedula.Text,
-                    Tipo_Proveedor = cbxTipo.SelectedItem.ToString(),
-                    Fecha_Registro = dtpFecha.Value,
-                    Estado = cbxEstado.SelectedItem.ToString()
-                };
-
-                if (Id != 0)
-                {
-                    var proinDb = db.Proveedor.FirstOrDefault(pro => pro.Codigo_Proveedor == proveedor.Codigo_Proveedor);
-
-                    if (proinDb != null)
+                    Proveedor proveedor = new Proveedor
                     {
-                        db.Entry(proinDb).State = System.Data.Entity.EntityState.Detached;
-                        db.Entry(proveedor).State = System.Data.Entity.EntityState.Modified;
+                        Codigo_Proveedor = Id,
+                        Nombre = txtNombre.Text,
+                        Cedula_RNC = txtCedula.Text,
+                        Tipo_Proveedor = cbxTipo.SelectedItem.ToString(),
+                        Fecha_Registro = dtpFecha.Value,
+                        Estado = cbxEstado.SelectedItem.ToString()
+                    };
+
+                    if (Id != 0)
+                    {
+                        var proinDb = db.Proveedor.FirstOrDefault(pro => pro.Codigo_Proveedor == proveedor.Codigo_Proveedor);
+
+                        if (proinDb != null)
+                        {
+                            db.Entry(proinDb).State = System.Data.Entity.EntityState.Detached;
+                            db.Entry(proveedor).State = System.Data.Entity.EntityState.Modified;
+                        }
+
+                        MessageBox.Show("El proveedor ha sido modificado exitosamente.");
+                    }
+                    else
+                    {
+                        db.Proveedor.Add(proveedor);
+                        MessageBox.Show("El proveedor ha sido creado exitosamente.");
                     }
 
-                    MessageBox.Show("El proveedor ha sido modificado exitosamente.");
-                }
-                else
-                {
-                    db.Proveedor.Add(proveedor);
-                    MessageBox.Show("El proveedor ha sido creado exitosamente.");
-                }
+                    db.SaveChanges();
 
-                db.SaveChanges();
-
-                Close();
+                    Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Introduzca una cedula valida");
             }
         }
 

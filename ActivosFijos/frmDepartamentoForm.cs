@@ -38,6 +38,12 @@ namespace ActivosFijos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            if (tbxDepartamento.Text.Length == 0)
+            {
+                MessageBox.Show("Introduzca un nombre");
+                return;
+            }
+
             using (ActivosEntities db = new ActivosEntities())
             {
                 Departamento departamento = new Departamento
@@ -88,7 +94,7 @@ namespace ActivosFijos
         {
             Regex regex = new Regex("^[a-zA-Z]+$");
             bool hasOnlyAlpha = regex.IsMatch(tbxDepartamento.Text);
-            if (!hasOnlyAlpha)
+            if (!hasOnlyAlpha || tbxDepartamento.Text.Length == 0)
             {
                 MessageBox.Show("Introduzca el nombre correctamente");
                 tbxDepartamento.Focus();

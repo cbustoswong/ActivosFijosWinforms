@@ -52,15 +52,12 @@ namespace ActivosFijos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            
             if (ValidarCampos())
             {
                 using (ActivosEntities db = new ActivosEntities())
                 {
                     var rol = db.Roles
                             .FirstOrDefault(d => d.Nombre == cobRol.SelectedValue.ToString());
-
-                    MessageBox.Show(rol.Nombre);
 
                     Usuarios Usuario = new Usuarios
                     {
@@ -71,8 +68,6 @@ namespace ActivosFijos
                         Roles = { rol },
                         Contrasena = SecurePasswordHasher.Hash(txtContrasena.Text),
                     };
-
-                  
 
                     if (Id != 0)
                     {
