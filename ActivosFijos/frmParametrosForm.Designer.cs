@@ -119,6 +119,7 @@
             this.txtRNC.Name = "txtRNC";
             this.txtRNC.Size = new System.Drawing.Size(121, 20);
             this.txtRNC.TabIndex = 3;
+            this.txtRNC.Validating += new System.ComponentModel.CancelEventHandler(this.txtRNC_Validating);
             // 
             // dtpAnoMes
             // 

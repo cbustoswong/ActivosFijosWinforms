@@ -115,5 +115,40 @@ namespace ActivosFijos
                 txtNombre.Focus();
             }
         }
+
+        private void txtCedula_Validating(object sender, CancelEventArgs e)
+        {
+            if (!CheckCedula(txtCedula.Text))
+            {
+                MessageBox.Show("Introduzca una cedula valida");
+                txtCedula.Focus();
+            }
+        }
+
+        public static bool CheckCedula(string Cedula)
+        {
+            int vnTotal = 0;
+            string chkCedula = Cedula.Replace("-", "");
+            int pLongCed = chkCedula.Trim().Length;
+            int[] digitoMult = new int[11] { 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1 };
+
+            if (pLongCed < 11 || pLongCed > 11)
+                return false;
+
+            for (int vDig = 1; vDig <= pLongCed; vDig++)
+            {
+                int vCalculo = int.Parse(chkCedula.Substring(vDig - 1, 1)) * digitoMult[vDig - 1];
+                if (vCalculo < 10)
+                    vnTotal += vCalculo;
+                else
+                    vnTotal += int.Parse(vCalculo.ToString().Substring(0, 1)) + int.Parse(vCalculo.ToString().Substring(1, 1));
+            }
+
+            if (vnTotal % 10 == 0)
+                return true;
+            else
+                return false;
+
+        }
     }
 }

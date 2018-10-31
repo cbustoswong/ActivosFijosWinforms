@@ -94,8 +94,51 @@ namespace ActivosFijos
             MessageBox.Show("El parametro ha sido eliminado exitosamente");
             Close();
         }
+
         #endregion
 
+        private void txtRNC_Validating(object sender, CancelEventArgs e)
+        {
+            if (!ValidateRNC(txtRNC.Text))
+            {
+                MessageBox.Show("Introduzca un RNC valido");
+                txtRNC.Focus();
+            }
+        }
 
+        public static bool ValidateRNC(string rnc)
+        {
+            int[] baseRnc = new int[8] { 7, 9, 8, 6, 5, 4, 3, 2 };
+            int suma = 0;
+            int resto, verificador;
+
+            if (rnc.Trim().Length != 9)
+                return false;
+
+            var digitos = rnc.Trim().ToArray();
+            var digitoVerificador = int.Parse(digitos.Last().ToString());
+
+            for (var i = baseRnc.Length - 1; i >= 0; i -= 1)
+            {
+                suma += baseRnc[i] * int.Parse(digitos[i].ToString());
+            }
+
+            resto = suma % 11;
+
+            switch (resto)
+            {
+                case 0:
+                    verificador = 2;
+                    break;
+                case 1:
+                    verificador = 1;
+                    break;
+                default:
+                    verificador = 11 - resto;
+                    break;
+            }
+
+            return verificador == digitoVerificador;
+        }
     }
 }
