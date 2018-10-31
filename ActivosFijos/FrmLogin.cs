@@ -40,5 +40,7 @@ namespace ActivosFijos
                 MessageBox.Show("Usuario o contraseña incorrecta");
             }
         }
+
+    
     }
 }
