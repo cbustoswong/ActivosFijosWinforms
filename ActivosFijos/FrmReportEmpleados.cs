@@ -19,6 +19,8 @@ namespace ActivosFijos
 
         private void FrmReportEmpleados_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ActivosFijosDataSet.Departamento' table. You can move, or remove it, as needed.
+            this.departamentoTableAdapter.Fill(this.ActivosFijosDataSet.Departamento);
             // TODO: This line of code loads data into the 'ActivosFijosDataSet.Empleado' table. You can move, or remove it, as needed.
             this.EmpleadoTableAdapter.Fill(this.ActivosFijosDataSet.Empleado);
 

@@ -30,12 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.EmpleadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ActivosFijosDataSet = new ActivosFijos.ActivosFijosDataSet();
             this.EmpleadoTableAdapter = new ActivosFijos.ActivosFijosDataSetTableAdapters.EmpleadoTableAdapter();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.activosFijosDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DepartamentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.departamentoTableAdapter = new ActivosFijos.ActivosFijosDataSetTableAdapters.DepartamentoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.EmpleadoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivosFijosDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activosFijosDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartamentoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // EmpleadoBindingSource
@@ -57,13 +63,30 @@
             this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             reportDataSource1.Name = "DSEmpleado";
             reportDataSource1.Value = this.EmpleadoBindingSource;
+            reportDataSource2.Name = "DSDepartamento";
+            reportDataSource2.Value = this.DepartamentoBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "ActivosFijos.ReportEmpleado.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // activosFijosDataSetBindingSource
+            // 
+            this.activosFijosDataSetBindingSource.DataSource = this.ActivosFijosDataSet;
+            this.activosFijosDataSetBindingSource.Position = 0;
+            // 
+            // DepartamentoBindingSource
+            // 
+            this.DepartamentoBindingSource.DataMember = "Departamento";
+            this.DepartamentoBindingSource.DataSource = this.ActivosFijosDataSet;
+            // 
+            // departamentoTableAdapter
+            // 
+            this.departamentoTableAdapter.ClearBeforeFill = true;
             // 
             // FrmReportEmpleados
             // 
@@ -76,6 +99,8 @@
             this.Load += new System.EventHandler(this.FrmReportEmpleados_Load);
             ((System.ComponentModel.ISupportInitialize)(this.EmpleadoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ActivosFijosDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activosFijosDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DepartamentoBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -85,5 +110,8 @@
         private ActivosFijosDataSet ActivosFijosDataSet;
         private ActivosFijosDataSetTableAdapters.EmpleadoTableAdapter EmpleadoTableAdapter;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.BindingSource activosFijosDataSetBindingSource;
+        private System.Windows.Forms.BindingSource DepartamentoBindingSource;
+        private ActivosFijosDataSetTableAdapters.DepartamentoTableAdapter departamentoTableAdapter;
     }
 }
