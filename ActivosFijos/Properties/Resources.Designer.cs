@@ -113,6 +113,16 @@ namespace ActivosFijos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap excel {
+            get {
+                object obj = ResourceManager.GetObject("excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap format_list_bulleted {
             get {
                 object obj = ResourceManager.GetObject("format-list-bulleted", resourceCulture);
@@ -236,6 +246,16 @@ namespace ActivosFijos.Properties {
         internal static System.Drawing.Bitmap truck_selected {
             get {
                 object obj = ResourceManager.GetObject("truck_selected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unapeclogo {
+            get {
+                object obj = ResourceManager.GetObject("unapeclogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
