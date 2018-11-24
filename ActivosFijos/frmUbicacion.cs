@@ -113,5 +113,11 @@ namespace ActivosFijos
         {
             menu.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmReportUbicaciones frm = new frmReportUbicaciones();
+            frm.ShowDialog();
+        }
     }
 }

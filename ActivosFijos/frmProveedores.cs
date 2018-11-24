@@ -113,5 +113,11 @@ namespace ActivosFijos
 
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmReportProveedores frm = new frmReportProveedores();
+            frm.ShowDialog();
+        }
     }
 }

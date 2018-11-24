@@ -134,5 +134,11 @@ namespace ActivosFijos
         {
             menu.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmReportEmpleados frm = new FrmReportEmpleados();
+            frm.ShowDialog();
+        }
     }
 }
