@@ -61,6 +61,12 @@
     <Compile Include="frmActivosFijos.Designer.cs">
       <DependentUpon>frmActivosFijos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCalcDepreciacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCalcDepreciacion.Designer.cs">
+      <DependentUpon>frmCalcDepreciacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDepartamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +204,9 @@
     <Compile Include="Services\SecurePasswordHasher.cs" />
     <EmbeddedResource Include="frmActivosFijos.resx">
       <DependentUpon>frmActivosFijos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalcDepreciacion.resx">
+      <DependentUpon>frmCalcDepreciacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDepartamento.resx">
       <DependentUpon>frmDepartamento.cs</DependentUpon>
