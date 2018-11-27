@@ -46,12 +46,14 @@
             // 
             this.dgvResultados.AllowUserToAddRows = false;
             this.dgvResultados.AllowUserToDeleteRows = false;
+            this.dgvResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultados.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvResultados.Location = new System.Drawing.Point(0, 126);
+            this.dgvResultados.Location = new System.Drawing.Point(12, 141);
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.ReadOnly = true;
-            this.dgvResultados.Size = new System.Drawing.Size(644, 243);
+            this.dgvResultados.Size = new System.Drawing.Size(620, 216);
             this.dgvResultados.TabIndex = 0;
             // 
             // panel1
@@ -116,6 +118,7 @@
             this.cmdCalcular.TabIndex = 3;
             this.cmdCalcular.Text = "Calcular";
             this.cmdCalcular.UseVisualStyleBackColor = true;
+            this.cmdCalcular.Click += new System.EventHandler(this.cmdCalcular_Click);
             // 
             // nudAnosDep
             // 
