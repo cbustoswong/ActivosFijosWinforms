@@ -61,15 +61,15 @@ namespace ActivosFijos.ExportForms
             ws.Cells[6, 1] = "Hasta:";
             ws.Cells[6, 2] = dtpTo.Value.ToShortDateString();
             ws.Range["A5", "A6"].Font.Bold = true;
-            ws.Cells["D5"] = "Fecha de Reporte:";
-            ws.Cells["D5"].Font.Bold = true;
-            ws.Cells["E5"] = DateTime.Now.ToShortDateString();
+            ws.Cells[5, 4] = "Fecha de Reporte:";
+            ws.Cells[5, 4].Font.Bold = true;
+            ws.Cells[5, 5] = DateTime.Now.ToShortDateString();
 
             foreach (Empleado emp in empleados)
             {
                 if (!bgWorker.CancellationPending)
                 {
-                    bgWorker.ReportProgress((index++ - 8) * 100 / process);
+                    bgWorker.ReportProgress((index++ - 7) * 100 / process);
 
                     ws.Cells[index, 1] = emp.Nombre.ToString();
                     ws.Cells[index, 2] = emp.Apellido.ToString();
@@ -111,7 +111,7 @@ namespace ActivosFijos.ExportForms
             {
                 Thread.Sleep(100);
                 lblProgress.Text = "Los datos han sido exportado exitosamente";
-                progressBar.Value = 0;
+                //progressBar.Value = 0;
                 Process.Start(parameters.FileName);
             }
         }
