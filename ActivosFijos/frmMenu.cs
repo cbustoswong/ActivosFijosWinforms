@@ -26,25 +26,34 @@ namespace ActivosFijos
         {
             roles = usuario.Roles.Select(r => r.Nombre).ToList();
 
-            if (!roles.Contains("RRHH"))
+            if (roles.Contains("Admin"))
             {
-                btnEmpleados.Enabled = false;
-                btnDepartamentos.Enabled = false;
-
+                return;
             }
-            else if (!roles.Contains("Logistica"))
+            else
             {
-                btnProveedores.Enabled = false;
-                btnUbicacion.Enabled = false;
-                btnParametros.Enabled = false;
-            }
-
-            if (!roles.Contains("Admin"))
-            {
+                this.Height = 385;
                 btnUsuarios.Enabled = false;
+                btnActivos.Enabled = false;
 
+                if (!roles.Contains("RRHH"))
+                {
+                    btnEmpleados.Enabled = false;
+                    btnDepartamentos.Enabled = false;
+                }
+
+                if (!roles.Contains("Logistica"))
+                {
+                    btnProveedores.Enabled = false;
+                    btnUbicacion.Enabled = false;
+                    btnParametros.Enabled = false;
+                }
+
+                if (!roles.Contains("Contable"))
+                {
+                    btnActivos.Enabled = false;
+                }
             }
-
 
         }
 
@@ -135,6 +144,21 @@ namespace ActivosFijos
                 Hide();
             }
             else //En caso de que no lo sea
+            {
+                MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
+            }
+        }
+
+        private void btnActivos_Click(object sender, EventArgs e)
+        {
+            if (roles.Contains("Admin") || roles.Contains("Contable"))
+            {
+                frmActivosFijos frm = new frmActivosFijos();
+                frm.menu = this;
+                frm.Show();
+                Hide();
+            }
+            else
             {
                 MessageBox.Show("No tiene los privilegios necesarios para acceder a esta opcion del sistema.");
             }

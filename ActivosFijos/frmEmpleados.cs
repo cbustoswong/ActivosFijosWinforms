@@ -1,4 +1,5 @@
-﻿using ActivosFijos.Models;
+﻿using ActivosFijos.ExportForms;
+using ActivosFijos.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +134,12 @@ namespace ActivosFijos
         private void frmEmpleados_FormClosing(object sender, FormClosingEventArgs e)
         {
             menu.Show();
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            FrmExportEmpleados frm = new FrmExportEmpleados();
+            frm.ShowDialog();
         }
     }
 }

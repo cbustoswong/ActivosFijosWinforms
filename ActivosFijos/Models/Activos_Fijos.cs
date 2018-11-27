@@ -27,7 +27,6 @@ namespace ActivosFijos.Models
         public int Codigo_TipoActivo { get; set; }
         public System.DateTime Fecha_Registro { get; set; }
         public decimal Valor_Compra { get; set; }
-        public decimal Depreciacion_Acumulada { get; set; }
     
         public virtual Departamento Departamento { get; set; }
         public virtual Tipo_Activo Tipo_Activo { get; set; }

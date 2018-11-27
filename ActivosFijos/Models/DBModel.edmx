@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ActivosFijosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ActivosFijosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activos_Fijos">
           <Key>
             <PropertyRef Name="Codigo_Activo" />
@@ -16,21 +16,17 @@
           <Property Name="Codigo_TipoActivo" Type="int" Nullable="false" />
           <Property Name="Fecha_Registro" Type="date" Nullable="false" />
           <Property Name="Valor_Compra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Depreciacion_Acumulada" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Calculo_Depreciacion">
           <Key>
             <PropertyRef Name="Codigo_Registro" />
+            <PropertyRef Name="Codigo_Activo_Fijo" />
           </Key>
           <Property Name="Codigo_Registro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Año_Proceso" Type="smallint" Nullable="false" />
-          <Property Name="Mes_Proceso" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Codigo_Activo" Type="int" Nullable="false" />
+          <Property Name="Codigo_Activo_Fijo" Type="int" Nullable="false" />
           <Property Name="Fecha_Proceso" Type="date" Nullable="false" />
           <Property Name="Monto_Depreciado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Depreciacion_Acumulada" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Cuenta_Compra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Cuenta_Depreciacion" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -86,8 +82,6 @@
           </Key>
           <Property Name="Codigo_TipoActivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="100" />
-          <Property Name="Cuenta_ContCompra" Type="varchar" MaxLength="10" />
-          <Property Name="Cuenta_ContDeprec" Type="varchar" MaxLength="10" />
           <Property Name="Estado" Type="varchar" MaxLength="15" />
         </EntityType>
         <EntityType Name="Tipo_Pago">
@@ -170,7 +164,7 @@
               <PropertyRef Name="Codigo_Activo" />
             </Principal>
             <Dependent Role="Calculo_Depreciacion">
-              <PropertyRef Name="Codigo_Activo" />
+              <PropertyRef Name="Codigo_Activo_Fijo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -187,7 +181,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuarios_Roles_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Usuarios_Roles" Type="Self.Usuarios_Roles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Roles">
@@ -199,7 +195,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Usuarios_Roles_Usuarios">
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Usuarios_Roles" Type="Self.Usuarios_Roles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Usuarios">
@@ -252,7 +250,8 @@
             <End Role="Usuarios_Roles" EntitySet="Usuarios_Roles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ActivosFijosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -267,7 +266,6 @@
           <Property Name="Codigo_TipoActivo" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Valor_Compra" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Depreciacion_Acumulada" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Activos_Fijos_Departamento" FromRole="Activos_Fijos" ToRole="Departamento" />
           <NavigationProperty Name="Tipo_Activo" Relationship="Self.FK_Activos_Fijos_Tipo_Activo" FromRole="Activos_Fijos" ToRole="Tipo_Activo" />
           <NavigationProperty Name="Ubicacion" Relationship="Self.FK_Activos_Fijos_Ubicacion" FromRole="Activos_Fijos" ToRole="Ubicacion" />
@@ -276,16 +274,13 @@
         <EntityType Name="Calculo_Depreciacion">
           <Key>
             <PropertyRef Name="Codigo_Registro" />
+            <PropertyRef Name="Codigo_Activo_Fijo" />
           </Key>
           <Property Name="Codigo_Registro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Año_Proceso" Type="Int16" Nullable="false" />
-          <Property Name="Mes_Proceso" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Codigo_Activo" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Activo_Fijo" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Proceso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Monto_Depreciado" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Depreciacion_Acumulada" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Cuenta_Compra" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Cuenta_Depreciacion" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Depreciacion_Activos_Fijos" FromRole="Calculo_Depreciacion" ToRole="Activos_Fijos" />
         </EntityType>
         <EntityType Name="Departamento">
@@ -311,6 +306,16 @@
           <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Empleado_Departamento" FromRole="Empleado" ToRole="Departamento" />
         </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="Codigo_Parametro" />
+          </Key>
+          <Property Name="Codigo_Parametro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ano_Mes_Proceso" Type="DateTime" Precision="0" />
+          <Property Name="Deprec_Calculada" Type="Boolean" />
+          <Property Name="RNC_Empresa" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
+          <Property Name="Met_Drepeciacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Proveedor">
           <Key>
             <PropertyRef Name="Codigo_Proveedor" />
@@ -322,14 +327,20 @@
           <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
+        </EntityType>
         <EntityType Name="Tipo_Activo">
           <Key>
             <PropertyRef Name="Codigo_TipoActivo" />
           </Key>
           <Property Name="Codigo_TipoActivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Cuenta_ContCompra" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Cuenta_ContDeprec" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Tipo_Activo" FromRole="Tipo_Activo" ToRole="Activos_Fijos" />
         </EntityType>
@@ -352,15 +363,16 @@
           <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Ubicacion" FromRole="Ubicacion" ToRole="Activos_Fijos" />
         </EntityType>
-        <EntityType Name="Parametro">
+        <EntityType Name="Usuarios">
           <Key>
-            <PropertyRef Name="Codigo_Parametro" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Codigo_Parametro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ano_Mes_Proceso" Type="DateTime" Precision="0" />
-          <Property Name="Deprec_Calculada" Type="Boolean" />
-          <Property Name="RNC_Empresa" Type="String" MaxLength="9" FixedLength="true" Unicode="false" />
-          <Property Name="Met_Drepeciacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="Self.Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
         </EntityType>
         <Association Name="FK_Activos_Fijos_Departamento">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
@@ -406,7 +418,7 @@
               <PropertyRef Name="Codigo_Activo" />
             </Principal>
             <Dependent Role="Calculo_Depreciacion">
-              <PropertyRef Name="Codigo_Activo" />
+              <PropertyRef Name="Codigo_Activo_Fijo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -422,16 +434,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Usuarios_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="ActivosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activos_Fijos" EntityType="Self.Activos_Fijos" />
           <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Parametro" EntityType="Self.Parametro" />
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Tipo_Activo" EntityType="Self.Tipo_Activo" />
           <EntitySet Name="Tipo_Pago" EntityType="Self.Tipo_Pago" />
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" />
-          <EntitySet Name="Parametro" EntityType="Self.Parametro" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <AssociationSet Name="FK_Activos_Fijos_Departamento" Association="Self.FK_Activos_Fijos_Departamento">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
@@ -452,36 +470,11 @@
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <EntitySet Name="Roles" EntityType="ActivosFijosModel.Roles" />
-          <EntitySet Name="Usuarios" EntityType="ActivosFijosModel.Usuarios" />
-          <AssociationSet Name="Usuarios_Roles" Association="ActivosFijosModel.Usuarios_Roles">
+          <AssociationSet Name="Usuarios_Roles" Association="Self.Usuarios_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Usuarios" Relationship="ActivosFijosModel.Usuarios_Roles" FromRole="Roles" ToRole="Usuarios" />
-        </EntityType>
-        <EntityType Name="Usuarios">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="24" FixedLength="false" Unicode="false" />
-          <Property Name="Contrasena" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Roles" Relationship="ActivosFijosModel.Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
-        </EntityType>
-        <Association Name="Usuarios_Roles">
-          <End Type="ActivosFijosModel.Roles" Role="Roles" Multiplicity="*" />
-          <End Type="ActivosFijosModel.Usuarios" Role="Usuarios" Multiplicity="*" />
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -498,7 +491,6 @@
                 <ScalarProperty Name="Codigo_TipoActivo" ColumnName="Codigo_TipoActivo" />
                 <ScalarProperty Name="Fecha_Registro" ColumnName="Fecha_Registro" />
                 <ScalarProperty Name="Valor_Compra" ColumnName="Valor_Compra" />
-                <ScalarProperty Name="Depreciacion_Acumulada" ColumnName="Depreciacion_Acumulada" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -506,14 +498,10 @@
             <EntityTypeMapping TypeName="ActivosFijosModel.Calculo_Depreciacion">
               <MappingFragment StoreEntitySet="Calculo_Depreciacion">
                 <ScalarProperty Name="Codigo_Registro" ColumnName="Codigo_Registro" />
-                <ScalarProperty Name="Año_Proceso" ColumnName="Año_Proceso" />
-                <ScalarProperty Name="Mes_Proceso" ColumnName="Mes_Proceso" />
-                <ScalarProperty Name="Codigo_Activo" ColumnName="Codigo_Activo" />
+                <ScalarProperty Name="Codigo_Activo_Fijo" ColumnName="Codigo_Activo_Fijo" />
                 <ScalarProperty Name="Fecha_Proceso" ColumnName="Fecha_Proceso" />
                 <ScalarProperty Name="Monto_Depreciado" ColumnName="Monto_Depreciado" />
                 <ScalarProperty Name="Depreciacion_Acumulada" ColumnName="Depreciacion_Acumulada" />
-                <ScalarProperty Name="Cuenta_Compra" ColumnName="Cuenta_Compra" />
-                <ScalarProperty Name="Cuenta_Depreciacion" ColumnName="Cuenta_Depreciacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -539,6 +527,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Parametro">
+            <EntityTypeMapping TypeName="ActivosFijosModel.Parametro">
+              <MappingFragment StoreEntitySet="Parametro">
+                <ScalarProperty Name="Codigo_Parametro" ColumnName="Codigo_Parametro" />
+                <ScalarProperty Name="Ano_Mes_Proceso" ColumnName="Ano_Mes_Proceso" />
+                <ScalarProperty Name="Deprec_Calculada" ColumnName="Deprec_Calculada" />
+                <ScalarProperty Name="RNC_Empresa" ColumnName="RNC_Empresa" />
+                <ScalarProperty Name="Met_Drepeciacion" ColumnName="Met_Drepeciacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Proveedor">
             <EntityTypeMapping TypeName="ActivosFijosModel.Proveedor">
               <MappingFragment StoreEntitySet="Proveedor">
@@ -551,13 +550,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ActivosFijosModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Tipo_Activo">
             <EntityTypeMapping TypeName="ActivosFijosModel.Tipo_Activo">
               <MappingFragment StoreEntitySet="Tipo_Activo">
                 <ScalarProperty Name="Codigo_TipoActivo" ColumnName="Codigo_TipoActivo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Cuenta_ContCompra" ColumnName="Cuenta_ContCompra" />
-                <ScalarProperty Name="Cuenta_ContDeprec" ColumnName="Cuenta_ContDeprec" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -582,42 +587,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Parametro">
-            <EntityTypeMapping TypeName="ActivosFijosModel.Parametro">
-              <MappingFragment StoreEntitySet="Parametro">
-                <ScalarProperty Name="Codigo_Parametro" ColumnName="Codigo_Parametro" />
-                <ScalarProperty Name="Ano_Mes_Proceso" ColumnName="Ano_Mes_Proceso" />
-                <ScalarProperty Name="Deprec_Calculada" ColumnName="Deprec_Calculada" />
-                <ScalarProperty Name="RNC_Empresa" ColumnName="RNC_Empresa" />
-                <ScalarProperty Name="Met_Drepeciacion" ColumnName="Met_Drepeciacion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="ActivosFijosModel.Roles">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="ActivosFijosModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="Usuarios_Roles" TypeName="ActivosFijosModel.Usuarios_Roles" StoreEntitySet="Usuarios_Roles">
-            <EndProperty Name="Usuarios">
-              <ScalarProperty Name="Id" ColumnName="Id_Usuario" />
-            </EndProperty>
             <EndProperty Name="Roles">
               <ScalarProperty Name="Id" ColumnName="Id_Rol" />
+            </EndProperty>
+            <EndProperty Name="Usuarios">
+              <ScalarProperty Name="Id" ColumnName="Id_Usuario" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>
