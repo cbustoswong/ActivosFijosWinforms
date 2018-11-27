@@ -438,7 +438,7 @@
           <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="ActivossssEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ActivosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activos_Fijos" EntityType="Self.Activos_Fijos" />
           <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" />
@@ -480,7 +480,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ActivosFijosModelStoreContainer" CdmEntityContainer="ActivossssEntities">
+        <EntityContainerMapping StorageEntityContainer="ActivosFijosModelStoreContainer" CdmEntityContainer="ActivosEntities">
           <EntitySetMapping Name="Activos_Fijos">
             <EntityTypeMapping TypeName="ActivosFijosModel.Activos_Fijos">
               <MappingFragment StoreEntitySet="Activos_Fijos">

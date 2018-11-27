@@ -13,10 +13,10 @@ namespace ActivosFijos.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ActivossssEntities : DbContext
+    public partial class ActivosEntities : DbContext
     {
-        public ActivossssEntities()
-            : base("name=ActivossssEntities")
+        public ActivosEntities()
+            : base("name=ActivosEntities")
         {
         }
     
