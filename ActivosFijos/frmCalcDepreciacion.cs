@@ -32,7 +32,7 @@ namespace ActivosFijos
 
             var ActivosFijos = db.Activos_Fijos.ToList();
 
-          
+
 
             //try
             //{
@@ -48,6 +48,7 @@ namespace ActivosFijos
 
             DataTable dt = new DataTable(); // Crea tabla en memoria
             dt.Clear();
+            dt.Columns.Add("IdActivo");
             dt.Columns.Add("Activo");
             dt.Columns.Add("Mes"); // Crea columnas de dicha tabla  
             dt.Columns.Add("MontoDep");
@@ -58,35 +59,83 @@ namespace ActivosFijos
 
             foreach (var activo in ActivosFijos)
             {
-               
+
 
                 valorCompra = (double)activo.Valor_Compra;
 
-            for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
-                digitoAnos += anoDep;
+                for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
+                    digitoAnos += anoDep;
 
-            for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
-            {
-                if (rbLineaRecta.Checked)
-                    depAnual = valorCompra / (int)nudAnosDep.Value;
-                else
-                    depAnual = (valorCompra * anoDep) / digitoAnos;
+                for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
+                {
+                    if (rbLineaRecta.Checked)
+                        depAnual = valorCompra / (int)nudAnosDep.Value;
+                    else
+                        depAnual = (valorCompra * anoDep) / digitoAnos;
 
-                depAcumulada += depAnual;
-                depRestante = valorCompra - depAcumulada;
+                    depAcumulada += depAnual;
+                    depRestante = valorCompra - depAcumulada;
 
-                DataRow fila = dt.NewRow();
+                    DataRow fila = dt.NewRow();
+                    fila["IdActivo"] = activo.Codigo_Activo;
                     fila["Activo"] = activo.Descripcion;
-                fila["Mes"] = anoDep; // Mueve valor a columnas de la tabla 
-                fila["MontoDep"] = depAnual;
-                fila["TotalDep"] = depAcumulada;
-                fila["TotalRest"] = depRestante;
-                dt.Rows.Add(fila);
+                    fila["Mes"] = anoDep; // Mueve valor a columnas de la tabla 
+                    fila["MontoDep"] = depAnual;
+                    fila["TotalDep"] = depAcumulada;
+                    fila["TotalRest"] = depRestante;
+                    dt.Rows.Add(fila);
+                }
+
+                dgvResultados.DataSource = dt;
+                dgvResultados.Refresh(); // Muestra resultado en grid
+            }
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvResultados.Rows.Count > 0)
+                {
+                    DataTable dtTabla = (DataTable)dgvResultados.DataSource
+                        ;
+                    for (int i = 0; i < dtTabla.Rows.Count -1; i++)
+                    {
+                       //InsertarActivoCalculado(dtTabla.Rows[i][""])
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Primero debe calcular la depreciacion");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
 
-            dgvResultados.DataSource = dt;
-            dgvResultados.Refresh(); // Muestra resultado en grid
         }
+        private void InsertarActivoCalculado(int IdActivo, decimal MontoDepreciado, decimal DepreciacionAcumulada)
+        {
+
+            using (ActivosEntities db = new ActivosEntities())
+            {
+                Calculo_Depreciacion CalcDeprec = new Calculo_Depreciacion
+                {
+                    Codigo_Activo = IdActivo,
+                    Fecha_Proceso = dtpFecha.Value,
+                    Monto_Depreciado = MontoDepreciado,
+                    Depreciacion_Acumulada = DepreciacionAcumulada
+
+                };
+
+                db.Calculo_Depreciacion.Add(CalcDeprec);
+
+                db.SaveChanges();
+
+                Close();
+            }
         }
         //private void GetActivos(string search)
         //{
@@ -96,7 +145,7 @@ namespace ActivosFijos
         //        {
         //            DataTable dtActivos = new DataTable();
 
-                   
+
 
         //            var ubicacion = db.Activos_Fijos.Where(a => a.Descripcion.Contains(search));
 
@@ -117,3 +166,4 @@ namespace ActivosFijos
         //}
     }
 }
+

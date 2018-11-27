@@ -37,6 +37,9 @@
             this.nudAnosDep = new System.Windows.Forms.NumericUpDown();
             this.txtValorCompra = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnosDep)).BeginInit();
@@ -58,8 +61,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dtpFecha);
+            this.panel1.Controls.Add(this.btnGuardar);
             this.panel1.Controls.Add(this.rbDigAnos);
             this.panel1.Controls.Add(this.rbLineaRecta);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmdCalcular);
             this.panel1.Controls.Add(this.nudAnosDep);
@@ -75,7 +81,7 @@
             // 
             this.rbDigAnos.AutoSize = true;
             this.rbDigAnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbDigAnos.Location = new System.Drawing.Point(115, 79);
+            this.rbDigAnos.Location = new System.Drawing.Point(115, 104);
             this.rbDigAnos.Name = "rbDigAnos";
             this.rbDigAnos.Size = new System.Drawing.Size(90, 17);
             this.rbDigAnos.TabIndex = 6;
@@ -87,7 +93,7 @@
             this.rbLineaRecta.AutoSize = true;
             this.rbLineaRecta.Checked = true;
             this.rbLineaRecta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbLineaRecta.Location = new System.Drawing.Point(15, 79);
+            this.rbLineaRecta.Location = new System.Drawing.Point(15, 104);
             this.rbLineaRecta.Name = "rbLineaRecta";
             this.rbLineaRecta.Size = new System.Drawing.Size(94, 17);
             this.rbLineaRecta.TabIndex = 5;
@@ -112,9 +118,9 @@
             this.cmdCalcular.FlatAppearance.BorderSize = 2;
             this.cmdCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCalcular.Location = new System.Drawing.Point(311, 30);
+            this.cmdCalcular.Location = new System.Drawing.Point(391, 30);
             this.cmdCalcular.Name = "cmdCalcular";
-            this.cmdCalcular.Size = new System.Drawing.Size(133, 52);
+            this.cmdCalcular.Size = new System.Drawing.Size(114, 42);
             this.cmdCalcular.TabIndex = 3;
             this.cmdCalcular.Text = "Calcular";
             this.cmdCalcular.UseVisualStyleBackColor = true;
@@ -159,6 +165,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Valor Compra:";
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::ActivosFijos.Properties.Resources.save;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(525, 26);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(48, 48);
+            this.btnGuardar.TabIndex = 7;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Location = new System.Drawing.Point(140, 69);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Fecha:";
+            // 
             // frmCalcDepreciacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,5 +223,8 @@
         private System.Windows.Forms.NumericUpDown nudAnosDep;
         private System.Windows.Forms.TextBox txtValorCompra;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Label label3;
     }
 }
