@@ -85,7 +85,7 @@ namespace ActivosFijos.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap account_group_selected {
             get {
-                object obj = ResourceManager.GetObject("account-group_selected", resourceCulture);
+                object obj = ResourceManager.GetObject("account_group_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,6 +123,16 @@ namespace ActivosFijos.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap file_invoice_dollar {
+            get {
+                object obj = ResourceManager.GetObject("file-invoice-dollar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap format_list_bulleted {
             get {
                 object obj = ResourceManager.GetObject("format-list-bulleted", resourceCulture);
@@ -135,7 +145,7 @@ namespace ActivosFijos.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap format_list_bulleted_selected {
             get {
-                object obj = ResourceManager.GetObject("format-list-bulleted_selected", resourceCulture);
+                object obj = ResourceManager.GetObject("format_list_bulleted_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -165,7 +175,7 @@ namespace ActivosFijos.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap location_marker_selected {
             get {
-                object obj = ResourceManager.GetObject("location-marker_selected", resourceCulture);
+                object obj = ResourceManager.GetObject("location_marker_selected", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -205,7 +215,7 @@ namespace ActivosFijos.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap proxy_duckduckgo {
             get {
-                object obj = ResourceManager.GetObject("proxy.duckduckgo", resourceCulture);
+                object obj = ResourceManager.GetObject("proxy_duckduckgo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -265,27 +275,7 @@ namespace ActivosFijos.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap user_login_icon {
             get {
-                object obj = ResourceManager.GetObject("user-login-icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap user_male_circle_filled {
-            get {
-                object obj = ResourceManager.GetObject("user-male-circle-filled", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap user_male2_128 {
-            get {
-                object obj = ResourceManager.GetObject("user_male2-128", resourceCulture);
+                object obj = ResourceManager.GetObject("user_login_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

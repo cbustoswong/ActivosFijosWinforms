@@ -207,6 +207,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\SecurePasswordHasher.cs" />
     <EmbeddedResource Include="ExportForms\FrmExportEmpleados.resx">
       <DependentUpon>FrmExportEmpleados.cs</DependentUpon>
@@ -261,14 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EntityDeploy Include="Models\DbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
@@ -277,6 +277,7 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ActivosFijos.Models.Activos_Fijos.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -313,6 +314,8 @@
     <Content Include="Resources\account-group_selected.png" />
     <Content Include="Resources\account_selected.png" />
     <None Include="Resources\excel.png" />
+    <None Include="Resources\file-invoice-dollar.png" />
+    <None Include="Resources\file-invoice-dollar-solid.png" />
     <Content Include="Resources\format-list-bulleted_selected.png" />
     <None Include="Resources\unapeclogo.png" />
     <None Include="Resources\icon.png" />

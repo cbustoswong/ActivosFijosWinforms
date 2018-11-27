@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnProveedores = new System.Windows.Forms.Button();
             this.btnUsuarios = new System.Windows.Forms.Button();
+            this.btnUbicacion = new System.Windows.Forms.Button();
+            this.btnProveedores = new System.Windows.Forms.Button();
             this.btnParametros = new System.Windows.Forms.Button();
             this.btnDepartamentos = new System.Windows.Forms.Button();
-            this.btnUbicacion = new System.Windows.Forms.Button();
+            this.btnActivos = new System.Windows.Forms.Button();
             this.btnEmpleados = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -46,6 +47,47 @@
             this.label1.Size = new System.Drawing.Size(59, 24);
             this.label1.TabIndex = 2;
             this.label1.Text = "Menu";
+            // 
+            // btnUsuarios
+            // 
+            this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Image = global::ActivosFijos.Properties.Resources.icon;
+            this.btnUsuarios.Location = new System.Drawing.Point(21, 318);
+            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(125, 182);
+            this.btnUsuarios.TabIndex = 1;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
+            this.btnUsuarios.MouseEnter += new System.EventHandler(this.btnUsuarios_MouseEnter);
+            this.btnUsuarios.MouseLeave += new System.EventHandler(this.btnUsuarios_MouseLeave);
+            // 
+            // btnUbicacion
+            // 
+            this.btnUbicacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUbicacion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUbicacion.FlatAppearance.BorderSize = 0;
+            this.btnUbicacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUbicacion.Image = global::ActivosFijos.Properties.Resources.location_marker;
+            this.btnUbicacion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUbicacion.Location = new System.Drawing.Point(21, 199);
+            this.btnUbicacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUbicacion.Name = "btnUbicacion";
+            this.btnUbicacion.Size = new System.Drawing.Size(104, 126);
+            this.btnUbicacion.TabIndex = 1;
+            this.btnUbicacion.Text = "Ubicaciones";
+            this.btnUbicacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnUbicacion.UseVisualStyleBackColor = true;
+            this.btnUbicacion.Click += new System.EventHandler(this.btnUbicacion_Click);
+            this.btnUbicacion.MouseEnter += new System.EventHandler(this.btnUbicacion_MouseEnter);
+            this.btnUbicacion.MouseLeave += new System.EventHandler(this.btnUbicacion_MouseLeave);
             // 
             // btnProveedores
             // 
@@ -68,26 +110,6 @@
             this.btnProveedores.MouseEnter += new System.EventHandler(this.btnProveedores_MouseEnter);
             this.btnProveedores.MouseLeave += new System.EventHandler(this.btnProveedores_MouseLeave);
             // 
-            // btnUsuarios
-            // 
-            this.btnUsuarios.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnUsuarios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUsuarios.FlatAppearance.BorderSize = 0;
-            this.btnUsuarios.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuarios.Image = global::ActivosFijos.Properties.Resources.icon;
-            this.btnUsuarios.Location = new System.Drawing.Point(287, 143);
-            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Size = new System.Drawing.Size(125, 182);
-            this.btnUsuarios.TabIndex = 1;
-            this.btnUsuarios.Text = "Usuarios";
-            this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnUsuarios.UseVisualStyleBackColor = true;
-            this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
-            this.btnUsuarios.MouseEnter += new System.EventHandler(this.btnUsuarios_MouseEnter);
-            this.btnUsuarios.MouseLeave += new System.EventHandler(this.btnUsuarios_MouseLeave);
-            // 
             // btnParametros
             // 
             this.btnParametros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -97,7 +119,7 @@
             this.btnParametros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnParametros.Image = global::ActivosFijos.Properties.Resources.format_list_bulleted;
             this.btnParametros.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnParametros.Location = new System.Drawing.Point(141, 199);
+            this.btnParametros.Location = new System.Drawing.Point(141, 211);
             this.btnParametros.Margin = new System.Windows.Forms.Padding(2);
             this.btnParametros.Name = "btnParametros";
             this.btnParametros.Size = new System.Drawing.Size(130, 114);
@@ -130,26 +152,24 @@
             this.btnDepartamentos.MouseEnter += new System.EventHandler(this.btnDepartamentos_MouseEnter);
             this.btnDepartamentos.MouseLeave += new System.EventHandler(this.btnDepartamentos_MouseLeave);
             // 
-            // btnUbicacion
+            // btnActivos
             // 
-            this.btnUbicacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnUbicacion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUbicacion.FlatAppearance.BorderSize = 0;
-            this.btnUbicacion.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.btnUbicacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUbicacion.Image = global::ActivosFijos.Properties.Resources.location_marker;
-            this.btnUbicacion.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnUbicacion.Location = new System.Drawing.Point(21, 199);
-            this.btnUbicacion.Margin = new System.Windows.Forms.Padding(2);
-            this.btnUbicacion.Name = "btnUbicacion";
-            this.btnUbicacion.Size = new System.Drawing.Size(104, 126);
-            this.btnUbicacion.TabIndex = 1;
-            this.btnUbicacion.Text = "Ubicaciones";
-            this.btnUbicacion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnUbicacion.UseVisualStyleBackColor = true;
-            this.btnUbicacion.Click += new System.EventHandler(this.btnUbicacion_Click);
-            this.btnUbicacion.MouseEnter += new System.EventHandler(this.btnUbicacion_MouseEnter);
-            this.btnUbicacion.MouseLeave += new System.EventHandler(this.btnUbicacion_MouseLeave);
+            this.btnActivos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnActivos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnActivos.FlatAppearance.BorderSize = 0;
+            this.btnActivos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnActivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActivos.Image = global::ActivosFijos.Properties.Resources.file_invoice_dollar;
+            this.btnActivos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnActivos.Location = new System.Drawing.Point(304, 199);
+            this.btnActivos.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActivos.Name = "btnActivos";
+            this.btnActivos.Size = new System.Drawing.Size(104, 126);
+            this.btnActivos.TabIndex = 1;
+            this.btnActivos.Text = "Activos Fijos";
+            this.btnActivos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnActivos.UseVisualStyleBackColor = true;
+            this.btnActivos.Click += new System.EventHandler(this.btnActivos_Click);
             // 
             // btnEmpleados
             // 
@@ -177,13 +197,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(451, 352);
+            this.ClientSize = new System.Drawing.Size(451, 511);
+            this.Controls.Add(this.btnUbicacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProveedores);
             this.Controls.Add(this.btnUsuarios);
             this.Controls.Add(this.btnParametros);
             this.Controls.Add(this.btnDepartamentos);
-            this.Controls.Add(this.btnUbicacion);
+            this.Controls.Add(this.btnActivos);
             this.Controls.Add(this.btnEmpleados);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -203,6 +224,7 @@
         private System.Windows.Forms.Button btnParametros;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.Button btnActivos;
     }
 }
 

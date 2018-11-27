@@ -161,3 +161,9 @@ INSERT INTO Parametro VALUES
 ('2015-12-21', 1, '589632144', 'Linea Recta'),
 ('2016-12-21', 1, '984623149', 'Digito de los años'),
 ('2017-12-21', 1, '846056120', 'Digito de los años');
+
+INSERT INTO Tipo_Activo VALUES
+('Terreno', 'Activo'),
+('Edificio', 'Activo'),
+('Mobiliario y Equipo de Oficina', 'Activo'),
+('Equipo de Transporte', 'Activo');
