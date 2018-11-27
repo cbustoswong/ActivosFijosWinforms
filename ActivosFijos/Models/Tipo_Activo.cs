@@ -22,8 +22,6 @@ namespace ActivosFijos.Models
     
         public int Codigo_TipoActivo { get; set; }
         public string Descripcion { get; set; }
-        public string Cuenta_ContCompra { get; set; }
-        public string Cuenta_ContDeprec { get; set; }
         public string Estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

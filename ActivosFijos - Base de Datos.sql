@@ -1,6 +1,17 @@
 ﻿USE master
 GO
 
+-- This section is for developing purposes
+-- This kills any connection for database "ActivosFijos"
+-- In case they exist, allowing to then drop the DB
+DECLARE @kill varchar(8000) = '';
+SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), spid) + ';'
+FROM master..sysprocesses 
+WHERE dbid = db_id('ActivosFijos')
+
+EXEC(@kill);
+GO
+
 -- Drop then recreate the Database
 DROP DATABASE IF EXISTS ActivosFijos
 GO
@@ -46,8 +57,6 @@ CREATE TABLE Proveedor(
 CREATE TABLE Tipo_Activo (
     Codigo_TipoActivo int IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Descripcion varchar(100),
-    Cuenta_ContCompra varchar(10),
-    Cuenta_ContDeprec varchar(10),
     Estado varchar(15)
 );
 
@@ -67,7 +76,6 @@ CREATE TABLE Activos_Fijos(
     Codigo_TipoActivo int NOT NULL,
     Fecha_Registro date NOT NULL,
     Valor_Compra decimal(18,2) NOT NULL,
-    Depreciacion_Acumulada decimal(18,2) NOT NULL,
     CONSTRAINT PK_Activos_Fijos PRIMARY KEY (Codigo_Activo),
     CONSTRAINT FK_Activos_Fijos_Departamento FOREIGN KEY (Codigo_Departamento)
     REFERENCES Departamento(Codigo_Departamento),
@@ -79,16 +87,12 @@ CREATE TABLE Activos_Fijos(
 
 CREATE TABLE Calculo_Depreciacion(
     Codigo_Registro int IDENTITY(1,1) NOT NULL,
-    Año_Proceso smallint NOT NULL,
-    Mes_Proceso varchar(15) NOT NULL,
-    Codigo_Activo int NOT NULL,
+    Codigo_Activo_Fijo int NOT NULL,
     Fecha_Proceso date NOT NULL,
     Monto_Depreciado decimal(18,2) NOT NULL,
     Depreciacion_Acumulada decimal(18,2) NOT NULL,
-    Cuenta_Compra decimal(18,2) NOT NULL,
-    Cuenta_Depreciacion decimal(18,2) NOT NULL,
-    CONSTRAINT PK_Depreciacion PRIMARY KEY (Codigo_Registro),
-    CONSTRAINT FK_Depreciacion_Activos_Fijos FOREIGN KEY (Codigo_Activo)
+    CONSTRAINT PK_Depreciacion PRIMARY KEY (Codigo_Activo_Fijo, Codigo_Registro),
+    CONSTRAINT FK_Depreciacion_Activos_Fijos FOREIGN KEY (Codigo_Activo_Fijo)
     REFERENCES Activos_Fijos(Codigo_Activo)
 );
 

@@ -85,6 +85,12 @@
     <Compile Include="frmEmpleados.Designer.cs">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmActivosFijosForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActivosFijosForm.Designer.cs">
+      <DependentUpon>frmActivosFijosForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmpleadosForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleados.resx">
       <DependentUpon>frmEmpleados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmActivosFijosForm.resx">
+      <DependentUpon>frmActivosFijosForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmpleadosForm.resx">
       <DependentUpon>frmEmpleadosForm.cs</DependentUpon>
