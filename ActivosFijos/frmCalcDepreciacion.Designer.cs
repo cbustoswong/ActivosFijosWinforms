@@ -47,8 +47,10 @@
             // 
             this.dgvResultados.AllowUserToAddRows = false;
             this.dgvResultados.AllowUserToDeleteRows = false;
+            this.dgvResultados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultados.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvResultados.Location = new System.Drawing.Point(0, 126);
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.ReadOnly = true;
