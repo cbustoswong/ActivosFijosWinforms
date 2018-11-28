@@ -36,6 +36,8 @@
             this.btnDepartamentos = new System.Windows.Forms.Button();
             this.btnActivos = new System.Windows.Forms.Button();
             this.btnEmpleados = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.lblUsuario = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -192,12 +194,38 @@
             this.btnEmpleados.MouseEnter += new System.EventHandler(this.btnEmpleados_MouseEnter);
             this.btnEmpleados.MouseLeave += new System.EventHandler(this.btnEmpleados_MouseLeave);
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnLogout.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLogout.Location = new System.Drawing.Point(353, 10);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 3;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(21, 10);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(41, 13);
+            this.lblUsuario.TabIndex = 4;
+            this.lblUsuario.Text = "usuario";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(451, 511);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnUbicacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnProveedores);
@@ -225,6 +253,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUsuarios;
         private System.Windows.Forms.Button btnActivos;
+        private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Label lblUsuario;
     }
 }
 

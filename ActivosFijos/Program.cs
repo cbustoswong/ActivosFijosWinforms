@@ -19,7 +19,7 @@ namespace ActivosFijos
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DefaultUsersAndRoles();
-            Application.Run(new frmCalcDepreciacion());
+            Application.Run(new FrmLogin());
         }
 
         static void DefaultUsersAndRoles()

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDepreciacion = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDepreciacion);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.btnBuscar);
             this.panel1.Controls.Add(this.txtBuscar);
@@ -66,13 +68,26 @@
             this.panel1.Size = new System.Drawing.Size(776, 50);
             this.panel1.TabIndex = 2;
             // 
+            // btnDepreciacion
+            // 
+            this.btnDepreciacion.BackgroundImage = global::ActivosFijos.Properties.Resources.hand_holding_usd;
+            this.btnDepreciacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDepreciacion.FlatAppearance.BorderSize = 0;
+            this.btnDepreciacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDepreciacion.Location = new System.Drawing.Point(728, 1);
+            this.btnDepreciacion.Name = "btnDepreciacion";
+            this.btnDepreciacion.Size = new System.Drawing.Size(48, 48);
+            this.btnDepreciacion.TabIndex = 3;
+            this.btnDepreciacion.UseVisualStyleBackColor = true;
+            this.btnDepreciacion.Click += new System.EventHandler(this.btnDepreciacion_Click);
+            // 
             // btnAgregar
             // 
             this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(725, 2);
+            this.btnAgregar.Location = new System.Drawing.Point(670, 1);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(48, 48);
             this.btnAgregar.TabIndex = 3;
@@ -85,7 +100,7 @@
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(662, 2);
+            this.btnBuscar.Location = new System.Drawing.Point(612, 1);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(48, 48);
             this.btnBuscar.TabIndex = 3;
@@ -94,7 +109,7 @@
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(454, 15);
+            this.txtBuscar.Location = new System.Drawing.Point(411, 13);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(176, 20);
             this.txtBuscar.TabIndex = 2;
@@ -106,7 +121,8 @@
             this.cbxCriterio.Items.AddRange(new object[] {
             "Tipo",
             "Departamento",
-            "Valor"});
+            "Valor",
+            "Fecha"});
             this.cbxCriterio.Location = new System.Drawing.Point(60, 16);
             this.cbxCriterio.Name = "cbxCriterio";
             this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
@@ -117,7 +133,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(398, 19);
+            this.label2.Location = new System.Drawing.Point(355, 17);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 0;
@@ -256,7 +272,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmActivosFijos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Activos Fijos";
@@ -293,5 +309,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Depreciacion;
+        private System.Windows.Forms.Button btnDepreciacion;
     }
 }

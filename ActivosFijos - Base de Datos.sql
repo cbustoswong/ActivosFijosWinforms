@@ -93,7 +93,7 @@ CREATE TABLE Calculo_Depreciacion(
     Depreciacion_Acumulada decimal(18,2) NOT NULL,
     CONSTRAINT PK_Depreciacion PRIMARY KEY (Codigo_Activo_Fijo, Codigo_Registro),
     CONSTRAINT FK_Depreciacion_Activos_Fijos FOREIGN KEY (Codigo_Activo_Fijo)
-    REFERENCES Activos_Fijos(Codigo_Activo)
+    REFERENCES Activos_Fijos(Codigo_Activo) ON DELETE CASCADE
 );
 
 CREATE TABLE Parametro(

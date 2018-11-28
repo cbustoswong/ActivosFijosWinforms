@@ -38,7 +38,9 @@ namespace ActivosFijos
                     else if (cbxCriterio.Text.Equals("Departamento"))
                         dgvActivos.DataSource = db.Activos_Fijos.OrderBy(a => a.Departamento.Nombre).ToList();
                     else if (cbxCriterio.Text.Equals("Valor"))
-                        dgvActivos.DataSource = db.Activos_Fijos.OrderBy(a => a.Valor_Compra).ToList();
+                        dgvActivos.DataSource = db.Activos_Fijos.OrderByDescending(a => a.Valor_Compra).ToList();
+                    else if (cbxCriterio.Text.Equals("Fecha"))
+                        dgvActivos.DataSource = db.Activos_Fijos.OrderBy(a => a.Fecha_Registro).ToList();
                     else
                         dgvActivos.DataSource = db.Activos_Fijos.ToList();
 
@@ -53,7 +55,9 @@ namespace ActivosFijos
                 else if (cbxCriterio.Text.Equals("Departamento"))
                     dgvActivos.DataSource = activos.OrderBy(a => a.Departamento.Nombre).ToList();
                 else if (cbxCriterio.Text.Equals("Valor"))
-                    dgvActivos.DataSource = activos.OrderBy(a => a.Valor_Compra).ToList();
+                    dgvActivos.DataSource = activos.OrderByDescending(a => a.Valor_Compra).ToList();
+                else if (cbxCriterio.Text.Equals("Fecha"))
+                    dgvActivos.DataSource = activos.OrderBy(a => a.Fecha_Registro).ToList();
                 else
                     dgvActivos.DataSource = activos.ToList();
             }
@@ -104,12 +108,14 @@ namespace ActivosFijos
         {
             foreach (DataGridViewRow item in dgvActivos.Rows)
             {
+                int activoId = int.Parse(item.Cells["Codigo_Activo"].Value.ToString());
                 int deptId = int.Parse(item.Cells["Id_Dept"].Value.ToString());
                 int ubicId = int.Parse(item.Cells["Id_Ubicacion"].Value.ToString());
                 int tipoId = int.Parse(item.Cells["Id_TipoActivo"].Value.ToString());
 
                 using (ActivosEntities db = new ActivosEntities())
                 {
+                    Activos_Fijos activo = db.Activos_Fijos.FirstOrDefault(a => a.Codigo_Activo == activoId);
                     string deptName = db.Departamento
                         .FirstOrDefault(d => d.Codigo_Departamento == deptId).Nombre;
                     string ubicacion = db.Ubicacion.FirstOrDefault(u => u.Codigo_Ubicacion == ubicId).Descripcion;
@@ -118,6 +124,15 @@ namespace ActivosFijos
                     item.Cells["Departamento"].Value = deptName;
                     item.Cells["Ubicacion"].Value = ubicacion;
                     item.Cells["Tipo"].Value = tipo;
+
+                    if (activo.Calculo_Depreciacion.Count > 0)
+                    {
+                        Calculo_Depreciacion depre = activo.Calculo_Depreciacion.OrderBy(a => a.Fecha_Proceso).Last();
+
+                        item.Cells["Depreciacion"].Value = depre.Depreciacion_Acumulada;
+                    }
+                    else
+                        item.Cells["Depreciacion"].Value = "0.00";
                 }
             }
         }
@@ -126,6 +141,12 @@ namespace ActivosFijos
         {
             GetActivos(txtBuscar.Text);
             ParseIds();
+        }
+
+        private void btnDepreciacion_Click(object sender, EventArgs e)
+        {
+            frmCalcDepreciacion frm = new frmCalcDepreciacion();
+            frm.ShowDialog();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace ActivosFijos
         double depAcumulada = 0;
         double depRestante = 0;
         int digitoAnos = 0;
-        
+
 
         public frmCalcDepreciacion()
         {
@@ -34,31 +34,31 @@ namespace ActivosFijos
         {
             //try
             //{
-                var db = new ActivosEntities();
+            var db = new ActivosEntities();
 
-                var ActivosFijos = db.Activos_Fijos.ToList();
+            var ActivosFijos = db.Activos_Fijos.ToList();
             var ActivosCalculados = db.Calculo_Depreciacion.ToList();
 
 
-                DataTable dt = new DataTable(); // Crea tabla en memoria
-                dt.Clear();
-                dt.Columns.Add("IdActivo");
-                dt.Columns.Add("Activo");
-                dt.Columns.Add("Mes"); // Crea columnas de dicha tabla  
-                dt.Columns.Add("MontoDep");
-                dt.Columns.Add("TotalDep");
-                dt.Columns.Add("TotalRest");
-               dt.Columns.Add("Fecha");
-                double depAcumulada = 0;
-                digitoAnos = 0;
-         
+            DataTable dt = new DataTable(); // Crea tabla en memoria
+            dt.Clear();
+            dt.Columns.Add("IdActivo");
+            dt.Columns.Add("Activo");
+            dt.Columns.Add("Mes"); // Crea columnas de dicha tabla  
+            dt.Columns.Add("MontoDep");
+            dt.Columns.Add("TotalDep");
+            dt.Columns.Add("TotalRest");
+            dt.Columns.Add("Fecha");
+            double depAcumulada = 0;
+            digitoAnos = 0;
+
 
             foreach (var activo in ActivosFijos)
-                {
-                 valorCompra = 0;
+            {
+                valorCompra = 0;
                 depAnual = 0;
-                 depAcumulada = 0;
-                 depRestante = 0;
+                depAcumulada = 0;
+                depRestante = 0;
                 digitoAnos = 0;
                 dtpFecha.Value = DateTime.Now;
                 int ContadorFecha = 0;
@@ -74,7 +74,7 @@ namespace ActivosFijos
                     }
                 }
 
-                if(Calculado == false)
+                if (Calculado == false)
                 {
                     valorCompra = (double)activo.Valor_Compra;
 
@@ -105,11 +105,11 @@ namespace ActivosFijos
                     dgvResultados.DataSource = dt;
                     dgvResultados.Refresh(); // Muestra resultado en grid
                 }
-               
+
             }
 
-              
-           if(dgvResultados.Rows.Count == 0)
+
+            if (dgvResultados.Rows.Count == 0)
             {
                 MessageBox.Show("Todos los activos registrados ya han sido calculados", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -128,16 +128,18 @@ namespace ActivosFijos
                     for (int i = 0; i <= dtTabla.Rows.Count - 1; i++)
                     {
                         int idActivo = Convert.ToInt32(dtTabla.Rows[i]["IdActivo"]);
-                        decimal MontoDep = Convert.ToDecimal( dtTabla.Rows[i]["MontoDep"]);
-                        decimal DepAcum = Convert.ToDecimal( dtTabla.Rows[i]["TotalDep"]);
+                        decimal MontoDep = Convert.ToDecimal(dtTabla.Rows[i]["MontoDep"]);
+                        decimal DepAcum = Convert.ToDecimal(dtTabla.Rows[i]["TotalDep"]);
                         DateTime Fecha = Convert.ToDateTime(dtTabla.Rows[i]["Fecha"]);
 
-                        InsertarActivoCalculado(idActivo, MontoDep, DepAcum,Fecha);
+                        InsertarActivoCalculado(idActivo, MontoDep, DepAcum, Fecha);
                     }
+
+                    MessageBox.Show("Depreciacion calculada con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Primero debe calcular la depreciacion","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Primero debe calcular la depreciacion", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -146,8 +148,8 @@ namespace ActivosFijos
                 MessageBox.Show(ex.Message);
             }
         }
-            private void InsertarActivoCalculado(int IdActivo, decimal MontoDepreciado, decimal DepreciacionAcumulada, DateTime Fecha)
-            {
+        private void InsertarActivoCalculado(int IdActivo, decimal MontoDepreciado, decimal DepreciacionAcumulada, DateTime Fecha)
+        {
             try
             {
                 using (ActivosEntities db = new ActivosEntities())
@@ -164,19 +166,18 @@ namespace ActivosFijos
                     db.Calculo_Depreciacion.Add(CalcDeprec);
 
                     db.SaveChanges();
-                    MessageBox.Show("Depreciacion calculada con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Close();
                 }
-              
+
             }
 
 
-                catch (Exception ex)
+            catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
             }
         }
-        }
     }
+}
 

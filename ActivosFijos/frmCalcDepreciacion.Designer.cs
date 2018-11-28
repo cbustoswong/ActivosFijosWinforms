@@ -30,7 +30,6 @@
         {
             this.dgvResultados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnGuardar = new System.Windows.Forms.Button();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.rbDigAnos = new System.Windows.Forms.RadioButton();
             this.rbLineaRecta = new System.Windows.Forms.RadioButton();
@@ -38,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmdCalcular = new System.Windows.Forms.Button();
             this.nudAnosDep = new System.Windows.Forms.NumericUpDown();
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnosDep)).BeginInit();
@@ -72,20 +72,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(644, 135);
             this.panel1.TabIndex = 2;
-            // 
-            // btnGuardar
-            // 
-            this.btnGuardar.BackgroundImage = global::ActivosFijos.Properties.Resources.save;
-            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGuardar.FlatAppearance.BorderSize = 0;
-            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardar.Location = new System.Drawing.Point(466, 22);
-            this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(61, 57);
-            this.btnGuardar.TabIndex = 6;
-            this.btnGuardar.UseVisualStyleBackColor = true;
-            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // dtpFecha
             // 
@@ -176,6 +162,20 @@
             0,
             0});
             // 
+            // btnGuardar
+            // 
+            this.btnGuardar.BackgroundImage = global::ActivosFijos.Properties.Resources.save;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(466, 22);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(61, 57);
+            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
             // frmCalcDepreciacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,8 +183,10 @@
             this.ClientSize = new System.Drawing.Size(644, 369);
             this.Controls.Add(this.dgvResultados);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmCalcDepreciacion";
-            this.Text = "frmCalcDepreciacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Calculo de Depreciacion de Activos Fijos";
             this.Load += new System.EventHandler(this.frmCalcDepreciacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -328,6 +328,7 @@
     <Content Include="Resources\format-list-bulleted_selected.png" />
     <None Include="Resources\unapeclogo.png" />
     <None Include="Resources\icon.png" />
+    <None Include="Resources\hand-holding-usd.png" />
     <Content Include="Resources\location-marker_selected.png" />
     <None Include="Resources\user_male2-128.png" />
     <None Include="Resources\user-male-circle-filled.png" />

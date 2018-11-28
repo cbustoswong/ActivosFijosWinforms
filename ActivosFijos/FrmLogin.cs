@@ -34,6 +34,7 @@ namespace ActivosFijos
                 frm.frmLogin = this;
                 frm.usuario = usuario;
                 frm.ShowDialog();
+                txtContrasena.Text = "";
             }
             else
             {

@@ -24,6 +24,7 @@ namespace ActivosFijos
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            lblUsuario.Text = $"Bienvenido \n{usuario.Nombre} {usuario.Apellido}";
             roles = usuario.Roles.Select(r => r.Nombre).ToList();
 
             if (roles.Contains("Admin"))
@@ -225,6 +226,13 @@ namespace ActivosFijos
         private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
         {
             frmLogin.Close();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            usuario = null;
+            Hide();
+            frmLogin.Show();
         }
     }
 }
