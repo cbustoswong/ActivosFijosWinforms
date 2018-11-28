@@ -129,7 +129,8 @@ namespace ActivosFijos
         }
             private void InsertarActivoCalculado(int IdActivo, decimal MontoDepreciado, decimal DepreciacionAcumulada)
             {
-
+            try
+            {
                 using (ActivosEntities db = new ActivosEntities())
                 {
                     Calculo_Depreciacion CalcDeprec = new Calculo_Depreciacion
@@ -147,7 +148,16 @@ namespace ActivosFijos
 
                     Close();
                 }
+                MessageBox.Show("Depreciacion insertada con exito");
             }
+
+
+                catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        }
         }
     }
 
