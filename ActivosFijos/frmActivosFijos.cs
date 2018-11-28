@@ -148,5 +148,11 @@ namespace ActivosFijos
             frmCalcDepreciacion frm = new frmCalcDepreciacion();
             frm.ShowDialog();
         }
+
+        private void BtnView_Click(object sender, EventArgs e)
+        {
+            FrmReportActivos frm = new FrmReportActivos();
+            frm.ShowDialog();
+        }
     }
 }

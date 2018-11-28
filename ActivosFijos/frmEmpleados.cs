@@ -141,5 +141,11 @@ namespace ActivosFijos
             FrmExportEmpleados frm = new FrmExportEmpleados();
             frm.ShowDialog();
         }
+
+        private void BtnView_Click(object sender, EventArgs e)
+        {
+            FrmReportEmpleado frm = new FrmReportEmpleado();
+            frm.ShowDialog();
+        }
     }
 }

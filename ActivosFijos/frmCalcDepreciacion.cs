@@ -178,6 +178,12 @@ namespace ActivosFijos
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BtnView_Click(object sender, EventArgs e)
+        {
+            FrmReportCalculo frm = new FrmReportCalculo();
+            frm.ShowDialog();
+        }
     }
 }
 

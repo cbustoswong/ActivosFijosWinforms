@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnDepreciacion = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,6 +46,10 @@
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Depreciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDepreciacion = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.BtnView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivos)).BeginInit();
@@ -56,6 +57,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.BtnView);
             this.panel1.Controls.Add(this.btnDepreciacion);
             this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.btnBuscar);
@@ -63,55 +65,18 @@
             this.panel1.Controls.Add(this.cbxCriterio);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 3);
+            this.panel1.Location = new System.Drawing.Point(16, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(776, 50);
+            this.panel1.Size = new System.Drawing.Size(1035, 62);
             this.panel1.TabIndex = 2;
-            // 
-            // btnDepreciacion
-            // 
-            this.btnDepreciacion.BackgroundImage = global::ActivosFijos.Properties.Resources.hand_holding_usd;
-            this.btnDepreciacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDepreciacion.FlatAppearance.BorderSize = 0;
-            this.btnDepreciacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDepreciacion.Location = new System.Drawing.Point(728, 1);
-            this.btnDepreciacion.Name = "btnDepreciacion";
-            this.btnDepreciacion.Size = new System.Drawing.Size(48, 48);
-            this.btnDepreciacion.TabIndex = 3;
-            this.btnDepreciacion.UseVisualStyleBackColor = true;
-            this.btnDepreciacion.Click += new System.EventHandler(this.btnDepreciacion_Click);
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
-            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgregar.FlatAppearance.BorderSize = 0;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(670, 1);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(48, 48);
-            this.btnAgregar.TabIndex = 3;
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
-            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBuscar.FlatAppearance.BorderSize = 0;
-            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(612, 1);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(48, 48);
-            this.btnBuscar.TabIndex = 3;
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(411, 13);
+            this.txtBuscar.Location = new System.Drawing.Point(458, 17);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(176, 20);
+            this.txtBuscar.Size = new System.Drawing.Size(233, 22);
             this.txtBuscar.TabIndex = 2;
             // 
             // cbxCriterio
@@ -123,9 +88,10 @@
             "Departamento",
             "Valor",
             "Fecha"});
-            this.cbxCriterio.Location = new System.Drawing.Point(60, 16);
+            this.cbxCriterio.Location = new System.Drawing.Point(80, 20);
+            this.cbxCriterio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbxCriterio.Name = "cbxCriterio";
-            this.cbxCriterio.Size = new System.Drawing.Size(121, 21);
+            this.cbxCriterio.Size = new System.Drawing.Size(160, 24);
             this.cbxCriterio.TabIndex = 1;
             this.cbxCriterio.SelectedValueChanged += new System.EventHandler(this.cbxCriterio_SelectedValueChanged);
             // 
@@ -133,9 +99,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(355, 17);
+            this.label2.Location = new System.Drawing.Point(383, 22);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.Size = new System.Drawing.Size(52, 17);
             this.label2.TabIndex = 0;
             this.label2.Text = "Buscar";
             // 
@@ -143,18 +110,20 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 20);
+            this.label1.Location = new System.Drawing.Point(4, 25);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 13);
+            this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Criterio";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvActivos);
-            this.panel2.Location = new System.Drawing.Point(13, 60);
+            this.panel2.Location = new System.Drawing.Point(17, 74);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(775, 378);
+            this.panel2.Size = new System.Drawing.Size(1033, 465);
             this.panel2.TabIndex = 3;
             // 
             // dgvActivos
@@ -176,9 +145,10 @@
             this.Depreciacion});
             this.dgvActivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvActivos.Location = new System.Drawing.Point(0, 0);
+            this.dgvActivos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvActivos.Name = "dgvActivos";
             this.dgvActivos.ReadOnly = true;
-            this.dgvActivos.Size = new System.Drawing.Size(775, 378);
+            this.dgvActivos.Size = new System.Drawing.Size(1033, 465);
             this.dgvActivos.TabIndex = 0;
             this.dgvActivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivos_CellDoubleClick);
             // 
@@ -265,14 +235,72 @@
             this.Depreciacion.Name = "Depreciacion";
             this.Depreciacion.ReadOnly = true;
             // 
+            // btnDepreciacion
+            // 
+            this.btnDepreciacion.BackgroundImage = global::ActivosFijos.Properties.Resources.hand_holding_usd;
+            this.btnDepreciacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDepreciacion.FlatAppearance.BorderSize = 0;
+            this.btnDepreciacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDepreciacion.Location = new System.Drawing.Point(881, 2);
+            this.btnDepreciacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDepreciacion.Name = "btnDepreciacion";
+            this.btnDepreciacion.Size = new System.Drawing.Size(64, 59);
+            this.btnDepreciacion.TabIndex = 3;
+            this.btnDepreciacion.UseVisualStyleBackColor = true;
+            this.btnDepreciacion.Click += new System.EventHandler(this.btnDepreciacion_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.BackgroundImage = global::ActivosFijos.Properties.Resources.plus;
+            this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgregar.FlatAppearance.BorderSize = 0;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Location = new System.Drawing.Point(803, 2);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(64, 59);
+            this.btnAgregar.TabIndex = 3;
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackgroundImage = global::ActivosFijos.Properties.Resources.search;
+            this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBuscar.FlatAppearance.BorderSize = 0;
+            this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBuscar.Location = new System.Drawing.Point(726, 2);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(64, 59);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // BtnView
+            // 
+            this.BtnView.BackgroundImage = global::ActivosFijos.Properties.Resources.view_original_volume_report__280874;
+            this.BtnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnView.FlatAppearance.BorderSize = 0;
+            this.BtnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnView.Location = new System.Drawing.Point(953, 0);
+            this.BtnView.Margin = new System.Windows.Forms.Padding(4);
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Size = new System.Drawing.Size(64, 59);
+            this.BtnView.TabIndex = 7;
+            this.BtnView.UseVisualStyleBackColor = true;
+            this.BtnView.Click += new System.EventHandler(this.BtnView_Click);
+            // 
             // frmActivosFijos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmActivosFijos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Activos Fijos";
@@ -310,5 +338,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Depreciacion;
         private System.Windows.Forms.Button btnDepreciacion;
+        private System.Windows.Forms.Button BtnView;
     }
 }
