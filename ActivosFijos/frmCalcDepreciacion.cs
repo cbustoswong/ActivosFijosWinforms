@@ -74,11 +74,7 @@ namespace ActivosFijos
                     }
                 }
 
-                if(Calculado == true)
-                {
-                    break;
-                }
-                else
+                if(Calculado == false)
                 {
                     valorCompra = (double)activo.Valor_Compra;
 
@@ -109,6 +105,7 @@ namespace ActivosFijos
                     dgvResultados.DataSource = dt;
                     dgvResultados.Refresh(); // Muestra resultado en grid
                 }
+               
             }
 
               
