@@ -31,77 +31,82 @@ namespace ActivosFijos
 
         private void cmdCalcular_Click(object sender, EventArgs e)
         {
-            var db = new ActivosEntities();
-
-            var ActivosFijos = db.Activos_Fijos.ToList();
-
-
-
             //try
             //{
-            //    valorCompra = double.Parse(txtValorCompra.Text);
-            //}
+                var db = new ActivosEntities();
 
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("El valor de compra no es un monto valido");
-            //    txtValorCompra.Focus();
-            //    return;
-            //}
+                var ActivosFijos = db.Activos_Fijos.ToList();
 
-            DataTable dt = new DataTable(); // Crea tabla en memoria
-            dt.Clear();
-            dt.Columns.Add("IdActivo");
-            dt.Columns.Add("Activo");
-            dt.Columns.Add("Mes"); // Crea columnas de dicha tabla  
-            dt.Columns.Add("MontoDep");
-            dt.Columns.Add("TotalDep");
-            dt.Columns.Add("TotalRest");
-            double depAcumulada = 0;
-            digitoAnos = 0;
 
-            foreach (var activo in ActivosFijos)
-            {
+
+                DataTable dt = new DataTable(); // Crea tabla en memoria
+                dt.Clear();
+                dt.Columns.Add("IdActivo");
+                dt.Columns.Add("Activo");
+                dt.Columns.Add("Mes"); // Crea columnas de dicha tabla  
+                dt.Columns.Add("MontoDep");
+                dt.Columns.Add("TotalDep");
+                dt.Columns.Add("TotalRest");
+                double depAcumulada = 0;
+                digitoAnos = 0;
+
+                foreach (var activo in ActivosFijos)
+                {
+                 valorCompra = 0;
+                depAnual = 0;
+                 depAcumulada = 0;
+                 depRestante = 0;
+                digitoAnos = 0;
 
 
                 valorCompra = (double)activo.Valor_Compra;
 
-                for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
-                    digitoAnos += anoDep;
+                    for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
+                        digitoAnos += anoDep;
 
-                for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
-                {
-                    if (rbLineaRecta.Checked)
-                        depAnual = valorCompra / (int)nudAnosDep.Value;
-                    else
-                        depAnual = (valorCompra * anoDep) / digitoAnos;
+                    for (int anoDep = 1; anoDep <= nudAnosDep.Value; anoDep++)
+                    {
+                        if (rbLineaRecta.Checked)
+                            depAnual = valorCompra / (int)nudAnosDep.Value;
+                        else
+                            depAnual = (valorCompra * anoDep) / digitoAnos;
 
-                    depAcumulada += depAnual;
-                    depRestante = valorCompra - depAcumulada;
+                        depAcumulada += depAnual;
+                        depRestante = valorCompra - depAcumulada;
 
-                    DataRow fila = dt.NewRow();
-                    fila["IdActivo"] = activo.Codigo_Activo;
-                    fila["Activo"] = activo.Descripcion;
-                    fila["Mes"] = anoDep; // Mueve valor a columnas de la tabla 
-                    fila["MontoDep"] = depAnual;
-                    fila["TotalDep"] = depAcumulada;
-                    fila["TotalRest"] = depRestante;
-                    dt.Rows.Add(fila);
+                        DataRow fila = dt.NewRow();
+                        fila["IdActivo"] = activo.Codigo_Activo;
+                        fila["Activo"] = activo.Descripcion;
+                        fila["Mes"] = anoDep; // Mueve valor a columnas de la tabla 
+                        fila["MontoDep"] = depAnual;
+                        fila["TotalDep"] = depAcumulada;
+                        fila["TotalRest"] = depRestante;
+                        dt.Rows.Add(fila);
+                    }
+
+                    dgvResultados.DataSource = dt;
+                    dgvResultados.Refresh(); // Muestra resultado en grid
                 }
+            //}
 
-                dgvResultados.DataSource = dt;
-                dgvResultados.Refresh(); // Muestra resultado en grid
-            }
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+
+
+            //}
+
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 if (dgvResultados.Rows.Count > 0)
                 {
-                    DataTable dtTabla = (DataTable)dgvResultados.DataSource
-                        ;
+                    DataTable dtTabla = (DataTable)dgvResultados.DataSource;
+
                     for (int i = 0; i <= dtTabla.Rows.Count - 1; i++)
                     {
                         int idActivo = Convert.ToInt32(dtTabla.Rows[i]["IdActivo"]);
@@ -115,12 +120,12 @@ namespace ActivosFijos
                 {
                     MessageBox.Show("Primero debe calcular la depreciacion");
                 }
-            //}
-            //catch (Exception ex)
-            //{
+            }
+            catch (Exception ex)
+            {
 
-            //    MessageBox.Show(ex.Message);
-            //}
+                MessageBox.Show(ex.Message);
+            }
         }
             private void InsertarActivoCalculado(int IdActivo, decimal MontoDepreciado, decimal DepreciacionAcumulada)
             {
