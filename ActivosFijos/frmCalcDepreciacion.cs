@@ -109,14 +109,10 @@ namespace ActivosFijos
             }
 
               
-            //}
-
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-
-
-            //}
+           if(dgvResultados.Rows.Count == 0)
+            {
+                MessageBox.Show("Todos los activos registrados ya han sido calculados", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
 
 
         }
