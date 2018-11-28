@@ -12,14 +12,12 @@ namespace ActivosFijos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Calculo_Depreciacion
+    public partial class Parametro
     {
-        public int Codigo_Registro { get; set; }
-        public int Codigo_Activo_Fijo { get; set; }
-        public System.DateTime Fecha_Proceso { get; set; }
-        public decimal Monto_Depreciado { get; set; }
-        public decimal Depreciacion_Acumulada { get; set; }
-    
-        public virtual Activos_Fijos Activos_Fijos { get; set; }
+        public int Codigo_Parametro { get; set; }
+        public Nullable<System.DateTime> Ano_Mes_Proceso { get; set; }
+        public Nullable<bool> Deprec_Calculada { get; set; }
+        public string RNC_Empresa { get; set; }
+        public string Met_Drepeciacion { get; set; }
     }
 }

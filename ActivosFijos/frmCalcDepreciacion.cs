@@ -123,7 +123,7 @@ namespace ActivosFijos
             {
                 Calculo_Depreciacion CalcDeprec = new Calculo_Depreciacion
                 {
-                    Codigo_Activo = IdActivo,
+                    Codigo_Activo_Fijo = IdActivo,
                     Fecha_Proceso = dtpFecha.Value,
                     Monto_Depreciado = MontoDepreciado,
                     Depreciacion_Acumulada = DepreciacionAcumulada

@@ -12,14 +12,18 @@ namespace ActivosFijos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Calculo_Depreciacion
+    public partial class Roles
     {
-        public int Codigo_Registro { get; set; }
-        public int Codigo_Activo_Fijo { get; set; }
-        public System.DateTime Fecha_Proceso { get; set; }
-        public decimal Monto_Depreciado { get; set; }
-        public decimal Depreciacion_Acumulada { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Roles()
+        {
+            this.Usuarios = new HashSet<Usuarios>();
+        }
     
-        public virtual Activos_Fijos Activos_Fijos { get; set; }
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

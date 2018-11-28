@@ -12,14 +12,10 @@ namespace ActivosFijos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Calculo_Depreciacion
+    public partial class Tipo_Pago
     {
-        public int Codigo_Registro { get; set; }
-        public int Codigo_Activo_Fijo { get; set; }
-        public System.DateTime Fecha_Proceso { get; set; }
-        public decimal Monto_Depreciado { get; set; }
-        public decimal Depreciacion_Acumulada { get; set; }
-    
-        public virtual Activos_Fijos Activos_Fijos { get; set; }
+        public int Codigo_TipoPago { get; set; }
+        public string Descripcion { get; set; }
+        public string Estado { get; set; }
     }
 }

@@ -12,26 +12,21 @@ namespace ActivosFijos.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Activos_Fijos
+    public partial class Usuarios
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activos_Fijos()
+        public Usuarios()
         {
-            this.Calculo_Depreciacion = new HashSet<Calculo_Depreciacion>();
+            this.Roles = new HashSet<Roles>();
         }
     
-        public int Codigo_Activo { get; set; }
-        public string Descripcion { get; set; }
-        public int Codigo_Departamento { get; set; }
-        public int Codigo_Ubicacion { get; set; }
-        public int Codigo_TipoActivo { get; set; }
-        public System.DateTime Fecha_Registro { get; set; }
-        public decimal Valor_Compra { get; set; }
+        public int Id { get; set; }
+        public string Usuario { get; set; }
+        public string Contrasena { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
     
-        public virtual Departamento Departamento { get; set; }
-        public virtual Tipo_Activo Tipo_Activo { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Calculo_Depreciacion> Calculo_Depreciacion { get; set; }
+        public virtual ICollection<Roles> Roles { get; set; }
     }
 }

@@ -15,10 +15,14 @@ namespace ActivosFijos.Models
     public partial class Calculo_Depreciacion
     {
         public int Codigo_Registro { get; set; }
-        public int Codigo_Activo_Fijo { get; set; }
+        public short Año_Proceso { get; set; }
+        public string Mes_Proceso { get; set; }
+        public int Codigo_Activo { get; set; }
         public System.DateTime Fecha_Proceso { get; set; }
         public decimal Monto_Depreciado { get; set; }
         public decimal Depreciacion_Acumulada { get; set; }
+        public decimal Cuenta_Compra { get; set; }
+        public decimal Cuenta_Depreciacion { get; set; }
     
         public virtual Activos_Fijos Activos_Fijos { get; set; }
     }
