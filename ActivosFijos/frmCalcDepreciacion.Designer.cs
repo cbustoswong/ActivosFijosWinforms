@@ -30,13 +30,14 @@
         {
             this.dgvResultados = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.rbDigAnos = new System.Windows.Forms.RadioButton();
             this.rbLineaRecta = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmdCalcular = new System.Windows.Forms.Button();
             this.nudAnosDep = new System.Windows.Forms.NumericUpDown();
-            this.txtValorCompra = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnGuardar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudAnosDep)).BeginInit();
@@ -56,18 +57,26 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnGuardar);
+            this.panel1.Controls.Add(this.dtpFecha);
             this.panel1.Controls.Add(this.rbDigAnos);
             this.panel1.Controls.Add(this.rbLineaRecta);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.cmdCalcular);
             this.panel1.Controls.Add(this.nudAnosDep);
-            this.panel1.Controls.Add(this.txtValorCompra);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(644, 135);
             this.panel1.TabIndex = 2;
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.Location = new System.Drawing.Point(140, 12);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecha.TabIndex = 7;
             // 
             // rbDigAnos
             // 
@@ -93,6 +102,16 @@
             this.rbLineaRecta.Text = "Linea Recta";
             this.rbLineaRecta.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(8, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Fecha:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -110,12 +129,13 @@
             this.cmdCalcular.FlatAppearance.BorderSize = 2;
             this.cmdCalcular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmdCalcular.Location = new System.Drawing.Point(311, 30);
+            this.cmdCalcular.Location = new System.Drawing.Point(319, 44);
             this.cmdCalcular.Name = "cmdCalcular";
             this.cmdCalcular.Size = new System.Drawing.Size(133, 52);
             this.cmdCalcular.TabIndex = 3;
             this.cmdCalcular.Text = "Calcular";
             this.cmdCalcular.UseVisualStyleBackColor = true;
+            this.cmdCalcular.Click += new System.EventHandler(this.cmdCalcular_Click);
             // 
             // nudAnosDep
             // 
@@ -139,22 +159,19 @@
             0,
             0});
             // 
-            // txtValorCompra
+            // btnGuardar
             // 
-            this.txtValorCompra.Location = new System.Drawing.Point(140, 19);
-            this.txtValorCompra.Name = "txtValorCompra";
-            this.txtValorCompra.Size = new System.Drawing.Size(100, 20);
-            this.txtValorCompra.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Valor Compra:";
+            this.btnGuardar.BackgroundImage = global::ActivosFijos.Properties.Resources.save;
+            this.btnGuardar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnGuardar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnGuardar.FlatAppearance.BorderSize = 0;
+            this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardar.Location = new System.Drawing.Point(489, 39);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(71, 62);
+            this.btnGuardar.TabIndex = 6;
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // frmCalcDepreciacion
             // 
@@ -165,6 +182,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmCalcDepreciacion";
             this.Text = "frmCalcDepreciacion";
+            this.Load += new System.EventHandler(this.frmCalcDepreciacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultados)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -181,7 +199,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button cmdCalcular;
         private System.Windows.Forms.NumericUpDown nudAnosDep;
-        private System.Windows.Forms.TextBox txtValorCompra;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnGuardar;
     }
 }
