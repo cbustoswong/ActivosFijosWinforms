@@ -727,6 +727,8 @@ namespace ActivosFijos {
             
             private global::System.Data.DataColumn columnValor_Compra;
             
+            private global::System.Data.DataColumn columnCodigoBR;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Activos_FijosDataTable() {
@@ -818,6 +820,14 @@ namespace ActivosFijos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CodigoBRColumn {
+                get {
+                    return this.columnCodigoBR;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -853,7 +863,7 @@ namespace ActivosFijos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Activos_FijosRow AddActivos_FijosRow(string Descripcion, DepartamentoRow parentDepartamentoRowByFK_Activos_Fijos_Departamento, UbicacionRow parentUbicacionRowByFK_Activos_Fijos_Ubicacion, Tipo_ActivoRow parentTipo_ActivoRowByFK_Activos_Fijos_Tipo_Activo, System.DateTime Fecha_Registro, decimal Valor_Compra) {
+            public Activos_FijosRow AddActivos_FijosRow(string Descripcion, DepartamentoRow parentDepartamentoRowByFK_Activos_Fijos_Departamento, UbicacionRow parentUbicacionRowByFK_Activos_Fijos_Ubicacion, Tipo_ActivoRow parentTipo_ActivoRowByFK_Activos_Fijos_Tipo_Activo, System.DateTime Fecha_Registro, decimal Valor_Compra, string CodigoBR) {
                 Activos_FijosRow rowActivos_FijosRow = ((Activos_FijosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -862,7 +872,8 @@ namespace ActivosFijos {
                         null,
                         null,
                         Fecha_Registro,
-                        Valor_Compra};
+                        Valor_Compra,
+                        CodigoBR};
                 if ((parentDepartamentoRowByFK_Activos_Fijos_Departamento != null)) {
                     columnValuesArray[2] = parentDepartamentoRowByFK_Activos_Fijos_Departamento[0];
                 }
@@ -908,6 +919,7 @@ namespace ActivosFijos {
                 this.columnCodigo_TipoActivo = base.Columns["Codigo_TipoActivo"];
                 this.columnFecha_Registro = base.Columns["Fecha_Registro"];
                 this.columnValor_Compra = base.Columns["Valor_Compra"];
+                this.columnCodigoBR = base.Columns["CodigoBR"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -927,6 +939,8 @@ namespace ActivosFijos {
                 base.Columns.Add(this.columnFecha_Registro);
                 this.columnValor_Compra = new global::System.Data.DataColumn("Valor_Compra", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnValor_Compra);
+                this.columnCodigoBR = new global::System.Data.DataColumn("CodigoBR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodigoBR);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCodigo_Activo}, true));
                 this.columnCodigo_Activo.AutoIncrement = true;
@@ -942,6 +956,8 @@ namespace ActivosFijos {
                 this.columnCodigo_TipoActivo.AllowDBNull = false;
                 this.columnFecha_Registro.AllowDBNull = false;
                 this.columnValor_Compra.AllowDBNull = false;
+                this.columnCodigoBR.ReadOnly = true;
+                this.columnCodigoBR.MaxLength = 8000;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4591,6 +4607,22 @@ namespace ActivosFijos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string CodigoBR {
+                get {
+                    try {
+                        return ((string)(this[this.tableActivos_Fijos.CodigoBRColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'CodigoBR\' de la tabla \'Activos_Fijos\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableActivos_Fijos.CodigoBRColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public DepartamentoRow DepartamentoRow {
                 get {
                     return ((DepartamentoRow)(this.GetParentRow(this.Table.ParentRelations["FK_Activos_Fijos_Departamento"])));
@@ -4620,6 +4652,18 @@ namespace ActivosFijos {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Activos_Fijos_Ubicacion"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCodigoBRNull() {
+                return this.IsNull(this.tableActivos_Fijos.CodigoBRColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCodigoBRNull() {
+                this[this.tableActivos_Fijos.CodigoBRColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6159,10 +6203,11 @@ namespace ActivosFijos.ActivosFijosDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Codigo_TipoActivo", "Codigo_TipoActivo");
             tableMapping.ColumnMappings.Add("Fecha_Registro", "Fecha_Registro");
             tableMapping.ColumnMappings.Add("Valor_Compra", "Valor_Compra");
+            tableMapping.ColumnMappings.Add("CodigoBR", "CodigoBR");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Activos_Fijos] WHERE (([Codigo_Activo] = @Original_Codigo_Activo) AND ([Descripcion] = @Original_Descripcion) AND ([Codigo_Departamento] = @Original_Codigo_Departamento) AND ([Codigo_Ubicacion] = @Original_Codigo_Ubicacion) AND ([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ([Fecha_Registro] = @Original_Fecha_Registro) AND ([Valor_Compra] = @Original_Valor_Compra))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Activos_Fijos] WHERE (([Codigo_Activo] = @Original_Codigo_Activo) AND ([Descripcion] = @Original_Descripcion) AND ([Codigo_Departamento] = @Original_Codigo_Departamento) AND ([Codigo_Ubicacion] = @Original_Codigo_Ubicacion) AND ([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ([Fecha_Registro] = @Original_Fecha_Registro) AND ([Valor_Compra] = @Original_Valor_Compra))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Codigo_Activo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo_Activo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6173,8 +6218,8 @@ namespace ActivosFijos.ActivosFijosDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Valor_Compra", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Valor_Compra", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Activos_Fijos] ([Descripcion], [Codigo_Departamento], [Codigo_Ubicacion], [Codigo_TipoActivo], [Fecha_Registro], [Valor_Compra]) VALUES (@Descripcion, @Codigo_Departamento, @Codigo_Ubicacion, @Codigo_TipoActivo, @Fecha_Registro, @Valor_Compra);
-SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo_TipoActivo, Fecha_Registro, Valor_Compra FROM Activos_Fijos WHERE (Codigo_Activo = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Activos_Fijos] ([Descripcion], [Codigo_Departamento], [Codigo_Ubicacion], [Codigo_TipoActivo], [Fecha_Registro], [Valor_Compra]) VALUES (@Descripcion, @Codigo_Departamento, @Codigo_Ubicacion, @Codigo_TipoActivo, @Fecha_Registro, @Valor_Compra);
+SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo_TipoActivo, Fecha_Registro, Valor_Compra, REPLICATE('0', 3 - LEN(CONVERT (varchar, Codigo_TipoActivo))) + CONVERT (varchar, Codigo_TipoActivo) + '.' + REPLICATE('0', 2 - LEN(CONVERT (varchar, Codigo_Departamento))) + CONVERT (varchar, Codigo_Departamento) + '.' + REPLICATE('0', 2 - LEN(CONVERT (varchar, Codigo_Ubicacion))) + CONVERT (varchar, Codigo_Ubicacion) + '.' + CONVERT (varchar, Fecha_Registro, 2) + '.' + REPLICATE('0', 4 - LEN(CONVERT (varchar, Codigo_Activo))) + CONVERT (varchar, Codigo_Activo) AS CodigoBR FROM Activos_Fijos WHERE (Codigo_Activo = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo_Departamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo_Departamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6184,8 +6229,8 @@ SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Valor_Compra", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Valor_Compra", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Activos_Fijos] SET [Descripcion] = @Descripcion, [Codigo_Departamento] = @Codigo_Departamento, [Codigo_Ubicacion] = @Codigo_Ubicacion, [Codigo_TipoActivo] = @Codigo_TipoActivo, [Fecha_Registro] = @Fecha_Registro, [Valor_Compra] = @Valor_Compra WHERE (([Codigo_Activo] = @Original_Codigo_Activo) AND ([Descripcion] = @Original_Descripcion) AND ([Codigo_Departamento] = @Original_Codigo_Departamento) AND ([Codigo_Ubicacion] = @Original_Codigo_Ubicacion) AND ([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ([Fecha_Registro] = @Original_Fecha_Registro) AND ([Valor_Compra] = @Original_Valor_Compra));
-SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo_TipoActivo, Fecha_Registro, Valor_Compra FROM Activos_Fijos WHERE (Codigo_Activo = @Codigo_Activo)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Activos_Fijos] SET [Descripcion] = @Descripcion, [Codigo_Departamento] = @Codigo_Departamento, [Codigo_Ubicacion] = @Codigo_Ubicacion, [Codigo_TipoActivo] = @Codigo_TipoActivo, [Fecha_Registro] = @Fecha_Registro, [Valor_Compra] = @Valor_Compra WHERE (([Codigo_Activo] = @Original_Codigo_Activo) AND ([Descripcion] = @Original_Descripcion) AND ([Codigo_Departamento] = @Original_Codigo_Departamento) AND ([Codigo_Ubicacion] = @Original_Codigo_Ubicacion) AND ([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ([Fecha_Registro] = @Original_Fecha_Registro) AND ([Valor_Compra] = @Original_Valor_Compra));
+SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo_TipoActivo, Fecha_Registro, Valor_Compra, REPLICATE('0', 3 - LEN(CONVERT (varchar, Codigo_TipoActivo))) + CONVERT (varchar, Codigo_TipoActivo) + '.' + REPLICATE('0', 2 - LEN(CONVERT (varchar, Codigo_Departamento))) + CONVERT (varchar, Codigo_Departamento) + '.' + REPLICATE('0', 2 - LEN(CONVERT (varchar, Codigo_Ubicacion))) + CONVERT (varchar, Codigo_Ubicacion) + '.' + CONVERT (varchar, Fecha_Registro, 2) + '.' + REPLICATE('0', 4 - LEN(CONVERT (varchar, Codigo_Activo))) + CONVERT (varchar, Codigo_Activo) AS CodigoBR FROM Activos_Fijos WHERE (Codigo_Activo = @Codigo_Activo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo_Departamento", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo_Departamento", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6216,8 +6261,10 @@ SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo_" +
-                "TipoActivo, Fecha_Registro, Valor_Compra FROM dbo.Activos_Fijos";
+            this._commandCollection[0].CommandText = @"SELECT        Codigo_Activo, Descripcion, Codigo_Departamento, Codigo_Ubicacion, Codigo_TipoActivo, Fecha_Registro, Valor_Compra, REPLICATE('0', 3 - LEN(CONVERT(varchar, Codigo_TipoActivo))) + CONVERT(varchar, 
+                         Codigo_TipoActivo) + '.' + REPLICATE('0', 2 - LEN(CONVERT(varchar, Codigo_Departamento))) + CONVERT(varchar, Codigo_Departamento) + '.' + REPLICATE('0', 2 - LEN(CONVERT(varchar, Codigo_Ubicacion))) 
+                         + CONVERT(varchar, Codigo_Ubicacion) + '.' + CONVERT(varchar, Fecha_Registro, 2) + '.' + REPLICATE('0', 4 - LEN(CONVERT(varchar, Codigo_Activo))) + CONVERT(varchar, Codigo_Activo) AS CodigoBR
+FROM            Activos_Fijos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
