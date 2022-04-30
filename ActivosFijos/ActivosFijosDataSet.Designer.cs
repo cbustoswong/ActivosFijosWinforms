@@ -3015,6 +3015,10 @@ namespace ActivosFijos {
             
             private global::System.Data.DataColumn columnEstado;
             
+            private global::System.Data.DataColumn columnVidaUtil;
+            
+            private global::System.Data.DataColumn columnPorcentaje;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public Tipo_ActivoDataTable() {
@@ -3074,6 +3078,22 @@ namespace ActivosFijos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn VidaUtilColumn {
+                get {
+                    return this.columnVidaUtil;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn PorcentajeColumn {
+                get {
+                    return this.columnPorcentaje;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3109,12 +3129,14 @@ namespace ActivosFijos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public Tipo_ActivoRow AddTipo_ActivoRow(string Descripcion, string Estado) {
+            public Tipo_ActivoRow AddTipo_ActivoRow(string Descripcion, string Estado, int VidaUtil, decimal Porcentaje) {
                 Tipo_ActivoRow rowTipo_ActivoRow = ((Tipo_ActivoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Descripcion,
-                        Estado};
+                        Estado,
+                        VidaUtil,
+                        Porcentaje};
                 rowTipo_ActivoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTipo_ActivoRow);
                 return rowTipo_ActivoRow;
@@ -3147,6 +3169,8 @@ namespace ActivosFijos {
                 this.columnCodigo_TipoActivo = base.Columns["Codigo_TipoActivo"];
                 this.columnDescripcion = base.Columns["Descripcion"];
                 this.columnEstado = base.Columns["Estado"];
+                this.columnVidaUtil = base.Columns["VidaUtil"];
+                this.columnPorcentaje = base.Columns["Porcentaje"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3158,6 +3182,10 @@ namespace ActivosFijos {
                 base.Columns.Add(this.columnDescripcion);
                 this.columnEstado = new global::System.Data.DataColumn("Estado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEstado);
+                this.columnVidaUtil = new global::System.Data.DataColumn("VidaUtil", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVidaUtil);
+                this.columnPorcentaje = new global::System.Data.DataColumn("Porcentaje", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPorcentaje);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCodigo_TipoActivo}, true));
                 this.columnCodigo_TipoActivo.AutoIncrement = true;
@@ -3168,6 +3196,7 @@ namespace ActivosFijos {
                 this.columnCodigo_TipoActivo.Unique = true;
                 this.columnDescripcion.MaxLength = 100;
                 this.columnEstado.MaxLength = 15;
+                this.columnPorcentaje.ReadOnly = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5258,6 +5287,38 @@ namespace ActivosFijos {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int VidaUtil {
+                get {
+                    try {
+                        return ((int)(this[this.tableTipo_Activo.VidaUtilColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VidaUtil\' de la tabla \'Tipo_Activo\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTipo_Activo.VidaUtilColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public decimal Porcentaje {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableTipo_Activo.PorcentajeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Porcentaje\' de la tabla \'Tipo_Activo\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTipo_Activo.PorcentajeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsDescripcionNull() {
                 return this.IsNull(this.tableTipo_Activo.DescripcionColumn);
             }
@@ -5278,6 +5339,30 @@ namespace ActivosFijos {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetEstadoNull() {
                 this[this.tableTipo_Activo.EstadoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsVidaUtilNull() {
+                return this.IsNull(this.tableTipo_Activo.VidaUtilColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetVidaUtilNull() {
+                this[this.tableTipo_Activo.VidaUtilColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsPorcentajeNull() {
+                return this.IsNull(this.tableTipo_Activo.PorcentajeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetPorcentajeNull() {
+                this[this.tableTipo_Activo.PorcentajeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8833,36 +8918,48 @@ SELECT Codigo_Proveedor, Nombre, Cedula_RNC, Tipo_Proveedor, Fecha_Registro, Est
             tableMapping.ColumnMappings.Add("Codigo_TipoActivo", "Codigo_TipoActivo");
             tableMapping.ColumnMappings.Add("Descripcion", "Descripcion");
             tableMapping.ColumnMappings.Add("Estado", "Estado");
+            tableMapping.ColumnMappings.Add("VidaUtil", "VidaUtil");
+            tableMapping.ColumnMappings.Add("Porcentaje", "Porcentaje");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tipo_Activo] WHERE (([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ((@IsNull_Descripcion = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Tipo_Activo] WHERE (([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ((@IsNull_Descripcion = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)) AND ((@IsNull_VidaUtil = 1 AND [VidaUtil] IS NULL) OR ([VidaUtil] = @Original_VidaUtil)) AND ((@IsNull_Porcentaje = 1 AND [Porcentaje] IS NULL) OR ([Porcentaje] = @Original_Porcentaje)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Codigo_TipoActivo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo_TipoActivo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Descripcion", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Estado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VidaUtil", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VidaUtil", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VidaUtil", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VidaUtil", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Porcentaje", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Porcentaje", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Porcentaje", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 15, 12, "Porcentaje", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Tipo_Activo] ([Descripcion], [Estado]) VALUES (@Descripcion, @" +
-                "Estado);\r\nSELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (" +
-                "Codigo_TipoActivo = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Tipo_Activo] ([Descripcion], [Estado], [VidaUtil]) VALUES (@Descripc" +
+                "ion, @Estado, @VidaUtil);\r\nSELECT Codigo_TipoActivo, Descripcion, Estado, VidaUt" +
+                "il, Porcentaje FROM Tipo_Activo WHERE (Codigo_TipoActivo = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VidaUtil", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VidaUtil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tipo_Activo] SET [Descripcion] = @Descripcion, [Estado] = @Estado WHERE (([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ((@IsNull_Descripcion = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)));
-SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_TipoActivo = @Codigo_TipoActivo)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Tipo_Activo] SET [Descripcion] = @Descripcion, [Estado] = @Estado, [VidaUtil] = @VidaUtil WHERE (([Codigo_TipoActivo] = @Original_Codigo_TipoActivo) AND ((@IsNull_Descripcion = 1 AND [Descripcion] IS NULL) OR ([Descripcion] = @Original_Descripcion)) AND ((@IsNull_Estado = 1 AND [Estado] IS NULL) OR ([Estado] = @Original_Estado)) AND ((@IsNull_VidaUtil = 1 AND [VidaUtil] IS NULL) OR ([VidaUtil] = @Original_VidaUtil)) AND ((@IsNull_Porcentaje = 1 AND [Porcentaje] IS NULL) OR ([Porcentaje] = @Original_Porcentaje)));
+SELECT Codigo_TipoActivo, Descripcion, Estado, VidaUtil, Porcentaje FROM Tipo_Activo WHERE (Codigo_TipoActivo = @Codigo_TipoActivo)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Estado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VidaUtil", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VidaUtil", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Codigo_TipoActivo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo_TipoActivo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Descripcion", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Estado", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Estado", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Estado", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_VidaUtil", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VidaUtil", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VidaUtil", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VidaUtil", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Porcentaje", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Porcentaje", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Porcentaje", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 15, 12, "Porcentaje", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Codigo_TipoActivo", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Codigo_TipoActivo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -8879,7 +8976,8 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Codigo_TipoActivo, Descripcion, Estado FROM dbo.Tipo_Activo";
+            this._commandCollection[0].CommandText = "SELECT        Codigo_TipoActivo, Descripcion, Estado, VidaUtil, Porcentaje\r\nFROM " +
+                "           Tipo_Activo";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -8940,7 +9038,7 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Codigo_TipoActivo, string Original_Descripcion, string Original_Estado) {
+        public virtual int Delete(int Original_Codigo_TipoActivo, string Original_Descripcion, string Original_Estado, global::System.Nullable<int> Original_VidaUtil, global::System.Nullable<decimal> Original_Porcentaje) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Codigo_TipoActivo));
             if ((Original_Descripcion == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -8957,6 +9055,22 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Estado));
+            }
+            if ((Original_VidaUtil.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((int)(Original_VidaUtil.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Porcentaje.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_Porcentaje.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -8978,7 +9092,7 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Descripcion, string Estado) {
+        public virtual int Insert(string Descripcion, string Estado, global::System.Nullable<int> VidaUtil) {
             if ((Descripcion == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -8990,6 +9104,12 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
             }
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Estado));
+            }
+            if ((VidaUtil.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(VidaUtil.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -9011,7 +9131,7 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Descripcion, string Estado, int Original_Codigo_TipoActivo, string Original_Descripcion, string Original_Estado, int Codigo_TipoActivo) {
+        public virtual int Update(string Descripcion, string Estado, global::System.Nullable<int> VidaUtil, int Original_Codigo_TipoActivo, string Original_Descripcion, string Original_Estado, global::System.Nullable<int> Original_VidaUtil, global::System.Nullable<decimal> Original_Porcentaje, int Codigo_TipoActivo) {
             if ((Descripcion == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -9024,24 +9144,46 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Estado));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Codigo_TipoActivo));
-            if ((Original_Descripcion == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            if ((VidaUtil.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(VidaUtil.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Descripcion));
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Codigo_TipoActivo));
+            if ((Original_Descripcion == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Descripcion));
             }
             if ((Original_Estado == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Estado));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Estado));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Codigo_TipoActivo));
+            if ((Original_VidaUtil.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_VidaUtil.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_Porcentaje.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_Porcentaje.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Codigo_TipoActivo));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -9062,8 +9204,8 @@ SELECT Codigo_TipoActivo, Descripcion, Estado FROM Tipo_Activo WHERE (Codigo_Tip
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Descripcion, string Estado, int Original_Codigo_TipoActivo, string Original_Descripcion, string Original_Estado) {
-            return this.Update(Descripcion, Estado, Original_Codigo_TipoActivo, Original_Descripcion, Original_Estado, Original_Codigo_TipoActivo);
+        public virtual int Update(string Descripcion, string Estado, global::System.Nullable<int> VidaUtil, int Original_Codigo_TipoActivo, string Original_Descripcion, string Original_Estado, global::System.Nullable<int> Original_VidaUtil, global::System.Nullable<decimal> Original_Porcentaje) {
+            return this.Update(Descripcion, Estado, VidaUtil, Original_Codigo_TipoActivo, Original_Descripcion, Original_Estado, Original_VidaUtil, Original_Porcentaje, Original_Codigo_TipoActivo);
         }
     }
     

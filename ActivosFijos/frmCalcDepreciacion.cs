@@ -184,6 +184,11 @@ namespace ActivosFijos
             FrmReportCalculo frm = new FrmReportCalculo();
             frm.ShowDialog();
         }
+
+        private void rbDigAnos_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

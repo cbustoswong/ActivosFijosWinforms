@@ -32,34 +32,34 @@ namespace ActivosFijos
                     var RoleAdmin = db.Roles.Add(new Roles { Nombre = "Admin" });
                     var RoleRRHH = db.Roles.Add(new Roles { Nombre = "RRHH" });
                     var RoleLogis = db.Roles.Add(new Roles { Nombre = "Logistica" });
-                    var RoleCont = db.Roles.Add(new Roles { Nombre = "Contable" });
+                    //var RoleCont = db.Roles.Add(new Roles { Nombre = "Contable" });
 
                     db.Usuarios.Add(new Usuarios
                     {
                         Usuario = "admin",
-                        Nombre = "Miguel",
-                        Apellido = "Araujo",
-                        Contrasena = SecurePasswordHasher.Hash("asdf1234"),
+                        Nombre = "Administrador",
+                        Apellido = "",
+                        Contrasena = SecurePasswordHasher.Hash("operador"),
                         Roles = { RoleAdmin, RoleRRHH, RoleLogis }
                     });
 
-                    db.Usuarios.Add(new Usuarios
-                    {
-                        Usuario = "wcruz",
-                        Nombre = "Winston",
-                        Apellido = "Cruz",
-                        Contrasena = SecurePasswordHasher.Hash("asdf1234"),
-                        Roles = { RoleRRHH }
-                    });
+                    //db.Usuarios.Add(new Usuarios
+                    //{
+                    //    Usuario = "wcruz",
+                    //    Nombre = "Winston",
+                    //    Apellido = "Cruz",
+                    //    Contrasena = SecurePasswordHasher.Hash("asdf1234"),
+                    //    Roles = { RoleRRHH }
+                    //});
 
-                    db.Usuarios.Add(new Usuarios
-                    {
-                        Usuario = "ldavid",
-                        Nombre = "Luis",
-                        Apellido = "Laureano",
-                        Contrasena = SecurePasswordHasher.Hash("asdf1234"),
-                        Roles = { RoleLogis }
-                    });
+                    //db.Usuarios.Add(new Usuarios
+                    //{
+                    //    Usuario = "ldavid",
+                    //    Nombre = "Luis",
+                    //    Apellido = "Laureano",
+                    //    Contrasena = SecurePasswordHasher.Hash("asdf1234"),
+                    //    Roles = { RoleLogis }
+                    //});
 
                     db.SaveChanges();
                 }

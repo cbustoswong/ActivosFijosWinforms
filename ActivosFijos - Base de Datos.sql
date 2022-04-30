@@ -167,3 +167,8 @@ INSERT INTO Tipo_Activo VALUES
 ('Edificio', 'Activo'),
 ('Mobiliario y Equipo de Oficina', 'Activo'),
 ('Equipo de Transporte', 'Activo');
+
+--DBCC CHECKIDENT ('dbo.Roles', RESEED, 0);  
+
+
+ALTER TABLE Tipo_Activo alter column Porcentaje as 100.0/VidaUtil

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ActivosFijosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ActivosFijosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Activos_Fijos">
           <Key>
             <PropertyRef Name="Codigo_Activo" />
@@ -83,6 +83,8 @@
           <Property Name="Codigo_TipoActivo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="100" />
           <Property Name="Estado" Type="varchar" MaxLength="15" />
+          <Property Name="VidaUtil" Type="int" />
+          <Property Name="Porcentaje" Type="numeric" Precision="15" Scale="12" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Tipo_Pago">
           <Key>
@@ -157,7 +159,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Depreciacion_Activos_Fijos">
-          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1" />
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Calculo_Depreciacion" Type="Self.Calculo_Depreciacion" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Activos_Fijos">
@@ -250,8 +254,7 @@
             <End Role="Usuarios_Roles" EntitySet="Usuarios_Roles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ActivosFijosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -343,6 +346,8 @@
           <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Tipo_Activo" FromRole="Tipo_Activo" ToRole="Activos_Fijos" />
+          <Property Name="VidaUtil" Type="Int32" />
+          <Property Name="Porcentaje" Type="Decimal" Precision="15" Scale="12" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityType Name="Tipo_Pago">
           <Key>
@@ -561,6 +566,8 @@
           <EntitySetMapping Name="Tipo_Activo">
             <EntityTypeMapping TypeName="ActivosFijosModel.Tipo_Activo">
               <MappingFragment StoreEntitySet="Tipo_Activo">
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="VidaUtil" ColumnName="VidaUtil" />
                 <ScalarProperty Name="Codigo_TipoActivo" ColumnName="Codigo_TipoActivo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
