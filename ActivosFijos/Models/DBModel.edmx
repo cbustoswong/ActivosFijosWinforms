@@ -16,6 +16,12 @@
           <Property Name="Codigo_TipoActivo" Type="int" Nullable="false" />
           <Property Name="Fecha_Registro" Type="date" Nullable="false" />
           <Property Name="Valor_Compra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Codigo_Proveedor" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Depreciar" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Codigo_Responsable" Type="int" Nullable="false" />
+          <Property Name="Codigo_Usuario" Type="int" Nullable="false" />
+          <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Calculo_Depreciacion">
           <Key>
@@ -25,8 +31,8 @@
           <Property Name="Codigo_Registro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Codigo_Activo_Fijo" Type="int" Nullable="false" />
           <Property Name="Fecha_Proceso" Type="date" Nullable="false" />
-          <Property Name="Monto_Depreciado" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Depreciacion_Acumulada" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Monto_Depreciado" Type="decimal" Precision="20" Scale="6" />
+          <Property Name="Depreciacion_Acumulada" Type="decimal" Precision="20" Scale="6" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -47,6 +53,26 @@
           <Property Name="Tipo_Persona" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="Fecha_Ingreso" Type="date" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MovimientosActivos">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Codigo_Activo_Fijo" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Activo_Fijo" Type="int" Nullable="false" />
+          <Property Name="Tipo_Movimiento" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="Fecha_Movimiento" Type="datetime" Nullable="false" />
+          <Property Name="Codigo_Ubicacion" Type="int" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="int" Nullable="false" />
+          <Property Name="Codigo_Proveedor" Type="int" Nullable="false" />
+          <Property Name="Codigo_Responsable" Type="int" Nullable="false" />
+          <Property Name="Codigo_TipoActivo" Type="int" Nullable="false" />
+          <Property Name="Codigo_Usuario" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Depreciar" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Parametro">
           <Key>
@@ -122,6 +148,37 @@
           <Property Name="Id_Usuario" Type="int" Nullable="false" />
           <Property Name="Id_Rol" Type="int" Nullable="false" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="v$Activosfijos">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="Departamento" />
+            <PropertyRef Name="Depreciar" />
+            <PropertyRef Name="FechaCompra" />
+            <PropertyRef Name="ValorCompra" />
+          </Key>
+          <Property Name="CodigoBR" Type="varchar" MaxLength="8000" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Proveedor" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Departamento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
+          <Property Name="TipoActivo" Type="varchar" MaxLength="100" />
+          <Property Name="Depreciar" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Responsable" Type="varchar" MaxLength="81" />
+          <Property Name="FechaCompra" Type="date" Nullable="false" />
+          <Property Name="ValorCompra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PorDepAnual" Type="decimal" Precision="20" Scale="2" />
+          <Property Name="PorDepMensual" Type="decimal" Precision="20" Scale="4" />
+          <Property Name="PorDepDiaria" Type="decimal" Precision="20" Scale="6" />
+          <Property Name="FechaUltDepreciacion" Type="date" />
+          <Property Name="Depreciado" Type="decimal" Precision="20" Scale="6" />
+          <Property Name="Acumulado" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="PorDepreciar" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
         <Association Name="FK_Activos_Fijos_Departamento">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
           <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="*" />
@@ -131,6 +188,30 @@
             </Principal>
             <Dependent Role="Activos_Fijos">
               <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activos_Fijos_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activos_Fijos_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Proveedor" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -158,6 +239,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Activos_Fijos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Depreciacion_Activos_Fijos">
           <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -181,6 +274,90 @@
             </Principal>
             <Dependent Role="Empleado">
               <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Activos_Fijos">
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Activo" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Activo_Fijo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Proveedor">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Tipo_Activo">
+          <End Role="Tipo_Activo" Type="Self.Tipo_Activo" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Activo">
+              <PropertyRef Name="Codigo_TipoActivo" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_TipoActivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Ubicacion">
+          <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="Codigo_Ubicacion" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Usuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="MovimientosActivos" Type="Self.MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Usuario" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -212,11 +389,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="pa_depreciaActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ActivosFijosModelStoreContainer">
           <EntitySet Name="Activos_Fijos" EntityType="Self.Activos_Fijos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovimientosActivos" EntityType="Self.MovimientosActivos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parametro" EntityType="Self.Parametro" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
@@ -225,8 +404,38 @@
           <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios_Roles" EntityType="Self.Usuarios_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v$Activosfijos" EntityType="Self.v$Activosfijos" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v$Activosfijos].[CodigoBR] AS [CodigoBR], 
+    [v$Activosfijos].[Codigo] AS [Codigo], 
+    [v$Activosfijos].[Descripcion] AS [Descripcion], 
+    [v$Activosfijos].[Proveedor] AS [Proveedor], 
+    [v$Activosfijos].[Departamento] AS [Departamento], 
+    [v$Activosfijos].[Ubicacion] AS [Ubicacion], 
+    [v$Activosfijos].[TipoActivo] AS [TipoActivo], 
+    [v$Activosfijos].[Depreciar] AS [Depreciar], 
+    [v$Activosfijos].[Responsable] AS [Responsable], 
+    [v$Activosfijos].[FechaCompra] AS [FechaCompra], 
+    [v$Activosfijos].[ValorCompra] AS [ValorCompra], 
+    [v$Activosfijos].[PorDepAnual] AS [PorDepAnual], 
+    [v$Activosfijos].[PorDepMensual] AS [PorDepMensual], 
+    [v$Activosfijos].[PorDepDiaria] AS [PorDepDiaria], 
+    [v$Activosfijos].[FechaUltDepreciacion] AS [FechaUltDepreciacion], 
+    [v$Activosfijos].[Depreciado] AS [Depreciado], 
+    [v$Activosfijos].[Acumulado] AS [Acumulado], 
+    [v$Activosfijos].[PorDepreciar] AS [PorDepreciar]
+    FROM [dbo].[v$Activosfijos] AS [v$Activosfijos]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Activos_Fijos_Departamento" Association="Self.FK_Activos_Fijos_Departamento">
             <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activos_Fijos_Empleado" Association="Self.FK_Activos_Fijos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activos_Fijos_Proveedor" Association="Self.FK_Activos_Fijos_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
             <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
           </AssociationSet>
           <AssociationSet Name="FK_Activos_Fijos_Tipo_Activo" Association="Self.FK_Activos_Fijos_Tipo_Activo">
@@ -237,6 +446,10 @@
             <End Role="Ubicacion" EntitySet="Ubicacion" />
             <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
           </AssociationSet>
+          <AssociationSet Name="FK_Activos_Fijos_Usuarios" Association="Self.FK_Activos_Fijos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
           <AssociationSet Name="FK_Depreciacion_Activos_Fijos" Association="Self.FK_Depreciacion_Activos_Fijos">
             <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
             <End Role="Calculo_Depreciacion" EntitySet="Calculo_Depreciacion" />
@@ -244,6 +457,34 @@
           <AssociationSet Name="FK_Empleado_Departamento" Association="Self.FK_Empleado_Departamento">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Activos_Fijos" Association="Self.FK_MovimientosActivos_Activos_Fijos">
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Departamento" Association="Self.FK_MovimientosActivos_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Empleado" Association="Self.FK_MovimientosActivos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Proveedor" Association="Self.FK_MovimientosActivos_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Tipo_Activo" Association="Self.FK_MovimientosActivos_Tipo_Activo">
+            <End Role="Tipo_Activo" EntitySet="Tipo_Activo" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Ubicacion" Association="Self.FK_MovimientosActivos_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Usuarios" Association="Self.FK_MovimientosActivos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuarios_Roles_Roles" Association="Self.FK_Usuarios_Roles_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -273,6 +514,16 @@
           <NavigationProperty Name="Tipo_Activo" Relationship="Self.FK_Activos_Fijos_Tipo_Activo" FromRole="Activos_Fijos" ToRole="Tipo_Activo" />
           <NavigationProperty Name="Ubicacion" Relationship="Self.FK_Activos_Fijos_Ubicacion" FromRole="Activos_Fijos" ToRole="Ubicacion" />
           <NavigationProperty Name="Calculo_Depreciacion" Relationship="Self.FK_Depreciacion_Activos_Fijos" FromRole="Activos_Fijos" ToRole="Calculo_Depreciacion" />
+          <Property Name="Codigo_Proveedor" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Depreciar" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo_Responsable" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Creacion" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Empleado" Relationship="ActivosFijosModel.FK_Activos_Fijos_Empleado" FromRole="Activos_Fijos" ToRole="Empleado" />
+          <NavigationProperty Name="Proveedor" Relationship="ActivosFijosModel.FK_Activos_Fijos_Proveedor" FromRole="Activos_Fijos" ToRole="Proveedor" />
+          <NavigationProperty Name="Usuarios" Relationship="ActivosFijosModel.FK_Activos_Fijos_Usuarios" FromRole="Activos_Fijos" ToRole="Usuarios" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Activos_Fijos" FromRole="Activos_Fijos" ToRole="MovimientosActivos" />
         </EntityType>
         <EntityType Name="Calculo_Depreciacion">
           <Key>
@@ -282,8 +533,8 @@
           <Property Name="Codigo_Registro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Codigo_Activo_Fijo" Type="Int32" Nullable="false" />
           <Property Name="Fecha_Proceso" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Monto_Depreciado" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Depreciacion_Acumulada" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Monto_Depreciado" Type="Decimal" Precision="20" Scale="6" />
+          <Property Name="Depreciacion_Acumulada" Type="Decimal" Precision="20" Scale="6" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Depreciacion_Activos_Fijos" FromRole="Calculo_Depreciacion" ToRole="Activos_Fijos" />
         </EntityType>
         <EntityType Name="Departamento">
@@ -294,6 +545,7 @@
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Departamento" FromRole="Departamento" ToRole="Activos_Fijos" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Empleado_Departamento" FromRole="Departamento" ToRole="Empleado" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Departamento" FromRole="Departamento" ToRole="MovimientosActivos" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -308,6 +560,8 @@
           <Property Name="Fecha_Ingreso" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Empleado_Departamento" FromRole="Empleado" ToRole="Departamento" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="ActivosFijosModel.FK_Activos_Fijos_Empleado" FromRole="Empleado" ToRole="Activos_Fijos" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Empleado" FromRole="Empleado" ToRole="MovimientosActivos" />
         </EntityType>
         <EntityType Name="Parametro">
           <Key>
@@ -329,6 +583,8 @@
           <Property Name="Tipo_Proveedor" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Fecha_Registro" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Estado" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="ActivosFijosModel.FK_Activos_Fijos_Proveedor" FromRole="Proveedor" ToRole="Activos_Fijos" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Proveedor" FromRole="Proveedor" ToRole="MovimientosActivos" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -348,6 +604,7 @@
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Tipo_Activo" FromRole="Tipo_Activo" ToRole="Activos_Fijos" />
           <Property Name="VidaUtil" Type="Int32" />
           <Property Name="Porcentaje" Type="Decimal" Precision="15" Scale="12" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Tipo_Activo" FromRole="Tipo_Activo" ToRole="MovimientosActivos" />
         </EntityType>
         <EntityType Name="Tipo_Pago">
           <Key>
@@ -367,6 +624,7 @@
           <Property Name="Edificio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Estado" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Activos_Fijos" Relationship="Self.FK_Activos_Fijos_Ubicacion" FromRole="Ubicacion" ToRole="Activos_Fijos" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Ubicacion" FromRole="Ubicacion" ToRole="MovimientosActivos" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -378,6 +636,8 @@
           <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="Self.Usuarios_Roles" FromRole="Usuarios" ToRole="Roles" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="ActivosFijosModel.FK_Activos_Fijos_Usuarios" FromRole="Usuarios" ToRole="Activos_Fijos" />
+          <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Usuarios" FromRole="Usuarios" ToRole="MovimientosActivos" />
         </EntityType>
         <Association Name="FK_Activos_Fijos_Departamento">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
@@ -479,7 +739,226 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
+          <EntitySet Name="v_Activosfijos" EntityType="ActivosFijosModel.v_Activosfijos" />
+          <AssociationSet Name="FK_Activos_Fijos_Empleado" Association="ActivosFijosModel.FK_Activos_Fijos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activos_Fijos_Proveedor" Association="ActivosFijosModel.FK_Activos_Fijos_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activos_Fijos_Usuarios" Association="ActivosFijosModel.FK_Activos_Fijos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <EntitySet Name="MovimientosActivos" EntityType="ActivosFijosModel.MovimientosActivos" />
+          <AssociationSet Name="FK_MovimientosActivos_Activos_Fijos" Association="ActivosFijosModel.FK_MovimientosActivos_Activos_Fijos">
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Departamento" Association="ActivosFijosModel.FK_MovimientosActivos_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Empleado" Association="ActivosFijosModel.FK_MovimientosActivos_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Proveedor" Association="ActivosFijosModel.FK_MovimientosActivos_Proveedor">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Tipo_Activo" Association="ActivosFijosModel.FK_MovimientosActivos_Tipo_Activo">
+            <End Role="Tipo_Activo" EntitySet="Tipo_Activo" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Ubicacion" Association="ActivosFijosModel.FK_MovimientosActivos_Ubicacion">
+            <End Role="Ubicacion" EntitySet="Ubicacion" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovimientosActivos_Usuarios" Association="ActivosFijosModel.FK_MovimientosActivos_Usuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
+          </AssociationSet>
+          <FunctionImport Name="pa_depreciaActivos" />
         </EntityContainer>
+        <EntityType Name="v_Activosfijos">
+          <Key>
+            <PropertyRef Name="Codigo" />
+            <PropertyRef Name="Descripcion" />
+            <PropertyRef Name="Proveedor" />
+            <PropertyRef Name="Departamento" />
+            <PropertyRef Name="Depreciar" />
+            <PropertyRef Name="FechaCompra" />
+            <PropertyRef Name="ValorCompra" />
+          </Key>
+          <Property Name="CodigoBR" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Proveedor" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="Departamento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoActivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Depreciar" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Responsable" Type="String" MaxLength="81" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ValorCompra" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="PorDepAnual" Type="Decimal" Precision="20" Scale="2" />
+          <Property Name="PorDepMensual" Type="Decimal" Precision="20" Scale="4" />
+          <Property Name="PorDepDiaria" Type="Decimal" Precision="20" Scale="6" />
+          <Property Name="FechaUltDepreciacion" Type="DateTime" Precision="0" />
+          <Property Name="Depreciado" Type="Decimal" Precision="20" Scale="6" />
+          <Property Name="Acumulado" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PorDepreciar" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK_Activos_Fijos_Empleado">
+          <End Type="ActivosFijosModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="ActivosFijosModel.Activos_Fijos" Role="Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activos_Fijos_Proveedor">
+          <End Type="ActivosFijosModel.Proveedor" Role="Proveedor" Multiplicity="1" />
+          <End Type="ActivosFijosModel.Activos_Fijos" Role="Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activos_Fijos_Usuarios">
+          <End Type="ActivosFijosModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="ActivosFijosModel.Activos_Fijos" Role="Activos_Fijos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MovimientosActivos">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Codigo_Activo_Fijo" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Activo_Fijo" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_Movimiento" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha_Movimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Codigo_Ubicacion" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Departamento" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Proveedor" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Responsable" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_TipoActivo" Type="Int32" Nullable="false" />
+          <Property Name="Codigo_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Depreciar" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Activos_Fijos" FromRole="MovimientosActivos" ToRole="Activos_Fijos" />
+          <NavigationProperty Name="Departamento" Relationship="ActivosFijosModel.FK_MovimientosActivos_Departamento" FromRole="MovimientosActivos" ToRole="Departamento" />
+          <NavigationProperty Name="Empleado" Relationship="ActivosFijosModel.FK_MovimientosActivos_Empleado" FromRole="MovimientosActivos" ToRole="Empleado" />
+          <NavigationProperty Name="Proveedor" Relationship="ActivosFijosModel.FK_MovimientosActivos_Proveedor" FromRole="MovimientosActivos" ToRole="Proveedor" />
+          <NavigationProperty Name="Tipo_Activo" Relationship="ActivosFijosModel.FK_MovimientosActivos_Tipo_Activo" FromRole="MovimientosActivos" ToRole="Tipo_Activo" />
+          <NavigationProperty Name="Ubicacion" Relationship="ActivosFijosModel.FK_MovimientosActivos_Ubicacion" FromRole="MovimientosActivos" ToRole="Ubicacion" />
+          <NavigationProperty Name="Usuarios" Relationship="ActivosFijosModel.FK_MovimientosActivos_Usuarios" FromRole="MovimientosActivos" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_MovimientosActivos_Activos_Fijos">
+          <End Type="ActivosFijosModel.Activos_Fijos" Role="Activos_Fijos" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Activo" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Activo_Fijo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Departamento">
+          <End Type="ActivosFijosModel.Departamento" Role="Departamento" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Departamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Empleado">
+          <End Type="ActivosFijosModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="Codigo_Empleado" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Proveedor">
+          <End Type="ActivosFijosModel.Proveedor" Role="Proveedor" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Proveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Tipo_Activo">
+          <End Type="ActivosFijosModel.Tipo_Activo" Role="Tipo_Activo" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Activo">
+              <PropertyRef Name="Codigo_TipoActivo" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_TipoActivo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Ubicacion">
+          <End Type="ActivosFijosModel.Ubicacion" Role="Ubicacion" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ubicacion">
+              <PropertyRef Name="Codigo_Ubicacion" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Ubicacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovimientosActivos_Usuarios">
+          <End Type="ActivosFijosModel.Usuarios" Role="Usuarios" Multiplicity="1" />
+          <End Type="ActivosFijosModel.MovimientosActivos" Role="MovimientosActivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovimientosActivos">
+              <PropertyRef Name="Codigo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -489,6 +968,12 @@
           <EntitySetMapping Name="Activos_Fijos">
             <EntityTypeMapping TypeName="ActivosFijosModel.Activos_Fijos">
               <MappingFragment StoreEntitySet="Activos_Fijos">
+                <ScalarProperty Name="Fecha_Creacion" ColumnName="Fecha_Creacion" />
+                <ScalarProperty Name="Codigo_Usuario" ColumnName="Codigo_Usuario" />
+                <ScalarProperty Name="Codigo_Responsable" ColumnName="Codigo_Responsable" />
+                <ScalarProperty Name="Depreciar" ColumnName="Depreciar" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Codigo_Proveedor" ColumnName="Codigo_Proveedor" />
                 <ScalarProperty Name="Codigo_Activo" ColumnName="Codigo_Activo" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
@@ -613,6 +1098,51 @@
               <ScalarProperty Name="Id" ColumnName="Id_Usuario" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="v_Activosfijos">
+            <EntityTypeMapping TypeName="ActivosFijosModel.v_Activosfijos">
+              <MappingFragment StoreEntitySet="v$Activosfijos">
+                <ScalarProperty Name="PorDepreciar" ColumnName="PorDepreciar" />
+                <ScalarProperty Name="Acumulado" ColumnName="Acumulado" />
+                <ScalarProperty Name="Depreciado" ColumnName="Depreciado" />
+                <ScalarProperty Name="FechaUltDepreciacion" ColumnName="FechaUltDepreciacion" />
+                <ScalarProperty Name="PorDepDiaria" ColumnName="PorDepDiaria" />
+                <ScalarProperty Name="PorDepMensual" ColumnName="PorDepMensual" />
+                <ScalarProperty Name="PorDepAnual" ColumnName="PorDepAnual" />
+                <ScalarProperty Name="ValorCompra" ColumnName="ValorCompra" />
+                <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
+                <ScalarProperty Name="Responsable" ColumnName="Responsable" />
+                <ScalarProperty Name="Depreciar" ColumnName="Depreciar" />
+                <ScalarProperty Name="TipoActivo" ColumnName="TipoActivo" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="CodigoBR" ColumnName="CodigoBR" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovimientosActivos">
+            <EntityTypeMapping TypeName="ActivosFijosModel.MovimientosActivos">
+              <MappingFragment StoreEntitySet="MovimientosActivos">
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Depreciar" ColumnName="Depreciar" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Codigo_Usuario" ColumnName="Codigo_Usuario" />
+                <ScalarProperty Name="Codigo_TipoActivo" ColumnName="Codigo_TipoActivo" />
+                <ScalarProperty Name="Codigo_Responsable" ColumnName="Codigo_Responsable" />
+                <ScalarProperty Name="Codigo_Proveedor" ColumnName="Codigo_Proveedor" />
+                <ScalarProperty Name="Codigo_Departamento" ColumnName="Codigo_Departamento" />
+                <ScalarProperty Name="Codigo_Ubicacion" ColumnName="Codigo_Ubicacion" />
+                <ScalarProperty Name="Fecha_Movimiento" ColumnName="Fecha_Movimiento" />
+                <ScalarProperty Name="Tipo_Movimiento" ColumnName="Tipo_Movimiento" />
+                <ScalarProperty Name="Codigo_Activo_Fijo" ColumnName="Codigo_Activo_Fijo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pa_depreciaActivos" FunctionName="ActivosFijosModel.Store.pa_depreciaActivos" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

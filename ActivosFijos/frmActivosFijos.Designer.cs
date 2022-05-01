@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.cbxCriterio = new System.Windows.Forms.ComboBox();
@@ -35,21 +36,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvActivos = new System.Windows.Forms.DataGridView();
+            this.CodigoBR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo_Activo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Departamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_Dept = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_TipoActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ubicacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Depreciacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Deprecia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnTransferir = new System.Windows.Forms.Button();
+            this.BtnView = new System.Windows.Forms.Button();
             this.btnDepreciacion = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.BtnView = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvActivos)).BeginInit();
@@ -57,6 +59,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDown);
+            this.panel1.Controls.Add(this.btnTransferir);
             this.panel1.Controls.Add(this.BtnView);
             this.panel1.Controls.Add(this.btnDepreciacion);
             this.panel1.Controls.Add(this.btnAgregar);
@@ -65,18 +69,17 @@
             this.panel1.Controls.Add(this.cbxCriterio);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(16, 4);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1035, 62);
+            this.panel1.Size = new System.Drawing.Size(1119, 54);
             this.panel1.TabIndex = 2;
             // 
             // txtBuscar
             // 
-            this.txtBuscar.Location = new System.Drawing.Point(458, 17);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Location = new System.Drawing.Point(293, 19);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(233, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(201, 21);
             this.txtBuscar.TabIndex = 2;
             // 
             // cbxCriterio
@@ -88,10 +91,9 @@
             "Departamento",
             "Valor",
             "Fecha"});
-            this.cbxCriterio.Location = new System.Drawing.Point(80, 20);
-            this.cbxCriterio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxCriterio.Location = new System.Drawing.Point(60, 17);
             this.cbxCriterio.Name = "cbxCriterio";
-            this.cbxCriterio.Size = new System.Drawing.Size(160, 24);
+            this.cbxCriterio.Size = new System.Drawing.Size(160, 22);
             this.cbxCriterio.TabIndex = 1;
             this.cbxCriterio.SelectedValueChanged += new System.EventHandler(this.cbxCriterio_SelectedValueChanged);
             // 
@@ -99,10 +101,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(383, 22);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(236, 22);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 17);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Buscar";
             // 
@@ -110,130 +111,170 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(3, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 17);
+            this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Criterio";
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dgvActivos);
-            this.panel2.Location = new System.Drawing.Point(17, 74);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 54);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1033, 465);
+            this.panel2.Size = new System.Drawing.Size(1119, 431);
             this.panel2.TabIndex = 3;
             // 
             // dgvActivos
             // 
             this.dgvActivos.AllowUserToAddRows = false;
             this.dgvActivos.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvActivos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvActivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvActivos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CodigoBR,
             this.Descripcion,
             this.Codigo_Activo,
             this.Departamento,
-            this.Id_Dept,
-            this.Id_Ubicacion,
-            this.Id_TipoActivo,
             this.Ubicacion,
             this.Tipo,
             this.Fecha,
             this.Valor,
-            this.Depreciacion});
+            this.Depreciacion,
+            this.Deprecia});
             this.dgvActivos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvActivos.Location = new System.Drawing.Point(0, 0);
-            this.dgvActivos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvActivos.Name = "dgvActivos";
             this.dgvActivos.ReadOnly = true;
-            this.dgvActivos.Size = new System.Drawing.Size(1033, 465);
+            this.dgvActivos.Size = new System.Drawing.Size(1119, 431);
             this.dgvActivos.TabIndex = 0;
+            this.dgvActivos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivos_CellContentClick);
             this.dgvActivos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivos_CellDoubleClick);
+            // 
+            // CodigoBR
+            // 
+            this.CodigoBR.DataPropertyName = "CodigoBR";
+            this.CodigoBR.Frozen = true;
+            this.CodigoBR.HeaderText = "Codigo";
+            this.CodigoBR.Name = "CodigoBR";
+            this.CodigoBR.ReadOnly = true;
+            this.CodigoBR.Width = 150;
             // 
             // Descripcion
             // 
-            this.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.Frozen = true;
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 180;
             // 
             // Codigo_Activo
             // 
-            this.Codigo_Activo.DataPropertyName = "Codigo_Activo";
+            this.Codigo_Activo.DataPropertyName = "Codigo";
             this.Codigo_Activo.HeaderText = "Codigo_Activo";
             this.Codigo_Activo.Name = "Codigo_Activo";
             this.Codigo_Activo.ReadOnly = true;
             this.Codigo_Activo.Visible = false;
+            this.Codigo_Activo.Width = 150;
             // 
             // Departamento
             // 
-            this.Departamento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Departamento.DataPropertyName = "Departamento";
             this.Departamento.HeaderText = "Departamento";
             this.Departamento.Name = "Departamento";
             this.Departamento.ReadOnly = true;
-            // 
-            // Id_Dept
-            // 
-            this.Id_Dept.DataPropertyName = "Codigo_Departamento";
-            this.Id_Dept.HeaderText = "Id_Departamento";
-            this.Id_Dept.Name = "Id_Dept";
-            this.Id_Dept.ReadOnly = true;
-            this.Id_Dept.Visible = false;
-            // 
-            // Id_Ubicacion
-            // 
-            this.Id_Ubicacion.DataPropertyName = "Codigo_Ubicacion";
-            this.Id_Ubicacion.HeaderText = "Id_Ubicacion";
-            this.Id_Ubicacion.Name = "Id_Ubicacion";
-            this.Id_Ubicacion.ReadOnly = true;
-            this.Id_Ubicacion.Visible = false;
-            // 
-            // Id_TipoActivo
-            // 
-            this.Id_TipoActivo.DataPropertyName = "Codigo_TipoActivo";
-            this.Id_TipoActivo.HeaderText = "Id_TipoActivo";
-            this.Id_TipoActivo.Name = "Id_TipoActivo";
-            this.Id_TipoActivo.ReadOnly = true;
-            this.Id_TipoActivo.Visible = false;
+            this.Departamento.Width = 150;
             // 
             // Ubicacion
             // 
-            this.Ubicacion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ubicacion.DataPropertyName = "Ubicacion";
             this.Ubicacion.HeaderText = "Ubicacion";
             this.Ubicacion.Name = "Ubicacion";
             this.Ubicacion.ReadOnly = true;
+            this.Ubicacion.Width = 150;
             // 
             // Tipo
             // 
             this.Tipo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tipo.DataPropertyName = "TipoActivo";
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
             this.Tipo.ReadOnly = true;
             // 
             // Fecha
             // 
-            this.Fecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Fecha.DataPropertyName = "Fecha_Registro";
+            this.Fecha.DataPropertyName = "FechaCompra";
             this.Fecha.HeaderText = "Fecha";
             this.Fecha.Name = "Fecha";
             this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
             // 
             // Valor
             // 
-            this.Valor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Valor.DataPropertyName = "Valor_Compra";
+            this.Valor.DataPropertyName = "ValorCompra";
             this.Valor.HeaderText = "Valor";
             this.Valor.Name = "Valor";
             this.Valor.ReadOnly = true;
+            this.Valor.Width = 70;
             // 
             // Depreciacion
             // 
+            this.Depreciacion.DataPropertyName = "Acumulado";
             this.Depreciacion.HeaderText = "Depreciacion Acumulada";
             this.Depreciacion.Name = "Depreciacion";
             this.Depreciacion.ReadOnly = true;
+            this.Depreciacion.Width = 120;
+            // 
+            // Deprecia
+            // 
+            this.Deprecia.DataPropertyName = "Depreciar";
+            this.Deprecia.HeaderText = "Depreciar";
+            this.Deprecia.Name = "Deprecia";
+            this.Deprecia.ReadOnly = true;
+            this.Deprecia.Width = 60;
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackgroundImage = global::ActivosFijos.Properties.Resources.down_arrow;
+            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDown.FlatAppearance.BorderSize = 0;
+            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDown.Location = new System.Drawing.Point(766, 4);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(48, 47);
+            this.btnDown.TabIndex = 9;
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            // 
+            // btnTransferir
+            // 
+            this.btnTransferir.BackgroundImage = global::ActivosFijos.Properties.Resources.transfer;
+            this.btnTransferir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTransferir.FlatAppearance.BorderSize = 0;
+            this.btnTransferir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransferir.Location = new System.Drawing.Point(712, 4);
+            this.btnTransferir.Name = "btnTransferir";
+            this.btnTransferir.Size = new System.Drawing.Size(48, 50);
+            this.btnTransferir.TabIndex = 8;
+            this.btnTransferir.UseVisualStyleBackColor = true;
+            this.btnTransferir.Click += new System.EventHandler(this.btnTransferir_Click);
+            // 
+            // BtnView
+            // 
+            this.BtnView.BackgroundImage = global::ActivosFijos.Properties.Resources.view_original_volume_report__280874;
+            this.BtnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BtnView.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnView.FlatAppearance.BorderSize = 0;
+            this.BtnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnView.Location = new System.Drawing.Point(886, 3);
+            this.BtnView.Name = "BtnView";
+            this.BtnView.Size = new System.Drawing.Size(48, 48);
+            this.BtnView.TabIndex = 7;
+            this.BtnView.UseVisualStyleBackColor = true;
+            this.BtnView.Click += new System.EventHandler(this.BtnView_Click);
             // 
             // btnDepreciacion
             // 
@@ -241,10 +282,9 @@
             this.btnDepreciacion.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDepreciacion.FlatAppearance.BorderSize = 0;
             this.btnDepreciacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDepreciacion.Location = new System.Drawing.Point(881, 2);
-            this.btnDepreciacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDepreciacion.Location = new System.Drawing.Point(825, 3);
             this.btnDepreciacion.Name = "btnDepreciacion";
-            this.btnDepreciacion.Size = new System.Drawing.Size(64, 59);
+            this.btnDepreciacion.Size = new System.Drawing.Size(48, 45);
             this.btnDepreciacion.TabIndex = 3;
             this.btnDepreciacion.UseVisualStyleBackColor = true;
             this.btnDepreciacion.Click += new System.EventHandler(this.btnDepreciacion_Click);
@@ -255,10 +295,9 @@
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnAgregar.FlatAppearance.BorderSize = 0;
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Location = new System.Drawing.Point(803, 2);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Location = new System.Drawing.Point(658, 2);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(64, 59);
+            this.btnAgregar.Size = new System.Drawing.Size(48, 50);
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -269,38 +308,22 @@
             this.btnBuscar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnBuscar.FlatAppearance.BorderSize = 0;
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBuscar.Location = new System.Drawing.Point(726, 2);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Location = new System.Drawing.Point(548, 2);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(64, 59);
+            this.btnBuscar.Size = new System.Drawing.Size(48, 46);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // BtnView
-            // 
-            this.BtnView.BackgroundImage = global::ActivosFijos.Properties.Resources.view_original_volume_report__280874;
-            this.BtnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnView.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnView.FlatAppearance.BorderSize = 0;
-            this.BtnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnView.Location = new System.Drawing.Point(953, 0);
-            this.BtnView.Margin = new System.Windows.Forms.Padding(4);
-            this.BtnView.Name = "BtnView";
-            this.BtnView.Size = new System.Drawing.Size(64, 59);
-            this.BtnView.TabIndex = 7;
-            this.BtnView.UseVisualStyleBackColor = true;
-            this.BtnView.Click += new System.EventHandler(this.BtnView_Click);
-            // 
             // frmActivosFijos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(1119, 485);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Font = new System.Drawing.Font("Microsoft Tai Le", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmActivosFijos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Activos Fijos";
@@ -326,18 +349,19 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnDepreciacion;
+        private System.Windows.Forms.Button BtnView;
+        private System.Windows.Forms.Button btnTransferir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBR;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo_Activo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Departamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Dept;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Ubicacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_TipoActivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ubicacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Depreciacion;
-        private System.Windows.Forms.Button btnDepreciacion;
-        private System.Windows.Forms.Button BtnView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Deprecia;
+        private System.Windows.Forms.Button btnDown;
     }
 }

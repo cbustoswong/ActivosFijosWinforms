@@ -18,6 +18,7 @@ namespace ActivosFijos.Models
         public Tipo_Activo()
         {
             this.Activos_Fijos = new HashSet<Activos_Fijos>();
+            this.MovimientosActivos = new HashSet<MovimientosActivos>();
         }
     
         public int Codigo_TipoActivo { get; set; }
@@ -28,5 +29,7 @@ namespace ActivosFijos.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Activos_Fijos> Activos_Fijos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MovimientosActivos> MovimientosActivos { get; set; }
     }
 }

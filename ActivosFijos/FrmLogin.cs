@@ -24,6 +24,9 @@ namespace ActivosFijos
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            //qUITAR DESPUES
+            txtUsuario.Text = "admin";
+            txtContrasena.Text = "operador";
             var usuario = db.Usuarios.FirstOrDefault(u => u.Usuario == txtUsuario.Text);
 
             if (usuario != null && SecurePasswordHasher.Verify(txtContrasena.Text, usuario.Contrasena))

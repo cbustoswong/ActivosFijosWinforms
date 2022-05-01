@@ -14,6 +14,13 @@ namespace ActivosFijos.Models
     
     public partial class Empleado
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Empleado()
+        {
+            this.Activos_Fijos = new HashSet<Activos_Fijos>();
+            this.MovimientosActivos = new HashSet<MovimientosActivos>();
+        }
+    
         public int Codigo_Empleado { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
@@ -24,5 +31,9 @@ namespace ActivosFijos.Models
         public string Estado { get; set; }
     
         public virtual Departamento Departamento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Activos_Fijos> Activos_Fijos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MovimientosActivos> MovimientosActivos { get; set; }
     }
 }

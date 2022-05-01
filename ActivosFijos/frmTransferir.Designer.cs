@@ -1,6 +1,6 @@
 ﻿namespace ActivosFijos
 {
-    partial class frmActivosFijosForm
+    partial class frmTransferir
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnEliminar = new System.Windows.Forms.Button();
             this.cbxTipo = new System.Windows.Forms.ComboBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
@@ -140,19 +139,6 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackgroundImage = global::ActivosFijos.Properties.Resources.delete;
-            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.Location = new System.Drawing.Point(12, 256);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(48, 48);
-            this.btnEliminar.TabIndex = 11;
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // cbxTipo
             // 
             this.cbxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -171,9 +157,9 @@
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(13, 18);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(69, 17);
+            this.lblTitle.Size = new System.Drawing.Size(117, 17);
             this.lblTitle.TabIndex = 5;
-            this.lblTitle.Text = "Registro";
+            this.lblTitle.Text = "Transferencias";
             // 
             // dtpFecha
             // 
@@ -261,7 +247,7 @@
             this.chkDepreciar.TabStop = false;
             this.chkDepreciar.UseVisualStyleBackColor = true;
             // 
-            // frmActivosFijosForm
+            // frmTransferir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,7 +263,6 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.cbxTipo);
             this.Controls.Add(this.btnGuardar);
-            this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.cbxUbicacion);
             this.Controls.Add(this.cbxDept);
             this.Controls.Add(this.label4);
@@ -290,9 +275,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmActivosFijosForm";
+            this.Name = "frmTransferir";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Formulario de Activos Fijos";
+            this.Text = "Transferencias de Activos Fijos";
             this.Load += new System.EventHandler(this.frmActivosFijosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudValor)).EndInit();
             this.ResumeLayout(false);
@@ -310,7 +295,6 @@
         private System.Windows.Forms.ComboBox cbxUbicacion;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.ComboBox cbxTipo;
         private System.Windows.Forms.Label lblTitle;

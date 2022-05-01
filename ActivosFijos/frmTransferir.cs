@@ -14,21 +14,21 @@ using System.Windows.Forms;
 namespace ActivosFijos
 {
 
-    public partial class frmActivosFijosForm : Form
+    public partial class frmTransferir : Form
     {
         public frmMenu menu = null;
 
         private ActivosEntities db;
         public bool isEditing = false;
         public int Id = 0;
-        public string Descripcion = "";
-        public string Departamento = "";
-        public string Ubicacion = "";
-        public string Tipo = "";
-        public DateTime Fecha;
-        public decimal Valor; 
+        //public string Descripcion = "";
+        //public string Departamento = "";
+        //public string Ubicacion = "";
+        //public string Tipo = "";
+        //public DateTime Fecha;
+        //public decimal Valor; 
 
-        public frmActivosFijosForm()
+        public frmTransferir()
         {
             InitializeComponent();
             db = new ActivosEntities();
@@ -86,43 +86,15 @@ namespace ActivosFijos
                     db.Entry(activo).State = System.Data.Entity.EntityState.Modified;
                 }
 
-                MessageBox.Show("El activo fijo ha sido modificado exitosamente.");
+                MessageBox.Show("El activo fijo ha sido procesado exitosamente.");
             }
-            else
-            {
-                db.Activos_Fijos.Add(activo);
-                MessageBox.Show("El activo fijo ha sido creado exitosamente.");
-            }
-
-
+            
             db.SaveChanges();
 
             if (Id != 0)
             {
-                LogMovimientos(Id, "ACTUALIZACION");
+                LogMovimientos(Id, "TRANSFERENCIA");
             }
-            else
-            {
-                Id = activo.Codigo_Activo;
-                LogMovimientos(Id, "CREACION");
-            }
-            Close();
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-            var activo = db.Activos_Fijos.FirstOrDefault(a => a.Codigo_Activo == Id);
-            var activoInDb = db.Activos_Fijos.FirstOrDefault(a => a.Codigo_Activo == Id);
-            activo.Estado = "I";
-
-            db.Entry(activoInDb).State = System.Data.Entity.EntityState.Detached;
-            db.Entry(activo).State = System.Data.Entity.EntityState.Modified;
-
-            db.SaveChanges();
-
-            LogMovimientos(Id, "ELIMINACION");
-
-            MessageBox.Show("El activo fijo ha sido eliminado exitosamente");
             Close();
         }
 
@@ -153,7 +125,7 @@ namespace ActivosFijos
 
                 var af = db.v_Activosfijos.Where(x => x.Codigo == this.Id).FirstOrDefault();
 
-                var Bloqueado = (af.Depreciar == "S" || af.Acumulado > 0) ? true : false;
+                var Bloqueado = true;
 
                 var activo = db.Activos_Fijos.Where(x => x.Codigo_Activo == this.Id).FirstOrDefault();
                 txtDescripcion.Text = activo.Descripcion;
@@ -168,23 +140,19 @@ namespace ActivosFijos
 
                 if (Bloqueado)
                 {
+                    txtDescripcion.Enabled = !Bloqueado;
                     cbxProveedor.Enabled = !Bloqueado;
-                    cbxDept.Enabled = !Bloqueado;
-                    cbxResponsable.Enabled = !Bloqueado;
-                    cbxUbicacion.Enabled = !Bloqueado;
+                    cbxDept.Enabled = Bloqueado;
+                    cbxResponsable.Enabled = Bloqueado;
+                    cbxUbicacion.Enabled = Bloqueado;
                     cbxTipo.Enabled = !Bloqueado;
                     dtpFecha.Enabled = !Bloqueado;
                     nudValor.Enabled = !Bloqueado;
                     chkDepreciar.Enabled = !Bloqueado;
-
-                    btnEliminar.Visible = !Bloqueado;
                 }
 
             }
-            else
-            {
-                btnEliminar.Visible = false;
-            }
+         
         }
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)

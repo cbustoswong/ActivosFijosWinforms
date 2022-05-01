@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="ActivosFijosModel.Activos_Fijos" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="ActivosFijosModel.Calculo_Depreciacion" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
         <EntityTypeShape EntityType="ActivosFijosModel.Departamento" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ActivosFijosModel.Empleado" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ActivosFijosModel.Empleado" Width="1.5" PointX="4.75" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="ActivosFijosModel.Parametro" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ActivosFijosModel.Proveedor" Width="1.5" PointX="7.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ActivosFijosModel.Roles" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
@@ -22,6 +22,18 @@
         <AssociationConnector Association="ActivosFijosModel.FK_Depreciacion_Activos_Fijos" ManuallyRouted="false" />
         <AssociationConnector Association="ActivosFijosModel.FK_Empleado_Departamento" ManuallyRouted="false" />
         <AssociationConnector Association="ActivosFijosModel.Usuarios_Roles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ActivosFijosModel.v_Activosfijos" Width="1.5" PointX="10.375" PointY="3.75" />
+        <AssociationConnector Association="ActivosFijosModel.FK_Activos_Fijos_Empleado" />
+        <AssociationConnector Association="ActivosFijosModel.FK_Activos_Fijos_Proveedor" />
+        <AssociationConnector Association="ActivosFijosModel.FK_Activos_Fijos_Usuarios" />
+        <EntityTypeShape EntityType="ActivosFijosModel.MovimientosActivos" Width="1.5" PointX="13.25" PointY="4.25" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Activos_Fijos" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Departamento" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Empleado" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Proveedor" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Tipo_Activo" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Ubicacion" />
+        <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Usuarios" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

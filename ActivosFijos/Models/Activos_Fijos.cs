@@ -18,6 +18,7 @@ namespace ActivosFijos.Models
         public Activos_Fijos()
         {
             this.Calculo_Depreciacion = new HashSet<Calculo_Depreciacion>();
+            this.MovimientosActivos = new HashSet<MovimientosActivos>();
         }
     
         public int Codigo_Activo { get; set; }
@@ -27,11 +28,22 @@ namespace ActivosFijos.Models
         public int Codigo_TipoActivo { get; set; }
         public System.DateTime Fecha_Registro { get; set; }
         public decimal Valor_Compra { get; set; }
+        public int Codigo_Proveedor { get; set; }
+        public string Estado { get; set; }
+        public string Depreciar { get; set; }
+        public int Codigo_Responsable { get; set; }
+        public int Codigo_Usuario { get; set; }
+        public System.DateTime Fecha_Creacion { get; set; }
     
         public virtual Departamento Departamento { get; set; }
         public virtual Tipo_Activo Tipo_Activo { get; set; }
         public virtual Ubicacion Ubicacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Calculo_Depreciacion> Calculo_Depreciacion { get; set; }
+        public virtual Empleado Empleado { get; set; }
+        public virtual Proveedor Proveedor { get; set; }
+        public virtual Usuarios Usuarios { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MovimientosActivos> MovimientosActivos { get; set; }
     }
 }

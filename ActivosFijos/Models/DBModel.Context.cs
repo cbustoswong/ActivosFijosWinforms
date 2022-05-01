@@ -12,6 +12,8 @@ namespace ActivosFijos.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class ActivosEntities : DbContext
     {
@@ -36,5 +38,12 @@ namespace ActivosFijos.Models
         public virtual DbSet<Tipo_Pago> Tipo_Pago { get; set; }
         public virtual DbSet<Ubicacion> Ubicacion { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<v_Activosfijos> v_Activosfijos { get; set; }
+        public virtual DbSet<MovimientosActivos> MovimientosActivos { get; set; }
+    
+        public virtual int pa_depreciaActivos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("pa_depreciaActivos");
+        }
     }
 }
