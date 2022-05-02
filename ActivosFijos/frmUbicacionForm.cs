@@ -105,35 +105,35 @@ namespace ActivosFijos
 
         private void tbxDescripcion_Validating(object sender, CancelEventArgs e)
         {
-            Regex regex = new Regex("^[a-zA-Z]+$");
-            bool hasOnlyAlpha = regex.IsMatch(tbxDescripcion.Text);
-            if (!hasOnlyAlpha || tbxDescripcion.Text.Length == 0)
-            {
-                MessageBox.Show("Introduzca una descripcion valida");
-                tbxDescripcion.Focus();
-            }
+            //Regex regex = new Regex("^[a-zA-Z_-]+$");
+            //bool hasOnlyAlpha = regex.IsMatch(tbxDescripcion.Text);
+            //if (!hasOnlyAlpha || tbxDescripcion.Text.Length == 0)
+            //{
+            //    MessageBox.Show("Introduzca una descripcion valida");
+            //    tbxDescripcion.Focus();
+            //}
         }
 
         private void tbxDireccion_Validating(object sender, CancelEventArgs e)
         {
-            Regex regex = new Regex("^[a-zA-Z0-9]*$");
-            bool hasOnlyAlpha = regex.IsMatch(tbxDireccion.Text);
-            if (!hasOnlyAlpha || tbxDireccion.Text.Length == 0)
-            {
-                MessageBox.Show("Introduzca una direccion valida");
-                tbxDireccion.Focus();
-            }
+            //Regex regex = new Regex("^[a-zA-Z0-9]*$");
+            //bool hasOnlyAlpha = regex.IsMatch(tbxDireccion.Text);
+            //if (!hasOnlyAlpha || tbxDireccion.Text.Length == 0)
+            //{
+            //    MessageBox.Show("Introduzca una direccion valida");
+            //    tbxDireccion.Focus();
+            //}
         }
 
         private void tbxEdificio_Validating(object sender, CancelEventArgs e)
         {
-            Regex regex = new Regex("^[a-zA-Z0-9]*$");
-            bool hasOnlyAlpha = regex.IsMatch(tbxEdificio.Text);
-            if (!hasOnlyAlpha || tbxEdificio.Text.Length == 0)
-            {
-                MessageBox.Show("Introduzca un edificio valido");
-                tbxEdificio.Focus();
-            }
+            //Regex regex = new Regex("^[a-zA-Z0-9]*$");
+            //bool hasOnlyAlpha = regex.IsMatch(tbxEdificio.Text);
+            //if (!hasOnlyAlpha || tbxEdificio.Text.Length == 0)
+            //{
+            //    MessageBox.Show("Introduzca un edificio valido");
+            //    tbxEdificio.Focus();
+            //}
         }
 
         private bool checkFields()

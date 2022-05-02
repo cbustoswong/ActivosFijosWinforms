@@ -148,8 +148,18 @@ namespace ActivosFijos
 
         private void btnDepreciacion_Click(object sender, EventArgs e)
         {
-            frmCalcDepreciacion frm = new frmCalcDepreciacion();
-            frm.ShowDialog();
+            if (dgvActivos.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("No ha seleccionado Activo a revisar la depreciacion.");
+                return;
+            }
+            else
+            {
+                frmCalcDepreciacion frm = new frmCalcDepreciacion();
+                var row = dgvActivos.CurrentRow;
+                frm.IdActivo = (int)row.Cells["Codigo_Activo"].Value;
+                frm.ShowDialog();
+            }
         }
 
         private void BtnView_Click(object sender, EventArgs e)
