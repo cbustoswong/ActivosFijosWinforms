@@ -145,7 +145,10 @@ namespace ActivosFijos
             cbxProveedor.DisplayMember = "Nombre";
             cbxProveedor.ValueMember = "Codigo";
 
-
+             //db.Activos_Fijos_Info.
+             //db.InformacionAF.Select(t=>)
+            
+           // txtMarca.AutoCompleteSource = db.Info
 
             if (isEditing)
             {
@@ -215,6 +218,11 @@ namespace ActivosFijos
                 cbxResponsable.SelectedIndex = -1;
                 cbxResponsable.DataSource = null;
             }
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
 
         }
     }

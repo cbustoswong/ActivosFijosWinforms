@@ -223,6 +223,9 @@
     <Compile Include="Models\Activos_Fijos.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Activos_Fijos_Info.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Calculo_Depreciacion.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>

@@ -23,6 +23,20 @@
           <Property Name="Codigo_Usuario" Type="int" Nullable="false" />
           <Property Name="Fecha_Creacion" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Activos_Fijos_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Codigo_Activo" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Codigo_Activo" Type="int" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="100" />
+          <Property Name="Modelo" Type="varchar" MaxLength="100" />
+          <Property Name="Serie" Type="varchar" MaxLength="100" />
+          <Property Name="Color" Type="varchar" MaxLength="100" />
+          <Property Name="Factura" Type="varchar" MaxLength="100" />
+          <Property Name="InfoAdicional" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Calculo_Depreciacion">
           <Key>
             <PropertyRef Name="Codigo_Registro" />
@@ -200,6 +214,18 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
             </Principal>
             <Dependent Role="Activos_Fijos">
               <PropertyRef Name="Codigo_Responsable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Activos_Fijos_Info_Activos_Fijos">
+          <End Role="Activos_Fijos" Type="Self.Activos_Fijos" Multiplicity="1" />
+          <End Role="Activos_Fijos_Info" Type="Self.Activos_Fijos_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Activo" />
+            </Principal>
+            <Dependent Role="Activos_Fijos_Info">
+              <PropertyRef Name="Codigo_Activo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -392,6 +418,7 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
         <Function Name="pa_depreciaActivos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ActivosFijosModelStoreContainer">
           <EntitySet Name="Activos_Fijos" EntityType="Self.Activos_Fijos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Activos_Fijos_Info" EntityType="Self.Activos_Fijos_Info" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calculo_Depreciacion" EntityType="Self.Calculo_Depreciacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
@@ -433,6 +460,10 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
           <AssociationSet Name="FK_Activos_Fijos_Empleado" Association="Self.FK_Activos_Fijos_Empleado">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Activos_Fijos_Info_Activos_Fijos" Association="Self.FK_Activos_Fijos_Info_Activos_Fijos">
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+            <End Role="Activos_Fijos_Info" EntitySet="Activos_Fijos_Info" />
           </AssociationSet>
           <AssociationSet Name="FK_Activos_Fijos_Proveedor" Association="Self.FK_Activos_Fijos_Proveedor">
             <End Role="Proveedor" EntitySet="Proveedor" />
@@ -524,6 +555,7 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
           <NavigationProperty Name="Proveedor" Relationship="ActivosFijosModel.FK_Activos_Fijos_Proveedor" FromRole="Activos_Fijos" ToRole="Proveedor" />
           <NavigationProperty Name="Usuarios" Relationship="ActivosFijosModel.FK_Activos_Fijos_Usuarios" FromRole="Activos_Fijos" ToRole="Usuarios" />
           <NavigationProperty Name="MovimientosActivos" Relationship="ActivosFijosModel.FK_MovimientosActivos_Activos_Fijos" FromRole="Activos_Fijos" ToRole="MovimientosActivos" />
+          <NavigationProperty Name="Activos_Fijos_Info" Relationship="ActivosFijosModel.FK_Activos_Fijos_Info_Activos_Fijos" FromRole="Activos_Fijos" ToRole="Activos_Fijos_Info" />
         </EntityType>
         <EntityType Name="Calculo_Depreciacion">
           <Key>
@@ -782,6 +814,11 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
             <End Role="MovimientosActivos" EntitySet="MovimientosActivos" />
           </AssociationSet>
           <FunctionImport Name="pa_depreciaActivos" />
+          <EntitySet Name="Activos_Fijos_Info" EntityType="ActivosFijosModel.Activos_Fijos_Info" />
+          <AssociationSet Name="FK_Activos_Fijos_Info_Activos_Fijos" Association="ActivosFijosModel.FK_Activos_Fijos_Info_Activos_Fijos">
+            <End Role="Activos_Fijos" EntitySet="Activos_Fijos" />
+            <End Role="Activos_Fijos_Info" EntitySet="Activos_Fijos_Info" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="v_Activosfijos">
           <Key>
@@ -956,6 +993,33 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
             </Principal>
             <Dependent Role="MovimientosActivos">
               <PropertyRef Name="Codigo_Usuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Activos_Fijos_Info">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Codigo_Activo" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Codigo_Activo" Type="Int32" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Serie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Factura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InfoAdicional" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Activos_Fijos" Relationship="ActivosFijosModel.FK_Activos_Fijos_Info_Activos_Fijos" FromRole="Activos_Fijos_Info" ToRole="Activos_Fijos" />
+        </EntityType>
+        <Association Name="FK_Activos_Fijos_Info_Activos_Fijos">
+          <End Type="ActivosFijosModel.Activos_Fijos" Role="Activos_Fijos" Multiplicity="1" />
+          <End Type="ActivosFijosModel.Activos_Fijos_Info" Role="Activos_Fijos_Info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Activos_Fijos">
+              <PropertyRef Name="Codigo_Activo" />
+            </Principal>
+            <Dependent Role="Activos_Fijos_Info">
+              <PropertyRef Name="Codigo_Activo" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1143,6 +1207,20 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="pa_depreciaActivos" FunctionName="ActivosFijosModel.Store.pa_depreciaActivos" />
+          <EntitySetMapping Name="Activos_Fijos_Info">
+            <EntityTypeMapping TypeName="ActivosFijosModel.Activos_Fijos_Info">
+              <MappingFragment StoreEntitySet="Activos_Fijos_Info">
+                <ScalarProperty Name="InfoAdicional" ColumnName="InfoAdicional" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Codigo_Activo" ColumnName="Codigo_Activo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

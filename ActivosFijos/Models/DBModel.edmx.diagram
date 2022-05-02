@@ -34,6 +34,8 @@
         <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Tipo_Activo" />
         <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Ubicacion" />
         <AssociationConnector Association="ActivosFijosModel.FK_MovimientosActivos_Usuarios" />
+        <EntityTypeShape EntityType="ActivosFijosModel.Activos_Fijos_Info" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="ActivosFijosModel.FK_Activos_Fijos_Info_Activos_Fijos" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

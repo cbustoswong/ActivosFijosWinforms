@@ -40,6 +40,7 @@ namespace ActivosFijos.Models
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<v_Activosfijos> v_Activosfijos { get; set; }
         public virtual DbSet<MovimientosActivos> MovimientosActivos { get; set; }
+        public virtual DbSet<Activos_Fijos_Info> Activos_Fijos_Info { get; set; }
     
         public virtual int pa_depreciaActivos()
         {
