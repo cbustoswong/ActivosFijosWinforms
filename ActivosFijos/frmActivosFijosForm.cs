@@ -56,8 +56,21 @@ namespace ActivosFijos
             db.MovimientosActivos.Add(mov);
             db.SaveChanges();
         }
+
+        private bool ExisteInfoExtra()
+        {
+            bool existe = false;
+
+            if(txtMarca.Text.Length>0 || txtSerie.Text.Length>0 ||
+               txtModelo.Text.Length>0 || txtColor.Text.Length>0 ||
+               txtFactura.Text.Length>0 || txtInfoExtra.Text.Length>0)
+                existe= true;
+
+            return existe;
+        }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            
             Activos_Fijos activo = new Activos_Fijos
             {
                 Codigo_Activo = Id,
@@ -75,7 +88,7 @@ namespace ActivosFijos
                 Valor_Compra = nudValor.Value
             };
 
-            
+
             if (Id != 0)
             {
                 var activoInDb = db.Activos_Fijos.FirstOrDefault(a => a.Codigo_Activo == activo.Codigo_Activo);
@@ -86,10 +99,46 @@ namespace ActivosFijos
                     db.Entry(activo).State = System.Data.Entity.EntityState.Modified;
                 }
 
+                if (ExisteInfoExtra())
+                {
+                    var AfInfoInDb = db.Activos_Fijos_Info.FirstOrDefault(a => a.Codigo_Activo == activo.Codigo_Activo);
+
+                    if (AfInfoInDb != null)
+                    {
+                        var Info = db.Activos_Fijos_Info.FirstOrDefault(a => a.Codigo_Activo == activo.Codigo_Activo);
+                        Info.Marca = txtMarca.Text;
+                        Info.Serie = txtSerie.Text;
+                        Info.Modelo = txtModelo.Text;
+                        Info.Color = txtColor.Text;
+                        Info.Factura = txtFactura.Text;
+                        Info.InfoAdicional = txtInfoExtra.Text;
+
+                        db.Entry(AfInfoInDb).State = System.Data.Entity.EntityState.Detached;
+                        db.Entry(Info).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    else
+                    {
+                        var AfInfo = new Activos_Fijos_Info
+                        {
+                            Codigo_Activo = Id,
+                            Marca = txtMarca.Text,
+                            Serie = txtSerie.Text,
+                            Modelo = txtModelo.Text,
+                            Color = txtColor.Text,
+                            Factura = txtFactura.Text,
+                            InfoAdicional = txtInfoExtra.Text
+                        };
+                        db.Activos_Fijos_Info.Add(AfInfo);
+                        //db.SaveChanges();
+                    }
+                    
+                }
+
                 MessageBox.Show("El activo fijo ha sido modificado exitosamente.");
             }
             else
             {
+                
                 db.Activos_Fijos.Add(activo);
                 MessageBox.Show("El activo fijo ha sido creado exitosamente.");
             }
@@ -104,6 +153,23 @@ namespace ActivosFijos
             else
             {
                 Id = activo.Codigo_Activo;
+
+                if (ExisteInfoExtra())
+                {
+                    var AfInfo = new Activos_Fijos_Info
+                    {
+                        Codigo_Activo = Id,
+                        Marca = txtMarca.Text,
+                        Serie = txtSerie.Text,
+                        Modelo = txtModelo.Text,
+                        Color = txtColor.Text,
+                        Factura = txtFactura.Text,
+                        InfoAdicional = txtInfoExtra.Text
+                    };
+                    db.Activos_Fijos_Info.Add(AfInfo);
+                    db.SaveChanges();
+                }
+
                 LogMovimientos(Id, "CREACION");
             }
             Close();
@@ -145,11 +211,14 @@ namespace ActivosFijos
             cbxProveedor.DisplayMember = "Nombre";
             cbxProveedor.ValueMember = "Codigo";
 
-             //db.Activos_Fijos_Info.
-             //db.InformacionAF.Select(t=>)
-            
-           // txtMarca.AutoCompleteSource = db.Info
+            var source = new AutoCompleteStringCollection();
 
+            source.AddRange(db.Activos_Fijos_Info.GroupBy(g => g.Marca).Select(t => t.Key).ToArray());
+            txtMarca.AutoCompleteCustomSource = source;
+            txtMarca.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtMarca.AutoCompleteSource = AutoCompleteSource.CustomSource;
+
+           
             if (isEditing)
             {
                 lblTitle.Text = "Edicion";
@@ -169,6 +238,27 @@ namespace ActivosFijos
                 nudValor.Value = activo.Valor_Compra;
                 chkDepreciar.Checked = (activo.Depreciar == "S") ? true : false;
 
+                var info = activo.Activos_Fijos_Info.FirstOrDefault();
+                if (info != null)
+                {
+                    txtMarca.Text = info.Marca;
+                    txtModelo.Text = info.Modelo;
+                    txtSerie.Text = info.Serie;
+                    txtColor.Text = info.Color;
+                    txtFactura.Text = info.Factura;
+                    txtInfoExtra.Text = info.InfoAdicional;
+                }
+                else
+                {
+                    txtMarca.Clear();
+                    txtModelo.Clear();
+                    txtSerie.Clear();
+                    txtColor.Clear();
+                    txtFactura.Clear();
+                    txtInfoExtra.Clear();
+                }
+
+
                 if (Bloqueado)
                 {
                     cbxProveedor.Enabled = !Bloqueado;
@@ -179,7 +269,6 @@ namespace ActivosFijos
                     dtpFecha.Enabled = !Bloqueado;
                     nudValor.Enabled = !Bloqueado;
                     chkDepreciar.Enabled = !Bloqueado;
-
                     btnEliminar.Visible = !Bloqueado;
                 }
 
