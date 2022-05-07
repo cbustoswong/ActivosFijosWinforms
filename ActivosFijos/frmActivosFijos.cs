@@ -27,11 +27,11 @@ namespace ActivosFijos
             ParseIds();
         }
 
-        private void GetActivos(string search)
+        private void GetActivos(string search,string Opcion ="A")
         {
             using (ActivosEntities db = new ActivosEntities())
             {
-                var activos = db.v_Activosfijos.ToList();
+                var activos = db.v_Activosfijos.Where(x=>x.Estado==Opcion).ToList();
 
                 if (!(search.Trim().Length > 0))
                 {
@@ -105,6 +105,9 @@ namespace ActivosFijos
             frm.Valor = decimal.Parse(row.Cells["Valor"].Value.ToString());
             frm.menu = this.menu;
             frm.ShowDialog();
+
+            GetActivos(txtBuscar.Text);
+            ParseIds();
         }
 
         private void ParseIds()
@@ -164,7 +167,9 @@ namespace ActivosFijos
 
         private void BtnView_Click(object sender, EventArgs e)
         {
+            var Estado = (radioButton1.Checked) ? "A" : ((radioButton2.Checked) ? "I" : "B");
             FrmReportActivos frm = new FrmReportActivos();
+            frm.Estado = Estado;
             frm.ShowDialog();
         }
 
@@ -259,9 +264,92 @@ namespace ActivosFijos
 
                     LogMovimientos(Id, "BAJA");
 
+                    GetActivos(txtBuscar.Text);
+                    ParseIds();
                 }
                 
                     
+            }
+        }
+
+        private void btnExcel_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            btnExcel.Enabled = false;
+            try
+            {
+                Task.Run(() =>
+                {
+                    Exportacion.ClsExcel excel = new Exportacion.ClsExcel();
+
+                    ActivosFijosDataSet._v_ActivosfijosDataTable tb = new ActivosFijosDataSet._v_ActivosfijosDataTable();
+                    ActivosFijosDataSetTableAdapters.v_ActivosfijosTableAdapter adap = new ActivosFijosDataSetTableAdapters.v_ActivosfijosTableAdapter();
+                    adap.Fill(tb);
+                    var Estado = (radioButton1.Checked) ? "A" : ((radioButton2.Checked) ? "I" : "B");
+
+                    var data = tb.Where(x => x.Estado == Estado).CopyToDataTable();
+
+                    excel.DatosExcel = data;
+                    excel.NombreEmpresa = "Empresa ABC";
+                    excel.TituloReporte = "Listado de Activos Fijos";
+                    excel.NombreFile = $"Af{DateTime.Now.ToString("yyMMddHHmmss")}.xlsx";
+                    excel.InicializaHoja();
+                    excel.PoneEncabezado();
+
+                    excel.AutoFitColumns = true;
+                    excel.Escritorio = true;
+                    excel.LLenaHoja();
+                    excel.Terminar();
+                }).Wait();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+                btnExcel.Enabled = true;
+            }
+           
+        }
+
+        private void cbxCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                GetActivos(txtBuscar.Text, "I");
+                ParseIds();
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                GetActivos(txtBuscar.Text, "A");
+                ParseIds();
+            }
+            
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (((RadioButton)sender).Checked)
+            {
+                GetActivos(txtBuscar.Text, "B");
+                ParseIds();
             }
         }
     }

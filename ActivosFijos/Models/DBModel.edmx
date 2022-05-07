@@ -173,6 +173,7 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
             <PropertyRef Name="Depreciar" />
             <PropertyRef Name="FechaCompra" />
             <PropertyRef Name="ValorCompra" />
+            <PropertyRef Name="Estado" />
           </Key>
           <Property Name="CodigoBR" Type="varchar" MaxLength="8000" />
           <Property Name="Codigo" Type="int" Nullable="false" />
@@ -182,6 +183,12 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
           <Property Name="Ubicacion" Type="varchar" MaxLength="100" />
           <Property Name="TipoActivo" Type="varchar" MaxLength="100" />
           <Property Name="Depreciar" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="100" />
+          <Property Name="Modelo" Type="varchar" MaxLength="100" />
+          <Property Name="Serie" Type="varchar" MaxLength="100" />
+          <Property Name="Color" Type="varchar" MaxLength="100" />
+          <Property Name="Factura" Type="varchar" MaxLength="100" />
+          <Property Name="InfoAdicional" Type="varchar" MaxLength="200" />
           <Property Name="Responsable" Type="varchar" MaxLength="81" />
           <Property Name="FechaCompra" Type="date" Nullable="false" />
           <Property Name="ValorCompra" Type="decimal" Precision="18" Scale="2" Nullable="false" />
@@ -192,6 +199,7 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
           <Property Name="Depreciado" Type="decimal" Precision="20" Scale="6" />
           <Property Name="Acumulado" Type="decimal" Precision="18" Scale="4" />
           <Property Name="PorDepreciar" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <Association Name="FK_Activos_Fijos_Departamento">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
@@ -441,6 +449,12 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
     [v$Activosfijos].[Ubicacion] AS [Ubicacion], 
     [v$Activosfijos].[TipoActivo] AS [TipoActivo], 
     [v$Activosfijos].[Depreciar] AS [Depreciar], 
+    [v$Activosfijos].[Marca] AS [Marca], 
+    [v$Activosfijos].[Modelo] AS [Modelo], 
+    [v$Activosfijos].[Serie] AS [Serie], 
+    [v$Activosfijos].[Color] AS [Color], 
+    [v$Activosfijos].[Factura] AS [Factura], 
+    [v$Activosfijos].[InfoAdicional] AS [InfoAdicional], 
     [v$Activosfijos].[Responsable] AS [Responsable], 
     [v$Activosfijos].[FechaCompra] AS [FechaCompra], 
     [v$Activosfijos].[ValorCompra] AS [ValorCompra], 
@@ -450,7 +464,8 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
     [v$Activosfijos].[FechaUltDepreciacion] AS [FechaUltDepreciacion], 
     [v$Activosfijos].[Depreciado] AS [Depreciado], 
     [v$Activosfijos].[Acumulado] AS [Acumulado], 
-    [v$Activosfijos].[PorDepreciar] AS [PorDepreciar]
+    [v$Activosfijos].[PorDepreciar] AS [PorDepreciar], 
+    [v$Activosfijos].[Estado] AS [Estado]
     FROM [dbo].[v$Activosfijos] AS [v$Activosfijos]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Activos_Fijos_Departamento" Association="Self.FK_Activos_Fijos_Departamento">
@@ -829,6 +844,7 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
             <PropertyRef Name="Depreciar" />
             <PropertyRef Name="FechaCompra" />
             <PropertyRef Name="ValorCompra" />
+            <PropertyRef Name="Estado" />
           </Key>
           <Property Name="CodigoBR" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
           <Property Name="Codigo" Type="Int32" Nullable="false" />
@@ -848,6 +864,13 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
           <Property Name="Depreciado" Type="Decimal" Precision="20" Scale="6" />
           <Property Name="Acumulado" Type="Decimal" Precision="18" Scale="4" />
           <Property Name="PorDepreciar" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Serie" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Factura" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="InfoAdicional" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Activos_Fijos_Empleado">
           <End Type="ActivosFijosModel.Empleado" Role="Empleado" Multiplicity="1" />
@@ -1165,6 +1188,13 @@ advertencia 6002: La tabla o vista 'ActivosFijos.dbo.v$Activosfijos' no tiene de
           <EntitySetMapping Name="v_Activosfijos">
             <EntityTypeMapping TypeName="ActivosFijosModel.v_Activosfijos">
               <MappingFragment StoreEntitySet="v$Activosfijos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="InfoAdicional" ColumnName="InfoAdicional" />
+                <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Serie" ColumnName="Serie" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
                 <ScalarProperty Name="PorDepreciar" ColumnName="PorDepreciar" />
                 <ScalarProperty Name="Acumulado" ColumnName="Acumulado" />
                 <ScalarProperty Name="Depreciado" ColumnName="Depreciado" />

@@ -32,5 +32,12 @@ namespace ActivosFijos.Models
         public Nullable<decimal> Depreciado { get; set; }
         public Nullable<decimal> Acumulado { get; set; }
         public Nullable<decimal> PorDepreciar { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
+        public string Serie { get; set; }
+        public string Color { get; set; }
+        public string Factura { get; set; }
+        public string InfoAdicional { get; set; }
+        public string Estado { get; set; }
     }
 }

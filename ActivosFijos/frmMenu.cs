@@ -65,6 +65,7 @@ namespace ActivosFijos
             {
                 frmEmpleados frm = new frmEmpleados();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
@@ -80,6 +81,7 @@ namespace ActivosFijos
             {
                 frmProveedores frm = new frmProveedores();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
@@ -95,6 +97,7 @@ namespace ActivosFijos
             {
                 frmUbicacion frm = new frmUbicacion();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
@@ -110,6 +113,7 @@ namespace ActivosFijos
             {
                 frmParametros frm = new frmParametros();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
@@ -125,6 +129,7 @@ namespace ActivosFijos
             {
                 frmDepartamento frm = new frmDepartamento();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
@@ -141,6 +146,7 @@ namespace ActivosFijos
             {
                 frmUsuarios frm = new frmUsuarios();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
@@ -156,6 +162,7 @@ namespace ActivosFijos
             {
                 frmActivosFijos frm = new frmActivosFijos();
                 frm.menu = this;
+                frm.Icon = this.Icon;
                 frm.Show();
                 Hide();
             }
